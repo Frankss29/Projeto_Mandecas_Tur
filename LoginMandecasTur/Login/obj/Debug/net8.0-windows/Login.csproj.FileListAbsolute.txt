@@ -57,3 +57,8 @@ C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Lo
 C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.UseControls.UC_GestaoViagens.resources
 C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.UseControls.UC_Financeiro.resources
 C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.UseControls.UC_Relatorio.resources
+C:\Users\Fran\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.Home.resources
+C:\Users\Fran\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.UseControls.UC_Financeiro.resources
+C:\Users\Fran\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.UseControls.UC_GestaoClientes.resources
+C:\Users\Fran\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.UseControls.UC_GestaoViagens.resources
+C:\Users\Fran\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.UseControls.UC_Relatorio.resources

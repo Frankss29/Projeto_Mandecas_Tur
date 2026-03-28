@@ -7,7 +7,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+
 
 namespace Login
 {
@@ -20,23 +24,40 @@ namespace Login
             addUserControl(uc);
 
         }
-
-        private void Home_Load(object sender, EventArgs e)
+        private void ArredondarPainel(Panel panel, int raio)
         {
-
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, raio, raio, 180, 90);
+            path.AddArc(panel.Width - raio, 0, raio, raio, 270, 90);
+            path.AddArc(panel.Width - raio, panel.Height - raio, raio, raio, 0, 90);
+            path.AddArc(0, panel.Height - raio, raio, raio, 90, 90);
+            path.CloseFigure();
+            panel.Region = new Region(path);
         }
 
         private void pnlUserName_Paint(object sender, PaintEventArgs e)
         {
-
+            ArredondarPainel((Panel)sender, 20); // Ajuste o raio conforme desejado
         }
 
         private void addUserControl(UserControl userControl)
         {
-            userControl.Dock = DockStyle.Fill;
+            // 1. Limpa o que estava no painel antes
             panelContainer.Controls.Clear();
+
+            // 2. Configura o UC para NÃO esticar (senão a centralização morre)
+            userControl.Dock = DockStyle.None;
+
+            // 3. Calcula a posição central
+            // Se o UC for maior que o painel, o Location fica em 0,0 e o AutoScroll resolve
+            int x = Math.Max(0, (panelContainer.Width - userControl.Width) / 2);
+            int y = Math.Max(0, (panelContainer.Height - userControl.Height) / 2);
+
+            userControl.Location = new Point(x, y);
+
+            // 4. Adiciona ao painel
             panelContainer.Controls.Add(userControl);
-            userControl.BringToFront();
+  
         }
         private void btnGestaoClientes_Click(object sender, EventArgs e)
         {

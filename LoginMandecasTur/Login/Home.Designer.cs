@@ -36,18 +36,18 @@
             btnGestaoClientes = new Button();
             panelContainer = new Panel();
             pnlNavBar = new Panel();
-            pictureBox2 = new PictureBox();
-            pictureBox1 = new PictureBox();
+            imgNomeLogoHome = new PictureBox();
+            imgLogoHome = new PictureBox();
             pnlUserName = new Panel();
-            label2 = new Label();
-            pictureBox3 = new PictureBox();
-            label1 = new Label();
+            lbUserName = new Label();
+            imgIconUserHome = new PictureBox();
+            lbUsuario = new Label();
             pnlMenu.SuspendLayout();
             pnlNavBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgNomeLogoHome).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgLogoHome).BeginInit();
             pnlUserName.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgIconUserHome).BeginInit();
             SuspendLayout();
             // 
             // pnlMenu
@@ -65,9 +65,12 @@
             // 
             // btnRelatorio
             // 
-            btnRelatorio.Location = new Point(476, 0);
+            btnRelatorio.FlatAppearance.BorderSize = 0;
+            btnRelatorio.FlatStyle = FlatStyle.Flat;
+            btnRelatorio.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            btnRelatorio.Location = new Point(461, 0);
             btnRelatorio.Name = "btnRelatorio";
-            btnRelatorio.Size = new Size(147, 53);
+            btnRelatorio.Size = new Size(147, 51);
             btnRelatorio.TabIndex = 5;
             btnRelatorio.Text = "Relatórios";
             btnRelatorio.UseVisualStyleBackColor = true;
@@ -75,9 +78,12 @@
             // 
             // btnFinanceiro
             // 
-            btnFinanceiro.Location = new Point(327, 0);
+            btnFinanceiro.FlatAppearance.BorderSize = 0;
+            btnFinanceiro.FlatStyle = FlatStyle.Flat;
+            btnFinanceiro.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            btnFinanceiro.Location = new Point(312, 0);
             btnFinanceiro.Name = "btnFinanceiro";
-            btnFinanceiro.Size = new Size(147, 53);
+            btnFinanceiro.Size = new Size(147, 51);
             btnFinanceiro.TabIndex = 4;
             btnFinanceiro.Text = "Financeiro";
             btnFinanceiro.UseVisualStyleBackColor = true;
@@ -85,9 +91,12 @@
             // 
             // btnGestaoViagens
             // 
-            btnGestaoViagens.Location = new Point(178, 0);
+            btnGestaoViagens.FlatAppearance.BorderSize = 0;
+            btnGestaoViagens.FlatStyle = FlatStyle.Flat;
+            btnGestaoViagens.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            btnGestaoViagens.Location = new Point(163, 0);
             btnGestaoViagens.Name = "btnGestaoViagens";
-            btnGestaoViagens.Size = new Size(147, 53);
+            btnGestaoViagens.Size = new Size(147, 51);
             btnGestaoViagens.TabIndex = 3;
             btnGestaoViagens.Text = "Gestão de Viagens";
             btnGestaoViagens.UseVisualStyleBackColor = true;
@@ -95,9 +104,12 @@
             // 
             // btnGestaoClientes
             // 
-            btnGestaoClientes.Location = new Point(30, 0);
+            btnGestaoClientes.FlatAppearance.BorderSize = 0;
+            btnGestaoClientes.FlatStyle = FlatStyle.Flat;
+            btnGestaoClientes.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGestaoClientes.Location = new Point(12, 0);
             btnGestaoClientes.Name = "btnGestaoClientes";
-            btnGestaoClientes.Size = new Size(147, 53);
+            btnGestaoClientes.Size = new Size(147, 51);
             btnGestaoClientes.TabIndex = 2;
             btnGestaoClientes.Text = "Gestão de Clientes";
             btnGestaoClientes.UseVisualStyleBackColor = true;
@@ -105,16 +117,17 @@
             // 
             // panelContainer
             // 
-            panelContainer.Location = new Point(0, 132);
+            panelContainer.Dock = DockStyle.Fill;
+            panelContainer.Location = new Point(0, 126);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(800, 348);
+            panelContainer.Size = new Size(800, 361);
             panelContainer.TabIndex = 4;
             // 
             // pnlNavBar
             // 
             pnlNavBar.BackColor = Color.FromArgb(68, 252, 124);
-            pnlNavBar.Controls.Add(pictureBox2);
-            pnlNavBar.Controls.Add(pictureBox1);
+            pnlNavBar.Controls.Add(imgNomeLogoHome);
+            pnlNavBar.Controls.Add(imgLogoHome);
             pnlNavBar.Controls.Add(pnlUserName);
             pnlNavBar.Dock = DockStyle.Top;
             pnlNavBar.Location = new Point(0, 0);
@@ -122,71 +135,72 @@
             pnlNavBar.Size = new Size(800, 73);
             pnlNavBar.TabIndex = 2;
             // 
-            // pictureBox2
+            // imgNomeLogoHome
             // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(77, 22);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(180, 29);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 2;
-            pictureBox2.TabStop = false;
+            imgNomeLogoHome.Image = (Image)resources.GetObject("imgNomeLogoHome.Image");
+            imgNomeLogoHome.Location = new Point(77, 22);
+            imgNomeLogoHome.Name = "imgNomeLogoHome";
+            imgNomeLogoHome.Size = new Size(180, 29);
+            imgNomeLogoHome.SizeMode = PictureBoxSizeMode.Zoom;
+            imgNomeLogoHome.TabIndex = 2;
+            imgNomeLogoHome.TabStop = false;
             // 
-            // pictureBox1
+            // imgLogoHome
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 6);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(59, 59);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
+            imgLogoHome.Image = (Image)resources.GetObject("imgLogoHome.Image");
+            imgLogoHome.Location = new Point(12, 6);
+            imgLogoHome.Name = "imgLogoHome";
+            imgLogoHome.Size = new Size(59, 59);
+            imgLogoHome.SizeMode = PictureBoxSizeMode.Zoom;
+            imgLogoHome.TabIndex = 1;
+            imgLogoHome.TabStop = false;
             // 
             // pnlUserName
             // 
             pnlUserName.BackColor = Color.White;
-            pnlUserName.Controls.Add(label2);
-            pnlUserName.Controls.Add(pictureBox3);
-            pnlUserName.Controls.Add(label1);
+            pnlUserName.Controls.Add(lbUserName);
+            pnlUserName.Controls.Add(imgIconUserHome);
+            pnlUserName.Controls.Add(lbUsuario);
             pnlUserName.Location = new Point(657, 11);
             pnlUserName.Name = "pnlUserName";
             pnlUserName.Size = new Size(136, 51);
             pnlUserName.TabIndex = 0;
             pnlUserName.Paint += pnlUserName_Paint;
             // 
-            // label2
+            // lbUserName
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(29, 28);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 3;
-            label2.Text = "label2";
+            lbUserName.AutoSize = true;
+            lbUserName.Location = new Point(29, 28);
+            lbUserName.Name = "lbUserName";
+            lbUserName.Size = new Size(38, 15);
+            lbUserName.TabIndex = 3;
+            lbUserName.Text = "label2";
             // 
-            // pictureBox3
+            // imgIconUserHome
             // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(92, 13);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(27, 27);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 3;
-            pictureBox3.TabStop = false;
+            imgIconUserHome.Image = (Image)resources.GetObject("imgIconUserHome.Image");
+            imgIconUserHome.Location = new Point(92, 13);
+            imgIconUserHome.Name = "imgIconUserHome";
+            imgIconUserHome.Size = new Size(27, 27);
+            imgIconUserHome.SizeMode = PictureBoxSizeMode.Zoom;
+            imgIconUserHome.TabIndex = 3;
+            imgIconUserHome.TabStop = false;
             // 
-            // label1
+            // lbUsuario
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(13, 8);
-            label1.Name = "label1";
-            label1.Size = new Size(62, 20);
-            label1.TabIndex = 2;
-            label1.Text = "Usuário";
+            lbUsuario.AutoSize = true;
+            lbUsuario.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbUsuario.Location = new Point(13, 8);
+            lbUsuario.Name = "lbUsuario";
+            lbUsuario.Size = new Size(62, 20);
+            lbUsuario.TabIndex = 2;
+            lbUsuario.Text = "Usuário";
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(800, 487);
             Controls.Add(panelContainer);
             Controls.Add(pnlMenu);
@@ -195,14 +209,13 @@
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
-            Load += Home_Load;
             pnlMenu.ResumeLayout(false);
             pnlNavBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgNomeLogoHome).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgLogoHome).EndInit();
             pnlUserName.ResumeLayout(false);
             pnlUserName.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgIconUserHome).EndInit();
             ResumeLayout(false);
         }
 
@@ -212,12 +225,12 @@
         private Button btnGestaoViagens;
         private Button btnGestaoClientes;
         private Panel pnlNavBar;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox1;
+        private PictureBox imgNomeLogoHome;
+        private PictureBox imgLogoHome;
         private Panel pnlUserName;
-        private Label label2;
-        private PictureBox pictureBox3;
-        private Label label1;
+        private Label lbUserName;
+        private PictureBox imgIconUserHome;
+        private Label lbUsuario;
         private Panel panelContainer;
         private Button btnRelatorio;
         private Button btnFinanceiro;
