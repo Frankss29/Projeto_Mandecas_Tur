@@ -8,19 +8,19 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\FRAN SANTOS\\.nuget\\packages\\": {}
+    "C:\\Users\\Fran\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
+      "projectUniqueName": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
       "projectName": "Login",
-      "projectPath": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
-      "packagesPath": "C:\\Users\\FRAN SANTOS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\obj\\",
+      "projectPath": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
+      "packagesPath": "C:\\Users\\Fran\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\FRAN SANTOS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Fran\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

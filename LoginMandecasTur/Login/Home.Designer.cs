@@ -63,7 +63,7 @@
             pnlMenu.Controls.Add(btnGestaoViagens);
             pnlMenu.Controls.Add(btnGestaoClientes);
             pnlMenu.Dock = DockStyle.Top;
-            pnlMenu.Location = new Point(0, 69);
+            pnlMenu.Location = new Point(0, 81);
             pnlMenu.Name = "pnlMenu";
             pnlMenu.Size = new Size(800, 53);
             pnlMenu.TabIndex = 3;
@@ -123,9 +123,10 @@
             // panelContainer
             // 
             panelContainer.AutoScroll = true;
-            panelContainer.Location = new Point(0, 126);
+            panelContainer.Dock = DockStyle.Fill;
+            panelContainer.Location = new Point(0, 134);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(800, 435);
+            panelContainer.Size = new Size(800, 427);
             panelContainer.TabIndex = 4;
             // 
             // pnlNavBar
@@ -138,11 +139,14 @@
             pnlNavBar.Dock = DockStyle.Top;
             pnlNavBar.Location = new Point(0, 0);
             pnlNavBar.Name = "pnlNavBar";
-            pnlNavBar.Size = new Size(800, 69);
+            pnlNavBar.Size = new Size(800, 81);
             pnlNavBar.TabIndex = 2;
+            pnlNavBar.Paint += pnlNavBar_Paint;
+            pnlNavBar.MouseDown += pnlNavBar_MouseDown;
             // 
             // pnlFecharMinimizarTela
             // 
+            pnlFecharMinimizarTela.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pnlFecharMinimizarTela.Controls.Add(lbRecolher);
             pnlFecharMinimizarTela.Controls.Add(lbMinimizar);
             pnlFecharMinimizarTela.Controls.Add(lbFechar);
@@ -154,10 +158,10 @@
             // lbRecolher
             // 
             lbRecolher.AutoSize = true;
-            lbRecolher.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbRecolher.Location = new Point(9, 6);
+            lbRecolher.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbRecolher.Location = new Point(9, 3);
             lbRecolher.Name = "lbRecolher";
-            lbRecolher.Size = new Size(13, 17);
+            lbRecolher.Size = new Size(16, 21);
             lbRecolher.TabIndex = 6;
             lbRecolher.Text = "-";
             lbRecolher.Click += lbRecolher_Click;
@@ -165,9 +169,10 @@
             // lbMinimizar
             // 
             lbMinimizar.AutoSize = true;
-            lbMinimizar.Location = new Point(30, 7);
+            lbMinimizar.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbMinimizar.Location = new Point(33, 3);
             lbMinimizar.Name = "lbMinimizar";
-            lbMinimizar.Size = new Size(18, 15);
+            lbMinimizar.Size = new Size(22, 20);
             lbMinimizar.TabIndex = 5;
             lbMinimizar.Text = "❐";
             lbMinimizar.Click += lbMinimizar_Click;
@@ -175,10 +180,11 @@
             // lbFechar
             // 
             lbFechar.AutoSize = true;
+            lbFechar.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbFechar.ForeColor = Color.DimGray;
-            lbFechar.Location = new Point(57, 6);
+            lbFechar.Location = new Point(62, 3);
             lbFechar.Name = "lbFechar";
-            lbFechar.Size = new Size(14, 15);
+            lbFechar.Size = new Size(18, 20);
             lbFechar.TabIndex = 4;
             lbFechar.Text = "X";
             lbFechar.Click += lbFechar_Click_1;
@@ -186,7 +192,7 @@
             // imgNomeLogoHome
             // 
             imgNomeLogoHome.Image = (Image)resources.GetObject("imgNomeLogoHome.Image");
-            imgNomeLogoHome.Location = new Point(80, 20);
+            imgNomeLogoHome.Location = new Point(98, 32);
             imgNomeLogoHome.Name = "imgNomeLogoHome";
             imgNomeLogoHome.Size = new Size(180, 29);
             imgNomeLogoHome.SizeMode = PictureBoxSizeMode.Zoom;
@@ -196,20 +202,21 @@
             // imgLogoHome
             // 
             imgLogoHome.Image = (Image)resources.GetObject("imgLogoHome.Image");
-            imgLogoHome.Location = new Point(12, 5);
+            imgLogoHome.Location = new Point(12, 7);
             imgLogoHome.Name = "imgLogoHome";
-            imgLogoHome.Size = new Size(59, 59);
+            imgLogoHome.Size = new Size(76, 73);
             imgLogoHome.SizeMode = PictureBoxSizeMode.Zoom;
             imgLogoHome.TabIndex = 1;
             imgLogoHome.TabStop = false;
             // 
             // pnlUserName
             // 
+            pnlUserName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pnlUserName.BackColor = Color.White;
             pnlUserName.Controls.Add(lbUserName);
             pnlUserName.Controls.Add(imgIconUserHome);
             pnlUserName.Controls.Add(lbUsuario);
-            pnlUserName.Location = new Point(583, 19);
+            pnlUserName.Location = new Point(659, 35);
             pnlUserName.Name = "pnlUserName";
             pnlUserName.Size = new Size(127, 40);
             pnlUserName.TabIndex = 0;
@@ -259,7 +266,6 @@
             Text = "Home";
             WindowState = FormWindowState.Maximized;
             Load += Home_Load;
-            MouseDown += Home_MouseDown;
             pnlMenu.ResumeLayout(false);
             pnlNavBar.ResumeLayout(false);
             pnlFecharMinimizarTela.ResumeLayout(false);

@@ -13,7 +13,7 @@ namespace Login
         public class BotaoMandecas : Button
         {
             // Cores para o efeito visual
-            private Color corNormal = Color.FromArgb(0, 102, 51); // Verde Escuro
+            private Color corNormal = Color.FromArgb(68, 252, 124); // Verde Escuro
             private Color corHover = Color.FromArgb(0, 153, 76);  // Verde Claro
 
             public BotaoMandecas()
@@ -33,7 +33,7 @@ namespace Login
 
                 // Criar o caminho arredondado
                 Rectangle rect = new Rectangle(0, 0, Width, Height);
-                int radius = 26; // Ajuste o arredondamento aqui
+                int radius = 30; // Ajuste o arredondamento aqui
                 GraphicsPath path = new GraphicsPath();
                 path.AddArc(rect.X, rect.Y, radius, radius, 180, 90);
                 path.AddArc(rect.Width - radius, rect.Y, radius, radius, 270, 90);

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -15,12 +14,21 @@ using System.Windows.Forms;
 
 namespace Login
 {
+    #region Movimentação de Tela
     public partial class Home : Form
     {
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void pnlNavBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        #endregion
 
         public Home()
         {
@@ -31,17 +39,13 @@ namespace Login
         }
         private void Home_Load(object sender, EventArgs e)
         {
-            // Isso faz com que o "Maximizar" respeite o espaço da barra de tarefas
-            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea; //nao ta funcionado
+            // Primeiro define o limite
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            // Depois define o estado
             this.WindowState = FormWindowState.Maximized;
         }
 
-        private void Home_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0); ///NAO TA FUNCIONANDO
-        }
-
+        #region Botões Ciclo de Vida - Tela
         private void lbFechar_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
@@ -55,7 +59,7 @@ namespace Login
             }
             else
             {
-                // Garante que vai respeitar a área de trabalho antes de maximizar
+                // Re-atualiza a área de trabalho caso você tenha movido de monitor
                 this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
                 this.WindowState = FormWindowState.Maximized;
             }
@@ -65,8 +69,10 @@ namespace Login
         {
             this.WindowState = FormWindowState.Minimized;
         }
+        #endregion
 
 
+        #region Design do Painel /Layout
         private void ArredondarPainel(Panel panel, int raio)
         {
             GraphicsPath path = new GraphicsPath();
@@ -82,31 +88,41 @@ namespace Login
         {
             ArredondarPainel((Panel)sender, 20); // Ajuste o raio conforme desejado
         }
+        private void CentralizarConteudo(Control conteudo)
+        {
+            int x = (panelContainer.Width - conteudo.Width) / 2;
+            int y = (panelContainer.Height - conteudo.Height) / 2;
 
+            // Math.Max(0, ...) garante que se a tela for pequena, o conteúdo não "fuja" para fora do topo
+            conteudo.Location = new Point(Math.Max(0, x), Math.Max(0, y));
+        }
+        #endregion
+
+
+        #region Botões de Controle - Navegação - Menu
         private void addUserControl(UserControl userControl)
         {
-            // 1. Limpa o que estava no painel antes
             panelContainer.Controls.Clear();
 
-            // 2. Configura o UC para NÃO esticar (senão a centralização morre)
+            if (panelContainer.Controls.Count > 0)
+            {
+                // Limpa e libera memória do controle anterior
+                Control oldControl = panelContainer.Controls[0];
+                panelContainer.Controls.Remove(oldControl);
+                oldControl.Dispose();
+            }
+
+            // Altere de None para Fill para o User Control ocupar todo o painel cinza
             userControl.Dock = DockStyle.Fill;
-
-            // 3. Calcula a posição central
-            // Se o UC for maior que o painel, o Location fica em 0,0 e o AutoScroll resolve
-            int x = Math.Max(0, (panelContainer.Width - userControl.Width) / 2);
-            int y = Math.Max(0, (panelContainer.Height - userControl.Height) / 2);
-
-            userControl.Location = new Point(x, y);
-
-            // 4. Adiciona ao painel
             panelContainer.Controls.Add(userControl);
 
         }
+
+       
         private void btnGestaoClientes_Click(object sender, EventArgs e)
         {
             UC_GestaoClientes Home = new UC_GestaoClientes();
             addUserControl(Home);
-
         }
 
         private void btnGestaoViagens_Click(object sender, EventArgs e)
@@ -119,7 +135,6 @@ namespace Login
         {
             UC_Financeiro Financeiro = new UC_Financeiro();
             addUserControl(Financeiro);
-
         }
 
         private void btnRelatorio_Click(object sender, EventArgs e)
@@ -128,6 +143,10 @@ namespace Login
             addUserControl(Relatorio);
         }
 
-       
+        private void pnlNavBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        #endregion
     }
 }

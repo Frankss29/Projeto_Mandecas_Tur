@@ -5,51 +5,32 @@ namespace Login
 {
     public partial class TelaLogin : Form
     {
+        #region Movimentação da Janela
+        //Código para arrastar a tela 
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
-        public TelaLogin()
-        {
-            InitializeComponent();
-        }
-
         private void TelaLogin_MouseDown(object sender, MouseEventArgs e)
         {
+            //complemento de arrastar a tela
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
                 SendMessage(Handle, 0xA1, 0x2, 0);
             }
         }
-        // Método para manter o card sempre no meio
-        private void CentralizarPainel()
+        #endregion
+
+        public TelaLogin()
         {
-            pnlLogin.Location = new Point(
-                (this.ClientSize.Width - pnlLogin.Width) / 2,
-                (this.ClientSize.Height - pnlLogin.Height) / 2
-            );
+            InitializeComponent();
         }
 
+        #region Ciclo de Vida e Layout
         private void TelaLogin_Load(object sender, EventArgs e)
         {
-            // Isso faz com que o "Maximizar" respeite o espaço da barra de tarefas
-            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-            this.WindowState = FormWindowState.Maximized;
-
-
-            // Crie uma variável com a cor EXATA do fundo do seu painel
-            // Importante: Não use transparência (o primeiro número do Argb) aqui, 
-            // pois o TextBox não aceita. Use apenas o R, G, B.
-            Color corFundoPainel = Color.FromArgb(10, 25, 10);
-
-            // Aplica nos TextBoxes
-            txtUsuarioLogin.BackColor = corFundoPainel;
-            txtSenhaLogin.BackColor = corFundoPainel;
-
-
-
 
             CentralizarPainel();
         }
@@ -60,6 +41,17 @@ namespace Login
         }
 
 
+        // Método para manter o card(panel) sempre no meio
+        private void CentralizarPainel()
+        {
+            pnlLogin.Location = new Point(
+                (this.ClientSize.Width - pnlLogin.Width) / 2,
+                (this.ClientSize.Height - pnlLogin.Height) / 2
+            );
+        }
+        #endregion
+
+        #region Botões de Controle
         private void lbFechar_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -83,8 +75,9 @@ namespace Login
                 this.WindowState = FormWindowState.Maximized;
             }
         }
+        #endregion
 
-
+        #region Custom Drawing (Design do Painel)
         private void pnlLogin_Paint(object sender, PaintEventArgs e)
         {
             // 1. Criar o GraphicsPath com cantos arredondados (Radius: 25).
@@ -108,7 +101,7 @@ namespace Login
 
 
             // 1. Preenchimento (Verde Escuro Semi-transparente) 
-            using (SolidBrush brush = new SolidBrush(Color.FromArgb(200, 10, 30, 10)))
+            using (SolidBrush brush = new SolidBrush(Color.FromArgb(255, 10, 30, 10)))
             {
                 g.FillPath(brush, path);
             }
@@ -122,61 +115,38 @@ namespace Login
             // Aplica o arredondamento à região do controle para cortar as quinas 
             pnlLogin.Region = new Region(path);
         }
+        #endregion
 
-
-        //Placeholder do TextBoxs
-        // --- USUÁRIO ---
+        #region Eventos de Input
+        //Efeitos do TextBoxs(Linha Verde)
         private void txtUsuarioLogin_Enter(object sender, EventArgs e)
         {
-            if (txtUsuarioLogin.Text == "Usuário")
-            {
-                txtUsuarioLogin.Text = "";
-                txtUsuarioLogin.ForeColor = Color.White;
-            }
-            pnlLinhaUsuarioLogin.BackColor = Color.Lime; // Acende a linha
-
+            pnlLinhaUsuarioLogin.BackColor = Color.FromArgb(0, 153, 76); // Hover 
         }
 
         private void txtUsuarioLogin_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtUsuarioLogin.Text))
-            {
-                txtUsuarioLogin.Text = "Usuário";
-                txtUsuarioLogin.ForeColor = Color.Silver;
-            }
-            pnlLinhaUsuarioLogin.BackColor = Color.SpringGreen;
+        {  
+            pnlLinhaUsuarioLogin.BackColor = Color.FromArgb(68,252,124);
         }
 
-        // --- SENHA ---
-
         private void txtSenhaLogin_Enter(object sender, EventArgs e)
-        {
-            if (txtSenhaLogin.Text == "Senha")
-            {
-                txtSenhaLogin.Text = "";
-                txtSenhaLogin.PasswordChar = '●'; //Esconder caracteres
-                txtSenhaLogin.ForeColor = Color.White;
-            }
-            pnlLinhaSenhaLogin.BackColor = Color.Lime;//acende a linha
+        { 
+            txtSenhaLogin.PasswordChar = '●'; //Esconder caracteres
+            pnlLinhaSenhaLogin.BackColor = Color.FromArgb(0, 153, 76);//hover
         }
 
         private void txtSenhaLogin_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtSenhaLogin.Text))
-            {
-                txtSenhaLogin.Text = "Senha";
-                txtSenhaLogin.PasswordChar = '\0';
-                txtSenhaLogin.ForeColor = Color.Silver;
-            }
-            pnlLinhaSenhaLogin.BackColor = Color.SpringGreen;
+            pnlLinhaSenhaLogin.BackColor = Color.FromArgb(68, 252, 124); ;
         }
+        #endregion
 
+        //Levar para proxima tela
         private void btnEntrarLogin_Click(object sender, EventArgs e)
         {
             Home TelaHome = new Home();
             TelaHome.Show();
             this.Hide();
         }
-
     }
 }

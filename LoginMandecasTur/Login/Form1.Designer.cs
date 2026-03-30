@@ -48,6 +48,9 @@
             lbRecolher = new Label();
             lbMinimizar = new Label();
             lbFechar = new Label();
+            imgLogoCodsis = new PictureBox();
+            lbCodsis = new Label();
+            pnlCodsis = new Panel();
             pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgOnibusLogin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgNavioLogin).BeginInit();
@@ -56,6 +59,8 @@
             ((System.ComponentModel.ISupportInitialize)imgUserLogin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).BeginInit();
             pnlFecharMinimizarTela.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imgLogoCodsis).BeginInit();
+            pnlCodsis.SuspendLayout();
             SuspendLayout();
             // 
             // pnlLogin
@@ -75,7 +80,7 @@
             pnlLogin.Controls.Add(txtUsuarioLogin);
             pnlLogin.Controls.Add(lbSloganLogin);
             pnlLogin.Controls.Add(imgLogoLogin);
-            pnlLogin.Location = new Point(261, 55);
+            pnlLogin.Location = new Point(263, 64);
             pnlLogin.Name = "pnlLogin";
             pnlLogin.Size = new Size(300, 450);
             pnlLogin.TabIndex = 1;
@@ -88,7 +93,7 @@
             lbRodape.ForeColor = Color.Gainsboro;
             lbRodape.Location = new Point(45, 414);
             lbRodape.Name = "lbRodape";
-            lbRodape.Size = new Size(210, 15);
+            lbRodape.Size = new Size(211, 15);
             lbRodape.TabIndex = 13;
             lbRodape.Text = "Viagens Terrestres • Aéreas • Marítimas";
             // 
@@ -96,9 +101,9 @@
             // 
             imgOnibusLogin.BackColor = Color.Transparent;
             imgOnibusLogin.Image = (Image)resources.GetObject("imgOnibusLogin.Image");
-            imgOnibusLogin.Location = new Point(182, 364);
+            imgOnibusLogin.Location = new Point(171, 373);
             imgOnibusLogin.Name = "imgOnibusLogin";
-            imgOnibusLogin.Size = new Size(40, 40);
+            imgOnibusLogin.Size = new Size(30, 30);
             imgOnibusLogin.SizeMode = PictureBoxSizeMode.Zoom;
             imgOnibusLogin.TabIndex = 12;
             imgOnibusLogin.TabStop = false;
@@ -107,9 +112,9 @@
             // 
             imgNavioLogin.BackColor = Color.Transparent;
             imgNavioLogin.Image = (Image)resources.GetObject("imgNavioLogin.Image");
-            imgNavioLogin.Location = new Point(131, 364);
+            imgNavioLogin.Location = new Point(135, 373);
             imgNavioLogin.Name = "imgNavioLogin";
-            imgNavioLogin.Size = new Size(40, 40);
+            imgNavioLogin.Size = new Size(30, 30);
             imgNavioLogin.SizeMode = PictureBoxSizeMode.Zoom;
             imgNavioLogin.TabIndex = 11;
             imgNavioLogin.TabStop = false;
@@ -118,19 +123,19 @@
             // 
             imgAviaoLogin.BackColor = Color.Transparent;
             imgAviaoLogin.Image = (Image)resources.GetObject("imgAviaoLogin.Image");
-            imgAviaoLogin.Location = new Point(80, 364);
+            imgAviaoLogin.Location = new Point(100, 373);
             imgAviaoLogin.Name = "imgAviaoLogin";
-            imgAviaoLogin.Size = new Size(40, 40);
+            imgAviaoLogin.Size = new Size(30, 30);
             imgAviaoLogin.SizeMode = PictureBoxSizeMode.Zoom;
             imgAviaoLogin.TabIndex = 10;
             imgAviaoLogin.TabStop = false;
             // 
             // pnlSeparador
             // 
-            pnlSeparador.BackColor = Color.SpringGreen;
-            pnlSeparador.Location = new Point(51, 353);
+            pnlSeparador.BackColor = Color.FromArgb(68, 252, 124);
+            pnlSeparador.Location = new Point(75, 365);
             pnlSeparador.Name = "pnlSeparador";
-            pnlSeparador.Size = new Size(200, 2);
+            pnlSeparador.Size = new Size(150, 2);
             pnlSeparador.TabIndex = 9;
             // 
             // btnEntrarLogin
@@ -189,11 +194,12 @@
             // 
             // txtSenhaLogin
             // 
-            txtSenhaLogin.BackColor = Color.FromArgb(10, 25, 10);
+            txtSenhaLogin.BackColor = Color.FromArgb(10, 30, 10);
             txtSenhaLogin.BorderStyle = BorderStyle.None;
             txtSenhaLogin.ForeColor = Color.White;
             txtSenhaLogin.Location = new Point(84, 219);
             txtSenhaLogin.Name = "txtSenhaLogin";
+            txtSenhaLogin.PlaceholderText = "Senha";
             txtSenhaLogin.Size = new Size(157, 16);
             txtSenhaLogin.TabIndex = 3;
             txtSenhaLogin.Enter += txtSenhaLogin_Enter;
@@ -201,11 +207,12 @@
             // 
             // txtUsuarioLogin
             // 
-            txtUsuarioLogin.BackColor = Color.FromArgb(10, 25, 10);
+            txtUsuarioLogin.BackColor = Color.FromArgb(10, 30, 10);
             txtUsuarioLogin.BorderStyle = BorderStyle.None;
             txtUsuarioLogin.ForeColor = Color.White;
             txtUsuarioLogin.Location = new Point(84, 177);
             txtUsuarioLogin.Name = "txtUsuarioLogin";
+            txtUsuarioLogin.PlaceholderText = "Usuário";
             txtUsuarioLogin.Size = new Size(157, 16);
             txtUsuarioLogin.TabIndex = 2;
             txtUsuarioLogin.Enter += txtUsuarioLogin_Enter;
@@ -237,6 +244,7 @@
             // 
             // pnlFecharMinimizarTela
             // 
+            pnlFecharMinimizarTela.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pnlFecharMinimizarTela.BackColor = Color.Transparent;
             pnlFecharMinimizarTela.Controls.Add(lbRecolher);
             pnlFecharMinimizarTela.Controls.Add(lbMinimizar);
@@ -282,6 +290,43 @@
             lbFechar.Text = "X";
             lbFechar.Click += lbFechar_Click;
             // 
+            // imgLogoCodsis
+            // 
+            imgLogoCodsis.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            imgLogoCodsis.BackColor = Color.Transparent;
+            imgLogoCodsis.Image = (Image)resources.GetObject("imgLogoCodsis.Image");
+            imgLogoCodsis.Location = new Point(27, 20);
+            imgLogoCodsis.Name = "imgLogoCodsis";
+            imgLogoCodsis.Size = new Size(799, 34);
+            imgLogoCodsis.SizeMode = PictureBoxSizeMode.Zoom;
+            imgLogoCodsis.TabIndex = 6;
+            imgLogoCodsis.TabStop = false;
+            // 
+            // lbCodsis
+            // 
+            lbCodsis.Anchor = AnchorStyles.Bottom;
+            lbCodsis.AutoSize = true;
+            lbCodsis.BackColor = Color.Transparent;
+            lbCodsis.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbCodsis.ForeColor = Color.White;
+            lbCodsis.Location = new Point(417, 6);
+            lbCodsis.Name = "lbCodsis";
+            lbCodsis.Size = new Size(19, 13);
+            lbCodsis.TabIndex = 7;
+            lbCodsis.Text = "By";
+            lbCodsis.TextAlign = ContentAlignment.TopRight;
+            // 
+            // pnlCodsis
+            // 
+            pnlCodsis.BackColor = Color.Transparent;
+            pnlCodsis.Controls.Add(imgLogoCodsis);
+            pnlCodsis.Controls.Add(lbCodsis);
+            pnlCodsis.Dock = DockStyle.Bottom;
+            pnlCodsis.Location = new Point(0, 568);
+            pnlCodsis.Name = "pnlCodsis";
+            pnlCodsis.Size = new Size(850, 61);
+            pnlCodsis.TabIndex = 8;
+            // 
             // TelaLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -289,7 +334,8 @@
             BackColor = Color.Linen;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(850, 550);
+            ClientSize = new Size(850, 629);
+            Controls.Add(pnlCodsis);
             Controls.Add(pnlFecharMinimizarTela);
             Controls.Add(pnlLogin);
             DoubleBuffered = true;
@@ -311,6 +357,9 @@
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).EndInit();
             pnlFecharMinimizarTela.ResumeLayout(false);
             pnlFecharMinimizarTela.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)imgLogoCodsis).EndInit();
+            pnlCodsis.ResumeLayout(false);
+            pnlCodsis.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -334,5 +383,8 @@
         private Label lbRecolher;
         private Label lbMinimizar;
         private Label lbFechar;
+        private PictureBox imgLogoCodsis;
+        private Label lbCodsis;
+        private Panel pnlCodsis;
     }
 }
