@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaLogin));
-            lbFecharLogin = new Label();
             pnlLogin = new Panel();
             lbRodape = new Label();
             imgOnibusLogin = new PictureBox();
@@ -45,6 +44,10 @@
             txtUsuarioLogin = new TextBox();
             lbSloganLogin = new Label();
             imgLogoLogin = new PictureBox();
+            pnlFecharMinimizarTela = new Panel();
+            lbRecolher = new Label();
+            lbMinimizar = new Label();
+            lbFechar = new Label();
             pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgOnibusLogin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgNavioLogin).BeginInit();
@@ -52,22 +55,8 @@
             ((System.ComponentModel.ISupportInitialize)imgLockLogin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgUserLogin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).BeginInit();
+            pnlFecharMinimizarTela.SuspendLayout();
             SuspendLayout();
-            // 
-            // lbFecharLogin
-            // 
-            lbFecharLogin.AutoSize = true;
-            lbFecharLogin.BackColor = Color.Transparent;
-            lbFecharLogin.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbFecharLogin.ForeColor = Color.White;
-            lbFecharLogin.Location = new Point(809, 19);
-            lbFecharLogin.Name = "lbFecharLogin";
-            lbFecharLogin.Size = new Size(20, 21);
-            lbFecharLogin.TabIndex = 0;
-            lbFecharLogin.Text = "X";
-            lbFecharLogin.Click += lbFecharLogin_Click;
-            lbFecharLogin.MouseEnter += lbFecharLogin_MouseEnter;
-            lbFecharLogin.MouseLeave += lbFecharLogin_MouseLeave;
             // 
             // pnlLogin
             // 
@@ -99,7 +88,7 @@
             lbRodape.ForeColor = Color.Gainsboro;
             lbRodape.Location = new Point(45, 414);
             lbRodape.Name = "lbRodape";
-            lbRodape.Size = new Size(211, 15);
+            lbRodape.Size = new Size(210, 15);
             lbRodape.TabIndex = 13;
             lbRodape.Text = "Viagens Terrestres • Aéreas • Marítimas";
             // 
@@ -246,6 +235,53 @@
             imgLogoLogin.TabIndex = 0;
             imgLogoLogin.TabStop = false;
             // 
+            // pnlFecharMinimizarTela
+            // 
+            pnlFecharMinimizarTela.BackColor = Color.Transparent;
+            pnlFecharMinimizarTela.Controls.Add(lbRecolher);
+            pnlFecharMinimizarTela.Controls.Add(lbMinimizar);
+            pnlFecharMinimizarTela.Controls.Add(lbFechar);
+            pnlFecharMinimizarTela.Location = new Point(740, 12);
+            pnlFecharMinimizarTela.Name = "pnlFecharMinimizarTela";
+            pnlFecharMinimizarTela.Size = new Size(88, 36);
+            pnlFecharMinimizarTela.TabIndex = 5;
+            // 
+            // lbRecolher
+            // 
+            lbRecolher.AutoSize = true;
+            lbRecolher.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbRecolher.ForeColor = SystemColors.ButtonFace;
+            lbRecolher.Location = new Point(9, 6);
+            lbRecolher.Name = "lbRecolher";
+            lbRecolher.Size = new Size(16, 21);
+            lbRecolher.TabIndex = 6;
+            lbRecolher.Text = "-";
+            lbRecolher.Click += lbRecolher_Click;
+            // 
+            // lbMinimizar
+            // 
+            lbMinimizar.AutoSize = true;
+            lbMinimizar.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbMinimizar.ForeColor = SystemColors.ButtonFace;
+            lbMinimizar.Location = new Point(30, 7);
+            lbMinimizar.Name = "lbMinimizar";
+            lbMinimizar.Size = new Size(22, 20);
+            lbMinimizar.TabIndex = 5;
+            lbMinimizar.Text = "❐";
+            lbMinimizar.Click += lbMinimizar_Click;
+            // 
+            // lbFechar
+            // 
+            lbFechar.AutoSize = true;
+            lbFechar.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbFechar.ForeColor = SystemColors.ButtonFace;
+            lbFechar.Location = new Point(57, 6);
+            lbFechar.Name = "lbFechar";
+            lbFechar.Size = new Size(18, 20);
+            lbFechar.TabIndex = 4;
+            lbFechar.Text = "X";
+            lbFechar.Click += lbFechar_Click;
+            // 
             // TelaLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -254,13 +290,14 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(850, 550);
+            Controls.Add(pnlFecharMinimizarTela);
             Controls.Add(pnlLogin);
-            Controls.Add(lbFecharLogin);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "TelaLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            WindowState = FormWindowState.Maximized;
             Load += TelaLogin_Load;
             MouseDown += TelaLogin_MouseDown;
             Resize += TelaLogin_Resize;
@@ -272,13 +309,12 @@
             ((System.ComponentModel.ISupportInitialize)imgLockLogin).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgUserLogin).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).EndInit();
+            pnlFecharMinimizarTela.ResumeLayout(false);
+            pnlFecharMinimizarTela.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label lbFecharLogin;
         private Panel pnlLogin;
         private PictureBox imgLogoLogin;
         private TextBox txtSenhaLogin;
@@ -294,5 +330,9 @@
         private PictureBox imgAviaoLogin;
         private Panel pnlSeparador;
         private Label lbRodape;
+        private Panel pnlFecharMinimizarTela;
+        private Label lbRecolher;
+        private Label lbMinimizar;
+        private Label lbFechar;
     }
 }

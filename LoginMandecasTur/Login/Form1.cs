@@ -34,6 +34,11 @@ namespace Login
 
         private void TelaLogin_Load(object sender, EventArgs e)
         {
+            // Isso faz com que o "Maximizar" respeite o espaço da barra de tarefas
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            this.WindowState = FormWindowState.Maximized;
+
+
             // Crie uma variável com a cor EXATA do fundo do seu painel
             // Importante: Não use transparência (o primeiro número do Argb) aqui, 
             // pois o TextBox não aceita. Use apenas o R, G, B.
@@ -55,20 +60,30 @@ namespace Login
         }
 
 
-        private void lbFecharLogin_Click(object sender, EventArgs e)
+        private void lbFechar_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void lbFecharLogin_MouseEnter(object sender, EventArgs e)
+        private void lbRecolher_Click(object sender, EventArgs e)
         {
-            lbFecharLogin.BackColor = Color.SpringGreen;
+            this.WindowState = FormWindowState.Minimized;
         }
 
-        private void lbFecharLogin_MouseLeave(object sender, EventArgs e)
+        private void lbMinimizar_Click(object sender, EventArgs e)
         {
-            lbFecharLogin.BackColor = Color.FromArgb(14, 46, 19);
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                // Garante que vai respeitar a área de trabalho antes de maximizar
+                this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
+
 
         private void pnlLogin_Paint(object sender, PaintEventArgs e)
         {
@@ -162,5 +177,6 @@ namespace Login
             TelaHome.Show();
             this.Hide();
         }
+
     }
 }

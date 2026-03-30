@@ -27,11 +27,6 @@ namespace Login.UseControls
             dgvClientes.Rows.Add("CL084", "João Silva", "123.456.789-00", "(11) 98564-8871", "joaosilva12@gmail.com");
             dgvClientes.Rows.Add("CL077", "Maria Souza", "987.654.321-00", "(11) 92715-8941", "mariasouza15@gmail.com");
             dgvClientes.Rows.Add("CL035", "Carlos Lima", "456.123.789-01", "(11) 98080-9437", "limascarlos@gmail.com");
-        
-        }
-
-        private void textBuscaGCliente_TextChanged(object sender, EventArgs e)
-        {
 
         }
     }

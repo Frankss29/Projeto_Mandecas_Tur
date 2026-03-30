@@ -12,9 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\franciele.sjesus2\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\franciele.sjesus2\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      "C:\\Users\\FRAN SANTOS\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\FRAN SANTOS\\.nuget\\packages"
     ],
     "configProperties": {
       "System.Reflection.Metadata.MetadataUpdater.IsSupported": false,

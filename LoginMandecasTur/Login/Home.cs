@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -17,6 +17,11 @@ namespace Login
 {
     public partial class Home : Form
     {
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
         public Home()
         {
             InitializeComponent();
@@ -24,6 +29,44 @@ namespace Login
             addUserControl(uc);
 
         }
+        private void Home_Load(object sender, EventArgs e)
+        {
+            // Isso faz com que o "Maximizar" respeite o espaço da barra de tarefas
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea; //nao ta funcionado
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void Home_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0); ///NAO TA FUNCIONANDO
+        }
+
+        private void lbFechar_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void lbMinimizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                // Garante que vai respeitar a área de trabalho antes de maximizar
+                this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+                this.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void lbRecolher_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+
         private void ArredondarPainel(Panel panel, int raio)
         {
             GraphicsPath path = new GraphicsPath();
@@ -46,7 +89,7 @@ namespace Login
             panelContainer.Controls.Clear();
 
             // 2. Configura o UC para NÃO esticar (senão a centralização morre)
-            userControl.Dock = DockStyle.None;
+            userControl.Dock = DockStyle.Fill;
 
             // 3. Calcula a posição central
             // Se o UC for maior que o painel, o Location fica em 0,0 e o AutoScroll resolve
@@ -57,7 +100,7 @@ namespace Login
 
             // 4. Adiciona ao painel
             panelContainer.Controls.Add(userControl);
-  
+
         }
         private void btnGestaoClientes_Click(object sender, EventArgs e)
         {
@@ -84,5 +127,7 @@ namespace Login
             UC_Relatorio Relatorio = new UC_Relatorio();
             addUserControl(Relatorio);
         }
+
+       
     }
 }
