@@ -52,8 +52,7 @@
               "ViewState": "AgIAAAwAAAAAAAAAAAAtwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-30T23:57:12.487Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -64,8 +63,7 @@
               "ToolTip": "C:\\Users\\juliana.snasciment18\\Desktop\\Projeto-TI\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs [Projeto]",
               "RelativeToolTip": "Login\\UseControls\\UC_GestaoClientes.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T15:55:33.869Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2026-03-30T15:55:33.869Z"
             },
             {
               "$type": "Document",
@@ -76,8 +74,7 @@
               "ToolTip": "C:\\Users\\juliana.snasciment18\\Desktop\\Projeto-TI\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Home.cs [Projeto]",
               "RelativeToolTip": "Login\\Home.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T15:54:06.464Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2026-03-30T15:54:06.464Z"
             }
           ]
         }
