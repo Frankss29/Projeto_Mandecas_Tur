@@ -1,0 +1,17 @@
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.exe
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.deps.json
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.runtimeconfig.json
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.dll
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.pdb
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Form1.resources
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.csproj.GenerateResource.cache
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.AssemblyInfoInputs.cache
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.AssemblyInfo.cs
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.sourcelink.json
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.dll
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\obj\Debug\net8.0-windows\refint\WinFormsApp1.dll
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.pdb
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.genruntimeconfig.cache
+C:\Users\franciele.sjesus2\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\WinFormsApp1\obj\Debug\net8.0-windows\ref\WinFormsApp1.dll

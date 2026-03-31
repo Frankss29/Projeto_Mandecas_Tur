@@ -28,18 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_GestaoClientes));
             txtBuscaGCliente = new TextBox();
             btnBuscarGClientes = new BotaoPadraoMandecas();
-            dgvClientes = new DataGridView();
-            colCodigo = new DataGridViewTextBoxColumn();
-            colNome = new DataGridViewTextBoxColumn();
-            colCPF = new DataGridViewTextBoxColumn();
-            colContato = new DataGridViewTextBoxColumn();
-            colEmail = new DataGridViewTextBoxColumn();
-            btnEditar = new DataGridViewImageColumn();
-            btnExcluir = new DataGridViewImageColumn();
             pnlCadastroCliente = new Panel();
             pnlTitulo = new Panel();
             lbCadastrarCliente = new Label();
@@ -59,12 +50,17 @@
             txtNomeGClientes = new TextBox();
             lbCPFGClientes = new Label();
             lbNomeGClientes = new Label();
-            pnlDataView = new Panel();
-            ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
+            dvgClientes = new DataGridView();
+            colCodigo = new DataGridViewTextBoxColumn();
+            colNome = new DataGridViewTextBoxColumn();
+            colCPF = new DataGridViewTextBoxColumn();
+            colContato = new DataGridViewTextBoxColumn();
+            colEmail = new DataGridViewTextBoxColumn();
+            btnEditar = new DataGridViewImageColumn();
             pnlCadastroCliente.SuspendLayout();
             pnlTitulo.SuspendLayout();
             pnlBotoes.SuspendLayout();
-            pnlDataView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dvgClientes).BeginInit();
             SuspendLayout();
             // 
             // txtBuscaGCliente
@@ -89,75 +85,6 @@
             btnBuscarGClientes.Text = "Buscar";
             btnBuscarGClientes.UseVisualStyleBackColor = false;
             btnBuscarGClientes.Click += btnBuscarGClientes_Click;
-            // 
-            // dgvClientes
-            // 
-            dgvClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvClientes.BackgroundColor = Color.White;
-            dgvClientes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(232, 232, 232);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(68, 252, 124);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { colCodigo, colNome, colCPF, colContato, colEmail, btnEditar, btnExcluir });
-            dgvClientes.Enabled = false;
-            dgvClientes.Location = new Point(1, 2);
-            dgvClientes.Name = "dgvClientes";
-            dgvClientes.RowHeadersVisible = false;
-            dgvClientes.Size = new Size(724, 153);
-            dgvClientes.TabIndex = 2;
-            dgvClientes.CellContentClick += dgvClientes_CellContentClick;
-            // 
-            // colCodigo
-            // 
-            colCodigo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colCodigo.HeaderText = "Código";
-            colCodigo.Name = "colCodigo";
-            // 
-            // colNome
-            // 
-            colNome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colNome.HeaderText = "Nome";
-            colNome.Name = "colNome";
-            // 
-            // colCPF
-            // 
-            colCPF.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colCPF.HeaderText = "CPF";
-            colCPF.Name = "colCPF";
-            // 
-            // colContato
-            // 
-            colContato.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colContato.HeaderText = "Contato";
-            colContato.Name = "colContato";
-            // 
-            // colEmail
-            // 
-            colEmail.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colEmail.HeaderText = "Email";
-            colEmail.Name = "colEmail";
-            // 
-            // btnEditar
-            // 
-            btnEditar.HeaderText = "";
-            btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
-            btnEditar.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            btnEditar.Name = "btnEditar";
-            // 
-            // btnExcluir
-            // 
-            btnExcluir.HeaderText = "";
-            btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
-            btnExcluir.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            btnExcluir.Name = "btnExcluir";
             // 
             // pnlCadastroCliente
             // 
@@ -364,34 +291,66 @@
             lbNomeGClientes.TabIndex = 1;
             lbNomeGClientes.Text = "Nome Completo:";
             // 
-            // pnlDataView
+            // dvgClientes
             // 
-            pnlDataView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnlDataView.Controls.Add(dgvClientes);
-            pnlDataView.Location = new Point(46, 83);
-            pnlDataView.Name = "pnlDataView";
-            pnlDataView.Size = new Size(724, 145);
-            pnlDataView.TabIndex = 6;
+            dvgClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dvgClientes.Columns.AddRange(new DataGridViewColumn[] { colCodigo, colNome, colCPF, colContato, colEmail, btnEditar });
+            dvgClientes.Location = new Point(47, 101);
+            dvgClientes.Name = "dvgClientes";
+            dvgClientes.Size = new Size(723, 134);
+            dvgClientes.TabIndex = 4;
+            dvgClientes.CellClick += dvgClientes_CellClick;
+            // 
+            // colCodigo
+            // 
+            colCodigo.HeaderText = "Código";
+            colCodigo.Name = "colCodigo";
+            // 
+            // colNome
+            // 
+            colNome.HeaderText = "Nome";
+            colNome.Name = "colNome";
+            // 
+            // colCPF
+            // 
+            colCPF.HeaderText = "CPF";
+            colCPF.Name = "colCPF";
+            // 
+            // colContato
+            // 
+            colContato.HeaderText = "Contato";
+            colContato.Name = "colContato";
+            // 
+            // colEmail
+            // 
+            colEmail.HeaderText = "Email";
+            colEmail.Name = "colEmail";
+            // 
+            // btnEditar
+            // 
+            btnEditar.HeaderText = "";
+            btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
+            btnEditar.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            btnEditar.Name = "btnEditar";
             // 
             // UC_GestaoClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
-            Controls.Add(pnlDataView);
+            Controls.Add(dvgClientes);
             Controls.Add(pnlCadastroCliente);
             Controls.Add(btnBuscarGClientes);
             Controls.Add(txtBuscaGCliente);
             Name = "UC_GestaoClientes";
             Padding = new Padding(20);
             Size = new Size(826, 506);
-            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             pnlCadastroCliente.ResumeLayout(false);
             pnlCadastroCliente.PerformLayout();
             pnlTitulo.ResumeLayout(false);
             pnlTitulo.PerformLayout();
             pnlBotoes.ResumeLayout(false);
-            pnlDataView.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dvgClientes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -400,7 +359,6 @@
 
         private TextBox txtBuscaGCliente;
         private BotaoPadraoMandecas btnBuscarGClientes;
-        private DataGridView dgvClientes;
         private Panel pnlCadastroCliente;
         private Panel pnlTitulo;
         private TextBox txtCPFGClientes;
@@ -420,13 +378,12 @@
         private Label lbGratuidade;
         private BotaoPadraoMandecas botaoPadraoMandecas1;
         private Panel pnlBotoes;
-        private Panel pnlDataView;
+        private DataGridView dvgClientes;
         private DataGridViewTextBoxColumn colCodigo;
         private DataGridViewTextBoxColumn colNome;
         private DataGridViewTextBoxColumn colCPF;
         private DataGridViewTextBoxColumn colContato;
         private DataGridViewTextBoxColumn colEmail;
         private DataGridViewImageColumn btnEditar;
-        private DataGridViewImageColumn btnExcluir;
     }
 }

@@ -35,10 +35,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(254, 206);
+            label1.ForeColor = Color.DarkCyan;
+            label1.Location = new Point(296, 221);
             label1.Name = "label1";
             label1.Size = new Size(333, 65);
-            label1.TabIndex = 0;
+            label1.TabIndex = 4;
             label1.Text = "Editar Cliente";
             // 
             // UC_EditarCliente
