@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_GestaoClientes));
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             txtBuscaGCliente = new TextBox();
             btnBuscarGClientes = new BotaoPadraoMandecas();
             pnlCadastroCliente = new Panel();
@@ -86,7 +88,6 @@
             btnBuscarGClientes.TabIndex = 1;
             btnBuscarGClientes.Text = "Buscar";
             btnBuscarGClientes.UseVisualStyleBackColor = false;
-            btnBuscarGClientes.Click += btnBuscarGClientes_Click;
             // 
             // pnlCadastroCliente
             // 
@@ -112,7 +113,6 @@
             pnlCadastroCliente.Name = "pnlCadastroCliente";
             pnlCadastroCliente.Size = new Size(724, 199);
             pnlCadastroCliente.TabIndex = 3;
-            pnlCadastroCliente.Paint += pnlCadastroCliente_Paint;
             // 
             // pnlTitulo
             // 
@@ -146,6 +146,7 @@
             // 
             // pnlBotoes
             // 
+            pnlBotoes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             pnlBotoes.Controls.Add(btnCancelarGClientes);
             pnlBotoes.Controls.Add(botaoPadraoMandecas1);
             pnlBotoes.Location = new Point(279, 147);
@@ -205,7 +206,7 @@
             // 
             // txtTelefone
             // 
-            txtTelefone.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtTelefone.Anchor = AnchorStyles.Left;
             txtTelefone.Location = new Point(360, 108);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.Size = new Size(110, 23);
@@ -215,7 +216,7 @@
             // 
             lbTelefone.Anchor = AnchorStyles.Left;
             lbTelefone.AutoSize = true;
-            lbTelefone.Location = new Point(300, 113);
+            lbTelefone.Location = new Point(303, 114);
             lbTelefone.Name = "lbTelefone";
             lbTelefone.Size = new Size(55, 15);
             lbTelefone.TabIndex = 9;
@@ -231,7 +232,7 @@
             // 
             // txtDtNascimento
             // 
-            txtDtNascimento.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtDtNascimento.Anchor = AnchorStyles.Left;
             txtDtNascimento.Location = new Point(146, 108);
             txtDtNascimento.Name = "txtDtNascimento";
             txtDtNascimento.Size = new Size(135, 23);
@@ -241,7 +242,7 @@
             // 
             lbEmail.Anchor = AnchorStyles.Left;
             lbEmail.AutoSize = true;
-            lbEmail.Location = new Point(486, 112);
+            lbEmail.Location = new Point(486, 113);
             lbEmail.Name = "lbEmail";
             lbEmail.Size = new Size(39, 15);
             lbEmail.TabIndex = 6;
@@ -251,7 +252,7 @@
             // 
             lbDtNascimento.Anchor = AnchorStyles.Left;
             lbDtNascimento.AutoSize = true;
-            lbDtNascimento.Location = new Point(25, 113);
+            lbDtNascimento.Location = new Point(26, 113);
             lbDtNascimento.Name = "lbDtNascimento";
             lbDtNascimento.Size = new Size(117, 15);
             lbDtNascimento.TabIndex = 5;
@@ -259,7 +260,7 @@
             // 
             // txtCPFGClientes
             // 
-            txtCPFGClientes.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtCPFGClientes.Anchor = AnchorStyles.Right;
             txtCPFGClientes.Location = new Point(524, 64);
             txtCPFGClientes.Name = "txtCPFGClientes";
             txtCPFGClientes.Size = new Size(176, 23);
@@ -275,9 +276,9 @@
             // 
             // lbCPFGClientes
             // 
-            lbCPFGClientes.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lbCPFGClientes.Anchor = AnchorStyles.Right;
             lbCPFGClientes.AutoSize = true;
-            lbCPFGClientes.Location = new Point(494, 64);
+            lbCPFGClientes.Location = new Point(494, 68);
             lbCPFGClientes.Name = "lbCPFGClientes";
             lbCPFGClientes.Size = new Size(31, 15);
             lbCPFGClientes.TabIndex = 2;
@@ -285,7 +286,7 @@
             // 
             // lbNomeGClientes
             // 
-            lbNomeGClientes.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lbNomeGClientes.Anchor = AnchorStyles.Left;
             lbNomeGClientes.AutoSize = true;
             lbNomeGClientes.Location = new Point(23, 69);
             lbNomeGClientes.Name = "lbNomeGClientes";
@@ -296,6 +297,8 @@
             // dvgClientes
             // 
             dvgClientes.AllowUserToAddRows = false;
+            dvgClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dvgClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dvgClientes.BackgroundColor = Color.White;
             dvgClientes.BorderStyle = BorderStyle.None;
             dvgClientes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -318,46 +321,63 @@
             dvgClientes.Size = new Size(723, 134);
             dvgClientes.TabIndex = 4;
             dvgClientes.CellClick += dvgClientes_CellClick;
-            dvgClientes.CellContentClick += dvgClientes_CellContentClick;
+            dvgClientes.Paint += dvgClientes_Paint;
             // 
             // colCodigo
             // 
+            colCodigo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colCodigo.HeaderText = "Código";
             colCodigo.Name = "colCodigo";
             // 
             // colNome
             // 
+            colNome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colNome.HeaderText = "Nome";
             colNome.Name = "colNome";
             // 
             // colCPF
             // 
+            colCPF.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colCPF.HeaderText = "CPF";
             colCPF.Name = "colCPF";
             // 
             // colContato
             // 
+            colContato.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colContato.HeaderText = "Contato";
             colContato.Name = "colContato";
             // 
             // colEmail
             // 
+            colEmail.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colEmail.HeaderText = "Email";
             colEmail.Name = "colEmail";
             // 
             // btnEditar
             // 
+            btnEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
+            dataGridViewCellStyle2.Padding = new Padding(8);
+            btnEditar.DefaultCellStyle = dataGridViewCellStyle2;
             btnEditar.HeaderText = "";
             btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
             btnEditar.ImageLayout = DataGridViewImageCellLayout.Zoom;
             btnEditar.Name = "btnEditar";
+            btnEditar.Width = 50;
             // 
             // btnExcluir
             // 
+            btnExcluir.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
+            dataGridViewCellStyle3.Padding = new Padding(8);
+            btnExcluir.DefaultCellStyle = dataGridViewCellStyle3;
             btnExcluir.HeaderText = "";
             btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
             btnExcluir.ImageLayout = DataGridViewImageCellLayout.Zoom;
             btnExcluir.Name = "btnExcluir";
+            btnExcluir.Width = 50;
             // 
             // UC_GestaoClientes
             // 

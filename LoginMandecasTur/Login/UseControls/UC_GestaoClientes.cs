@@ -35,20 +35,33 @@ namespace Login.UseControls
 
         }
 
-        private void btnBuscarGClientes_Click(object sender, EventArgs e)
+        private void dvgClientes_Paint(object sender, PaintEventArgs e)
         {
+            try
+            {
+                // 1. Localiza os índices das colunas
+                int col1 = dvgClientes.Columns["btnEditar"].Index;
+                int col2 = dvgClientes.Columns["btnExcluir"].Index;
 
-        }
+                // 2. Obtém a área (retângulo) ocupada pelos cabeçalhos dessas colunas
+                Rectangle r1 = dvgClientes.GetCellDisplayRectangle(col1, -1, true);
+                Rectangle r2 = dvgClientes.GetCellDisplayRectangle(col2, -1, true);
 
-        private void pnlCadastroCliente_Paint(object sender, PaintEventArgs e)
-        {
+                // 3. Cria um retângulo único que junta as duas áreas
+                Rectangle areaAcoes = new Rectangle(r1.X, r1.Y, r1.Width + r2.Width, r1.Height);
 
-        }
+                // 4. Pinta o fundo do cabeçalho (usando a cor que você já definiu para a grid)
+                using (SolidBrush sb = new SolidBrush(dvgClientes.ColumnHeadersDefaultCellStyle.BackColor))
+                {
+                    e.Graphics.FillRectangle(sb, areaAcoes);
+                }
 
-        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
+                // 5. Desenha o texto "Ações" centralizado nessa nova área
+                TextRenderer.DrawText(e.Graphics, "Ações", dvgClientes.ColumnHeadersDefaultCellStyle.Font,
+                    areaAcoes, dvgClientes.ColumnHeadersDefaultCellStyle.ForeColor,
+                    TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter);
+            }
+            catch { /* Evita erros caso as colunas ainda não existam no momento da pintura */ }
         }
 
         private void dvgClientes_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -94,9 +107,6 @@ namespace Login.UseControls
             }
         }
 
-        private void dvgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
     }
 }
