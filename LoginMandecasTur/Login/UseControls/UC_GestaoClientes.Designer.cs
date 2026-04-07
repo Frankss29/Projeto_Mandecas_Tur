@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_GestaoClientes));
             txtBuscaGCliente = new TextBox();
             btnBuscarGClientes = new BotaoPadraoMandecas();
@@ -57,6 +58,7 @@
             colContato = new DataGridViewTextBoxColumn();
             colEmail = new DataGridViewTextBoxColumn();
             btnEditar = new DataGridViewImageColumn();
+            btnExcluir = new DataGridViewImageColumn();
             pnlCadastroCliente.SuspendLayout();
             pnlTitulo.SuspendLayout();
             pnlBotoes.SuspendLayout();
@@ -293,13 +295,30 @@
             // 
             // dvgClientes
             // 
-            dvgClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dvgClientes.Columns.AddRange(new DataGridViewColumn[] { colCodigo, colNome, colCPF, colContato, colEmail, btnEditar });
+            dvgClientes.AllowUserToAddRows = false;
+            dvgClientes.BackgroundColor = Color.White;
+            dvgClientes.BorderStyle = BorderStyle.None;
+            dvgClientes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dvgClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dvgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dvgClientes.ColumnHeadersHeight = 40;
+            dvgClientes.Columns.AddRange(new DataGridViewColumn[] { colCodigo, colNome, colCPF, colContato, colEmail, btnEditar, btnExcluir });
+            dvgClientes.EnableHeadersVisualStyles = false;
             dvgClientes.Location = new Point(47, 101);
             dvgClientes.Name = "dvgClientes";
+            dvgClientes.RowHeadersVisible = false;
+            dvgClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dvgClientes.Size = new Size(723, 134);
             dvgClientes.TabIndex = 4;
             dvgClientes.CellClick += dvgClientes_CellClick;
+            dvgClientes.CellContentClick += dvgClientes_CellContentClick;
             // 
             // colCodigo
             // 
@@ -332,6 +351,13 @@
             btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
             btnEditar.ImageLayout = DataGridViewImageCellLayout.Zoom;
             btnEditar.Name = "btnEditar";
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.HeaderText = "";
+            btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
+            btnExcluir.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            btnExcluir.Name = "btnExcluir";
             // 
             // UC_GestaoClientes
             // 
@@ -385,5 +411,6 @@
         private DataGridViewTextBoxColumn colContato;
         private DataGridViewTextBoxColumn colEmail;
         private DataGridViewImageColumn btnEditar;
+        private DataGridViewImageColumn btnExcluir;
     }
 }

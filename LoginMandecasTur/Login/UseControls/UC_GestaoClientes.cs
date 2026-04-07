@@ -93,5 +93,10 @@ namespace Login.UseControls
 
             }
         }
+
+        private void dvgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

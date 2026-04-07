@@ -16,6 +16,9 @@
     <Compile Update="UseControls\UC_EditarCliente.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UseControls\UC_EditarViagem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UseControls\UC_Financeiro.cs">
       <SubType>UserControl</SubType>
     </Compile>
