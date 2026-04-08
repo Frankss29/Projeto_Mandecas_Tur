@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             pnlMenu = new Panel();
+            btnFuncionario = new Button();
             btnRelatorio = new Button();
             btnFinanceiro = new Button();
             btnGestaoViagens = new Button();
@@ -58,6 +59,7 @@
             // pnlMenu
             // 
             pnlMenu.BackColor = Color.White;
+            pnlMenu.Controls.Add(btnFuncionario);
             pnlMenu.Controls.Add(btnRelatorio);
             pnlMenu.Controls.Add(btnFinanceiro);
             pnlMenu.Controls.Add(btnGestaoViagens);
@@ -68,12 +70,25 @@
             pnlMenu.Size = new Size(800, 53);
             pnlMenu.TabIndex = 3;
             // 
+            // btnFuncionario
+            // 
+            btnFuncionario.FlatAppearance.BorderSize = 0;
+            btnFuncionario.FlatStyle = FlatStyle.Flat;
+            btnFuncionario.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            btnFuncionario.Location = new Point(603, 0);
+            btnFuncionario.Name = "btnFuncionario";
+            btnFuncionario.Size = new Size(147, 51);
+            btnFuncionario.TabIndex = 6;
+            btnFuncionario.Text = "Funcionários";
+            btnFuncionario.UseVisualStyleBackColor = true;
+            btnFuncionario.Click += btnFuncionario_Click;
+            // 
             // btnRelatorio
             // 
             btnRelatorio.FlatAppearance.BorderSize = 0;
             btnRelatorio.FlatStyle = FlatStyle.Flat;
             btnRelatorio.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            btnRelatorio.Location = new Point(461, 0);
+            btnRelatorio.Location = new Point(454, 0);
             btnRelatorio.Name = "btnRelatorio";
             btnRelatorio.Size = new Size(147, 51);
             btnRelatorio.TabIndex = 5;
@@ -86,7 +101,7 @@
             btnFinanceiro.FlatAppearance.BorderSize = 0;
             btnFinanceiro.FlatStyle = FlatStyle.Flat;
             btnFinanceiro.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            btnFinanceiro.Location = new Point(312, 0);
+            btnFinanceiro.Location = new Point(305, 0);
             btnFinanceiro.Name = "btnFinanceiro";
             btnFinanceiro.Size = new Size(147, 51);
             btnFinanceiro.TabIndex = 4;
@@ -99,7 +114,7 @@
             btnGestaoViagens.FlatAppearance.BorderSize = 0;
             btnGestaoViagens.FlatStyle = FlatStyle.Flat;
             btnGestaoViagens.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            btnGestaoViagens.Location = new Point(163, 0);
+            btnGestaoViagens.Location = new Point(156, 0);
             btnGestaoViagens.Name = "btnGestaoViagens";
             btnGestaoViagens.Size = new Size(147, 51);
             btnGestaoViagens.TabIndex = 3;
@@ -112,7 +127,7 @@
             btnGestaoClientes.FlatAppearance.BorderSize = 0;
             btnGestaoClientes.FlatStyle = FlatStyle.Flat;
             btnGestaoClientes.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGestaoClientes.Location = new Point(12, 0);
+            btnGestaoClientes.Location = new Point(5, 0);
             btnGestaoClientes.Name = "btnGestaoClientes";
             btnGestaoClientes.Size = new Size(147, 51);
             btnGestaoClientes.TabIndex = 2;
@@ -141,7 +156,6 @@
             pnlNavBar.Name = "pnlNavBar";
             pnlNavBar.Size = new Size(800, 81);
             pnlNavBar.TabIndex = 2;
-            pnlNavBar.Paint += pnlNavBar_Paint;
             pnlNavBar.MouseDown += pnlNavBar_MouseDown;
             // 
             // pnlFecharMinimizarTela
@@ -297,5 +311,6 @@
         private Label lbMinimizar;
         private Label lbFechar;
         private Label lbRecolher;
+        private Button btnFuncionario;
     }
 }

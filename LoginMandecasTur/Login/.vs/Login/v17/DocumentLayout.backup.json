@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UseControls\\UC_GestaoClientes.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_Financeiro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UseControls\\UC_Financeiro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UseControls\\UC_GestaoClientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,15 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UC_GestaoClientes.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.Designer.cs",
-              "RelativeDocumentMoniker": "UseControls\\UC_GestaoClientes.Designer.cs",
-              "ToolTip": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.Designer.cs",
-              "RelativeToolTip": "UseControls\\UC_GestaoClientes.Designer.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAIABAAAAAAAAAAAAAA==",
+              "Title": "UC_Financeiro.cs",
+              "DocumentMoniker": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_Financeiro.cs",
+              "RelativeDocumentMoniker": "UseControls\\UC_Financeiro.cs",
+              "ToolTip": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_Financeiro.cs",
+              "RelativeToolTip": "UseControls\\UC_Financeiro.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-07T16:00:19.037Z",
+              "WhenOpened": "2026-04-07T16:26:54.978Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UC_GestaoClientes.cs",
+              "DocumentMoniker": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs",
+              "RelativeDocumentMoniker": "UseControls\\UC_GestaoClientes.cs",
+              "ToolTip": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs",
+              "RelativeToolTip": "UseControls\\UC_GestaoClientes.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T16:26:41.851Z"
             }
           ]
         }

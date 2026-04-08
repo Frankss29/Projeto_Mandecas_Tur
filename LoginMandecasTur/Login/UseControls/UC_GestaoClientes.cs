@@ -66,18 +66,19 @@ namespace Login.UseControls
 
         private void dvgClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 1. Ignora se clicar no cabeçalho
+            // 1. Ignora se clicar no cabeçalho ou fora de uma linha válida
             if (e.RowIndex < 0) return;
 
-            if (e.RowIndex >= 0 &&
-                   dvgClientes.Columns[e.ColumnIndex].Name == "btnEditar")
+            // Identifica qual coluna foi clicada pelo Nome
+            string nomeColuna = dvgClientes.Columns[e.ColumnIndex].Name;
+
+            // --- LÓGICA DO EDITAR ---
+            if (nomeColuna == "btnEditar")
             {
-                // Busca o formulário Home (onde a UC está inserida)
                 Form homeForm = this.ParentForm;
 
                 if (homeForm != null)
                 {
-                    // PROCURA o panelContainer dentro da Home, mesmo que ele esteja "escondido"
                     Control[] controls = homeForm.Controls.Find("panelContainer", true);
 
                     if (controls.Length > 0 && controls[0] is Panel pnlPrincipal)
@@ -89,24 +90,33 @@ namespace Login.UseControls
                     }
                     else
                     {
-                        // Se cair aqui, é porque o nome do Painel na Home não é "panelContainer"
-                        MessageBox.Show("Não encontrei o painel de destino no formulário principal.");
+                        MessageBox.Show("Não encontrei o painel de destino (panelContainer) no formulário principal.");
                     }
                 }
+            }
+            // --- LÓGICA DO EXCLUIR (Agora fora do bloco do Editar) ---
+            else if (nomeColuna == "btnExcluir")
+            {
+                var confirmacao = MessageBox.Show("Tem certeza que deseja excluir?", "Atenção",
+                                  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                // 3. Verifica se clicou na coluna de Excluir
-                if (dvgClientes.Columns[e.ColumnIndex].Name == "btnExcluir")
+                if (confirmacao == DialogResult.Yes)
                 {
-                    var confirmacao = MessageBox.Show("Tem certeza que deseja excluir?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (confirmacao == DialogResult.Yes)
-                    {
-                        // Código para deletar aqui
-                    }
+                    // O código para remover a linha da grid ou do banco entra aqui
+                    // Exemplo para remover apenas da grid visualmente:
+                    // dvgClientes.Rows.RemoveAt(e.RowIndex);
                 }
-
             }
         }
 
-        
+        private void UC_GestaoClientes_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBuscarGClientes_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

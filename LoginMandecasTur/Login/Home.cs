@@ -118,7 +118,7 @@ namespace Login
 
         }
 
-       
+
         private void btnGestaoClientes_Click(object sender, EventArgs e)
         {
             UC_GestaoClientes Home = new UC_GestaoClientes();
@@ -143,10 +143,12 @@ namespace Login
             addUserControl(Relatorio);
         }
 
-        private void pnlNavBar_Paint(object sender, PaintEventArgs e)
+        private void btnFuncionario_Click(object sender, EventArgs e)
         {
-
+            UC_Funcionario Funcionario = new UC_Funcionario();
+            addUserControl(Funcionario);
         }
+
         #endregion
     }
 }

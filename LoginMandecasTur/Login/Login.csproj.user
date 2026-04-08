@@ -13,6 +13,9 @@
     <Compile Update="Home.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UseControls\UC_EditarAcesso.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UseControls\UC_EditarCliente.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -22,10 +25,16 @@
     <Compile Update="UseControls\UC_Financeiro.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UseControls\UC_Funcionario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UseControls\UC_GestaoClientes.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UseControls\UC_GestaoViagens.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UseControls\UC_IncluirPassageiros.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UseControls\UC_Relatorio.cs">

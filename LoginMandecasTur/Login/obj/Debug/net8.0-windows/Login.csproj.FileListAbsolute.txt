@@ -23,3 +23,6 @@ C:\Users\Fran\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug
 C:\Users\Fran\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.pdb
 C:\Users\Fran\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.genruntimeconfig.cache
 C:\Users\Fran\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\ref\Login.dll
+C:\Users\Fran\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.UseControls.UC_Funcionario.resources
+C:\Users\Fran\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.UseControls.UC_EditarAcesso.resources
+C:\Users\Fran\source\repos\Projeto_Mandecas_Tur\LoginMandecasTur\Login\obj\Debug\net8.0-windows\Login.UseControls.UC_IncluirPassageiros.resources
