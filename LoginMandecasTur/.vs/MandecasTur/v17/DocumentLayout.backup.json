@@ -38,8 +38,8 @@
               "Title": "UC_GestaoClientes.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.Designer.cs",
               "RelativeDocumentMoniker": "Login\\UseControls\\UC_GestaoClientes.Designer.cs",
-              "ToolTip": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.Designer.cs*",
-              "RelativeToolTip": "Login\\UseControls\\UC_GestaoClientes.Designer.cs*",
+              "ToolTip": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.Designer.cs",
+              "RelativeToolTip": "Login\\UseControls\\UC_GestaoClientes.Designer.cs",
               "ViewState": "AgIAAJUBAAAAAAAAAAAAwLIBAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-07T19:35:59.109Z",
@@ -51,8 +51,8 @@
               "Title": "UC_GestaoClientes.cs [Projeto]",
               "DocumentMoniker": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs",
               "RelativeDocumentMoniker": "Login\\UseControls\\UC_GestaoClientes.cs",
-              "ToolTip": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs [Projeto]*",
-              "RelativeToolTip": "Login\\UseControls\\UC_GestaoClientes.cs [Projeto]*",
+              "ToolTip": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs [Projeto]",
+              "RelativeToolTip": "Login\\UseControls\\UC_GestaoClientes.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-07T18:45:27.589Z",
               "EditorCaption": " [Projeto]"
@@ -63,12 +63,11 @@
               "Title": "UC_GestaoClientes.cs",
               "DocumentMoniker": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs",
               "RelativeDocumentMoniker": "Login\\UseControls\\UC_GestaoClientes.cs",
-              "ToolTip": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs*",
-              "RelativeToolTip": "Login\\UseControls\\UC_GestaoClientes.cs*",
+              "ToolTip": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs",
+              "RelativeToolTip": "Login\\UseControls\\UC_GestaoClientes.cs",
               "ViewState": "AgIAAFcAAAAAAAAAAAAAwG0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T17:08:44.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-30T17:08:44.997Z"
             },
             {
               "$type": "Document",
@@ -92,8 +91,7 @@
               "ToolTip": "C:\\Users\\Fran\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Home.cs [Projeto]",
               "RelativeToolTip": "Login\\Home.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T15:54:06.464Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2026-03-30T15:54:06.464Z"
             }
           ]
         }
