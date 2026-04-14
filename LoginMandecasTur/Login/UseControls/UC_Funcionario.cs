@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Login.UseControls
 {
@@ -29,9 +30,9 @@ namespace Login.UseControls
             dvgFuncionarios.RowTemplate.Height = 35;
 
             // 2. Adicionando dados "fakes" para teste de layout
-            dvgFuncionarios.Rows.Add("000", "Amanda Silva", "888.456.719-00", "amanda12@gmail.com", "154289", "Administrador");
+            /*dvgFuncionarios.Rows.Add("000", "Amanda Silva", "888.456.719-00", "amanda12@gmail.com", "154289", "Administrador");
             dvgFuncionarios.Rows.Add("001", "William Santos", "987.333.321-44", "santos.william@gmail.com", "859556", "Administrador");
-            dvgFuncionarios.Rows.Add("002", "Ana Souza", "456.123.769-13", "anaSouza@gmail.com", "87585s89", "Padrão");
+            dvgFuncionarios.Rows.Add("002", "Ana Souza", "456.123.769-13", "anaSouza@gmail.com", "87585s89", "Padrão");*/
 
 
         }
@@ -112,6 +113,69 @@ namespace Login.UseControls
 
         private void UC_Funcionario_Load(object sender, EventArgs e)
         {
+            Conexao conexao = new Conexao();
+            MySqlConnection conn = conexao.Conectar();
+
+            CBPerfilAcesso.Items.Clear();
+            CBPerfilAcesso.Items.Add("Administrador");
+            CBPerfilAcesso.Items.Add("Padrão");
+            CBPerfilAcesso.SelectedIndex = 1; // Deixa "Padrão" selecionado por padrão
+
+            string sqlMostrar = "SELECT * FROM funcionario";
+
+            //vai adaptar as informações do banco e dados para o DGV.
+            MySqlDataAdapter adp = new MySqlDataAdapter(sqlMostrar, conn);
+
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+
+            dvgFuncionarios.DataSource = dt;
+        }
+        
+
+        private void btnSalvarCAcesso_Click(object sender, EventArgs e)
+        {
+            Conexao conexao = new Conexao();
+            MySqlConnection conn = conexao.Conectar();
+
+            try
+            {
+                conn.Open();
+
+                string sqlInserir = "INSERT INTO funcionario (nome, email, senha, documento, perfil_acesso) VALUES (@nome, @email, @senha, @documento, @perfil_acesso)";
+
+                MySqlCommand cmd = new MySqlCommand(sqlInserir, conn);
+
+                cmd.Parameters.AddWithValue ("@nome", txtNomeCAcesso.Text);
+                cmd.Parameters.AddWithValue ("@email", txtEmailCAcesso.Text);
+                cmd.Parameters.AddWithValue ("@senha", txtSenhaCAcesso.Text);
+                cmd.Parameters.AddWithValue ("@documento", txtCPFCAcesso.Text);
+                cmd.Parameters.AddWithValue("@perfil_acesso", CBPerfilAcesso.SelectedItem.ToString());
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Funcionário cadastrado com sucesso!");
+                txtNomeCAcesso.Clear();
+                txtEmailCAcesso.Clear();
+                txtSenhaCAcesso.Clear();
+                txtCPFCAcesso.Clear();
+                txtNomeCAcesso.Focus();
+
+                string sqlMostrar = "SELECT * FROM funcionario";
+
+                //vai adaptar as informações do banco e dados para o DGV.
+                MySqlDataAdapter adp = new MySqlDataAdapter(sqlMostrar, conn);
+
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dvgFuncionarios.DataSource = dt;
+
+
+
+            }
+            catch (Exception ex) {
+            }
 
         }
     }

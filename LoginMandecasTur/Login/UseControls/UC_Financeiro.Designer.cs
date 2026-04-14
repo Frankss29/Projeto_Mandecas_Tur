@@ -88,7 +88,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(826, 784);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
+            
             // 
             // panel4
             // 
@@ -266,7 +266,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(231, 24);
             comboBox1.TabIndex = 0;
-            comboBox1.DrawItem += comboBox1_DrawItem;
+           
             // 
             // Panel_Vencidos
             // 

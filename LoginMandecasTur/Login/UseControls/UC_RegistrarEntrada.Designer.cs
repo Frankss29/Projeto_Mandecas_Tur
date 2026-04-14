@@ -11,14 +11,14 @@
         /// Limpar os recursos que estão sendo usados.
         /// </summary>
         /// <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
-        protected override void Dispose(bool disposing)
+        /*protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
             {
                 components.Dispose();
             }
             base.Dispose(disposing);
-        }
+        }*/
 
         #region Código gerado pelo Designer de Componentes
 
@@ -64,7 +64,7 @@
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
-            SuspendLayout();
+          
             // 
             // lbl_Registrar_Entrada
             // 
@@ -83,7 +83,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(746, 1);
             panel1.TabIndex = 1;
-            panel1.Paint += panel1_Paint;
+            
             // 
             // lbl_codigo_reserva
             // 
@@ -392,18 +392,7 @@
             // 
             // UC_RegistrarEntrada
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(panel6);
-            Controls.Add(panel5);
-            Controls.Add(panel4);
-            Controls.Add(panel3);
-            Controls.Add(panel2);
-            Controls.Add(lbl_codigo_reserva);
-            Controls.Add(panel1);
-            Controls.Add(lbl_Registrar_Entrada);
-            Name = "UC_RegistrarEntrada";
-            Size = new Size(826, 809);
+         
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
@@ -413,8 +402,7 @@
             panel5.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
-            ResumeLayout(false);
-            PerformLayout();
+           
         }
 
         #endregion
