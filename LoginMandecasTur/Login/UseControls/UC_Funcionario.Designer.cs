@@ -80,6 +80,7 @@
             btnBuscarFuncionario.TabIndex = 3;
             btnBuscarFuncionario.Text = "Buscar";
             btnBuscarFuncionario.UseVisualStyleBackColor = false;
+            btnBuscarFuncionario.Click += btnBuscarFuncionario_Click;
             // 
             // txtBuscaFuncionario
             // 
@@ -88,6 +89,7 @@
             txtBuscaFuncionario.PlaceholderText = "  Buscar por Nome, ID, CPF";
             txtBuscaFuncionario.Size = new Size(415, 23);
             txtBuscaFuncionario.TabIndex = 2;
+            txtBuscaFuncionario.TextChanged += txtBuscaFuncionario_TextChanged;
             // 
             // dvgFuncionarios
             // 

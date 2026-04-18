@@ -1,13 +1,15 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Login.UseControls
 {
@@ -131,7 +133,7 @@ namespace Login.UseControls
 
             dvgFuncionarios.DataSource = dt;
         }
-        
+
 
         private void btnSalvarCAcesso_Click(object sender, EventArgs e)
         {
@@ -142,14 +144,14 @@ namespace Login.UseControls
             {
                 conn.Open();
 
-                string sqlInserir = "INSERT INTO funcionario (nome, email, senha, documento, perfil_acesso) VALUES (@nome, @email, @senha, @documento, @perfil_acesso)";
+                string sqlInserir = "INSERT INTO funcionario (nome, email, senha, documento, perfil_acesso) VALUES (@nome, @email, @senha, @cpf, @perfil_acesso)";
 
                 MySqlCommand cmd = new MySqlCommand(sqlInserir, conn);
 
-                cmd.Parameters.AddWithValue ("@nome", txtNomeCAcesso.Text);
-                cmd.Parameters.AddWithValue ("@email", txtEmailCAcesso.Text);
-                cmd.Parameters.AddWithValue ("@senha", txtSenhaCAcesso.Text);
-                cmd.Parameters.AddWithValue ("@documento", txtCPFCAcesso.Text);
+                cmd.Parameters.AddWithValue("@nome", txtNomeCAcesso.Text);
+                cmd.Parameters.AddWithValue("@email", txtEmailCAcesso.Text);
+                cmd.Parameters.AddWithValue("@senha", txtSenhaCAcesso.Text);
+                cmd.Parameters.AddWithValue("@cpf", txtCPFCAcesso.Text);
                 cmd.Parameters.AddWithValue("@perfil_acesso", CBPerfilAcesso.SelectedItem.ToString());
 
                 cmd.ExecuteNonQuery();
@@ -171,12 +173,118 @@ namespace Login.UseControls
 
                 dvgFuncionarios.DataSource = dt;
 
-
+              
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
 
         }
+
+        private void btnBuscarFuncionario_Click(object sender, EventArgs e)
+        {
+            Conexao conexao = new Conexao();
+            MySqlConnection conn = conexao.Conectar();
+
+            try
+            {
+                conn.Open();
+                string texto = txtBuscaFuncionario.Text.Trim();
+                string sql;
+
+                // 1. Tenta converter para número para saber se é ID ou CPF
+                bool ehNumero = long.TryParse(texto, out _);
+
+                if (ehNumero && texto.Length <= 4)
+                {
+                    // Se for número e tiver até 4 dígitos, tratamos como ID:
+                    sql = "SELECT id_funcionario, nome, email FROM funcionario WHERE id_funcionario LIKE @id_funcionario";
+                    MySqlCommand cmd4 = new MySqlCommand(sql, conn);
+                    cmd4.Parameters.AddWithValue("@id_funcionario", "%" + texto + "%");
+
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd4);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    dvgFuncionarios.DataSource = dt;
+
+                    txtBuscaFuncionario.Clear();
+                    txtBuscaFuncionario.Focus();
+
+
+                }
+                else if (ehNumero && texto.Length >= 11)
+                {
+                    // Se for número e tiver 11 ou mais dígitos, tratamos como CPF:
+                    sql = "SELECT id_funcionario, nome, email FROM funcionario WHERE documento LIKE @cpf";
+                    MySqlCommand cmd2 = new MySqlCommand(sql, conn);
+                    cmd2.Parameters.AddWithValue("@cpf", "%" + texto + "%");
+
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd2);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    dvgFuncionarios.DataSource = dt;
+
+                    txtBuscaFuncionario.Clear();
+                    txtBuscaFuncionario.Focus();
+
+                }
+                else
+                {
+
+                    sql = "SELECT id_funcionario, nome, email FROM funcionario WHERE nome LIKE @nome";
+                    MySqlCommand cmd3 = new MySqlCommand(sql, conn);
+                    cmd3.Parameters.AddWithValue("@nome", "%" + texto + "%");
+
+                    MySqlDataAdapter adp  = new MySqlDataAdapter(cmd3);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    dvgFuncionarios.DataSource = dt;
+
+                    txtBuscaFuncionario.Clear();
+                    txtBuscaFuncionario.Focus();
+
+                }
+              
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+                conn.Close(); 
+            }
+
+        }
+
+        private void txtBuscaFuncionario_TextChanged(object sender, EventArgs e)
+        {
+            // 1. Remove tudo que não for número para processar a máscara
+            string textoLimpo = System.Text.RegularExpressions.Regex.Replace(txtBuscaFuncionario.Text, @"[^0-9]", "");
+            string resultado = "";
+
+            if (textoLimpo.Length > 3 && textoLimpo.Length <= 11)
+            {
+                if (textoLimpo.Length <= 3) resultado = textoLimpo;
+                else if (textoLimpo.Length <= 6) resultado = textoLimpo.Insert(3, ".");
+                else if (textoLimpo.Length <= 9) resultado = textoLimpo.Insert(3, ".").Insert(7, ".");
+                else resultado = textoLimpo.Insert(3, ".").Insert(7, ".").Insert(11, "-");
+
+                // 3. Atualiza o texto sem causar um loop infinito de eventos
+                txtBuscaFuncionario.Text = resultado;
+
+                // 4. Joga o cursor para o final do texto (se não ele volta pro começo!)
+                txtBuscaFuncionario.SelectionStart = txtBuscaFuncionario.Text.Length;
+            }
+        }
+    
     }
 }
