@@ -13,15 +13,15 @@ namespace Login
         public class BotaoMandecas : Button
         {
             // Cores para o efeito visual
-            private Color corNormal = Color.FromArgb(68, 252, 124); // Verde Escuro
-            private Color corHover = Color.FromArgb(0, 153, 76);  // Verde Claro
+            private Color corNormal = Color.FromArgb(68, 252, 124); // Verde Mandecas
+            private Color corHover = Color.FromArgb(255, 255, 255);  // Verde Claro
 
             public BotaoMandecas()
             {
                 FlatStyle = FlatStyle.Flat;
                 FlatAppearance.BorderSize = 0;
                 BackColor = corNormal;
-                ForeColor = Color.White;
+                ForeColor = Color.Black;
                 Cursor = Cursors.Hand;
                 Font = new Font("Segoe UI Semibold", 11F);
             }

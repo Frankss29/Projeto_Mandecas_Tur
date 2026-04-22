@@ -121,23 +121,23 @@ namespace Login
         //Efeitos do TextBoxs(Linha Verde)
         private void txtUsuarioLogin_Enter(object sender, EventArgs e)
         {
-            pnlLinhaUsuarioLogin.BackColor = Color.FromArgb(0, 153, 76); // Hover 
+            pnlLinhaUsuarioLogin.BackColor = Color.FromArgb(68, 252, 124); // Hover 
         }
 
         private void txtUsuarioLogin_Leave(object sender, EventArgs e)
         {  
-            pnlLinhaUsuarioLogin.BackColor = Color.FromArgb(68,252,124);
+            pnlLinhaUsuarioLogin.BackColor = Color.FromArgb(255, 255, 255);
         }
 
         private void txtSenhaLogin_Enter(object sender, EventArgs e)
         { 
             txtSenhaLogin.PasswordChar = '●'; //Esconder caracteres
-            pnlLinhaSenhaLogin.BackColor = Color.FromArgb(0, 153, 76);//hover
+            pnlLinhaSenhaLogin.BackColor = Color.FromArgb(68, 252, 124);//hover
         }
 
         private void txtSenhaLogin_Leave(object sender, EventArgs e)
         {
-            pnlLinhaSenhaLogin.BackColor = Color.FromArgb(68, 252, 124); ;
+            pnlLinhaSenhaLogin.BackColor = Color.FromArgb(255, 255, 255); ;
         }
         #endregion
 

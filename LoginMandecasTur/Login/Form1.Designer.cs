@@ -93,7 +93,7 @@
             lbRodape.ForeColor = Color.Gainsboro;
             lbRodape.Location = new Point(45, 414);
             lbRodape.Name = "lbRodape";
-            lbRodape.Size = new Size(211, 15);
+            lbRodape.Size = new Size(210, 15);
             lbRodape.TabIndex = 13;
             lbRodape.Text = "Viagens Terrestres • Aéreas • Marítimas";
             // 
@@ -145,7 +145,7 @@
             btnEntrarLogin.FlatAppearance.BorderSize = 0;
             btnEntrarLogin.FlatStyle = FlatStyle.Flat;
             btnEntrarLogin.Font = new Font("Segoe UI Semibold", 11F);
-            btnEntrarLogin.ForeColor = Color.White;
+            btnEntrarLogin.ForeColor = Color.Black;
             btnEntrarLogin.Location = new Point(51, 264);
             btnEntrarLogin.Name = "btnEntrarLogin";
             btnEntrarLogin.Size = new Size(200, 40);
@@ -178,7 +178,7 @@
             // 
             // pnlLinhaSenhaLogin
             // 
-            pnlLinhaSenhaLogin.BackColor = Color.SpringGreen;
+            pnlLinhaSenhaLogin.BackColor = Color.Linen;
             pnlLinhaSenhaLogin.Location = new Point(50, 240);
             pnlLinhaSenhaLogin.Name = "pnlLinhaSenhaLogin";
             pnlLinhaSenhaLogin.Size = new Size(200, 2);
@@ -186,7 +186,7 @@
             // 
             // pnlLinhaUsuarioLogin
             // 
-            pnlLinhaUsuarioLogin.BackColor = Color.SpringGreen;
+            pnlLinhaUsuarioLogin.BackColor = Color.GhostWhite;
             pnlLinhaUsuarioLogin.Location = new Point(51, 196);
             pnlLinhaUsuarioLogin.Name = "pnlLinhaUsuarioLogin";
             pnlLinhaUsuarioLogin.Size = new Size(200, 2);
@@ -311,7 +311,7 @@
             lbCodsis.ForeColor = Color.White;
             lbCodsis.Location = new Point(417, 6);
             lbCodsis.Name = "lbCodsis";
-            lbCodsis.Size = new Size(19, 13);
+            lbCodsis.Size = new Size(18, 13);
             lbCodsis.TabIndex = 7;
             lbCodsis.Text = "By";
             lbCodsis.TextAlign = ContentAlignment.TopRight;

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             pnlMenu = new Panel();
+            pnlNav = new Panel();
             btnFuncionario = new Button();
             btnRelatorio = new Button();
             btnFinanceiro = new Button();
@@ -59,6 +60,7 @@
             // pnlMenu
             // 
             pnlMenu.BackColor = Color.White;
+            pnlMenu.Controls.Add(pnlNav);
             pnlMenu.Controls.Add(btnFuncionario);
             pnlMenu.Controls.Add(btnRelatorio);
             pnlMenu.Controls.Add(btnFinanceiro);
@@ -69,6 +71,14 @@
             pnlMenu.Name = "pnlMenu";
             pnlMenu.Size = new Size(800, 53);
             pnlMenu.TabIndex = 3;
+            // 
+            // pnlNav
+            // 
+            pnlNav.BackColor = Color.FromArgb(68, 252, 124);
+            pnlNav.Location = new Point(5, 49);
+            pnlNav.Name = "pnlNav";
+            pnlNav.Size = new Size(147, 3);
+            pnlNav.TabIndex = 0;
             // 
             // btnFuncionario
             // 
@@ -312,5 +322,6 @@
         private Label lbFechar;
         private Label lbRecolher;
         private Button btnFuncionario;
+        private Panel pnlNav;
     }
 }

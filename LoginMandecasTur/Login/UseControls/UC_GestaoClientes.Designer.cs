@@ -28,18 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_GestaoClientes));
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             txtBuscaGCliente = new TextBox();
             btnBuscarGClientes = new BotaoPadraoMandecas();
             dvgClientes = new DataGridView();
-            colCodigo = new DataGridViewTextBoxColumn();
-            colNome = new DataGridViewTextBoxColumn();
-            colCPF = new DataGridViewTextBoxColumn();
-            colContato = new DataGridViewTextBoxColumn();
-            colEmail = new DataGridViewTextBoxColumn();
             btnEditar = new DataGridViewImageColumn();
             btnExcluir = new DataGridViewImageColumn();
             lbNomeGClientes = new Label();
@@ -48,19 +43,20 @@
             txtCPFGClientes = new TextBox();
             lbDtNascimento = new Label();
             lbEmail = new Label();
-            txtDtNascimento = new TextBox();
-            txtEmail = new TextBox();
+            txtEmailGClientes = new TextBox();
             lbTelefone = new Label();
-            txtTelefone = new TextBox();
+            txtTelefoneGClientes = new TextBox();
             pnlSeparador2 = new Panel();
             lbGratuidade = new Label();
             pnlBotoes = new Panel();
             btnCancelarGClientes = new BotaoPadraoMandecas();
-            botaoPadraoMandecas1 = new BotaoPadraoMandecas();
+            btnSalvarGClientes = new BotaoPadraoMandecas();
             pnlSeparador = new Panel();
             pnlTitulo = new Panel();
             lbCadastrarCliente = new Label();
             pnlCadastroCliente = new Panel();
+            dtpDataNascGclientes = new DateTimePicker();
+            lblLimparFiltro = new Label();
             ((System.ComponentModel.ISupportInitialize)dvgClientes).BeginInit();
             pnlBotoes.SuspendLayout();
             pnlTitulo.SuspendLayout();
@@ -74,6 +70,7 @@
             txtBuscaGCliente.PlaceholderText = "  Buscar por Nome, CPF";
             txtBuscaGCliente.Size = new Size(415, 23);
             txtBuscaGCliente.TabIndex = 0;
+            txtBuscaGCliente.TextChanged += txtBuscaGCliente_TextChanged;
             // 
             // btnBuscarGClientes
             // 
@@ -99,16 +96,16 @@
             dvgClientes.BorderStyle = BorderStyle.None;
             dvgClientes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dvgClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dvgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dvgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dvgClientes.ColumnHeadersHeight = 40;
-            dvgClientes.Columns.AddRange(new DataGridViewColumn[] { colCodigo, colNome, colCPF, colContato, colEmail, btnEditar, btnExcluir });
+            dvgClientes.Columns.AddRange(new DataGridViewColumn[] { btnEditar, btnExcluir });
             dvgClientes.EnableHeadersVisualStyles = false;
             dvgClientes.Location = new Point(47, 101);
             dvgClientes.Name = "dvgClientes";
@@ -117,45 +114,16 @@
             dvgClientes.Size = new Size(723, 134);
             dvgClientes.TabIndex = 4;
             dvgClientes.CellClick += dvgClientes_CellClick;
+           
             dvgClientes.Paint += dvgClientes_Paint;
-            // 
-            // colCodigo
-            // 
-            colCodigo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colCodigo.HeaderText = "Código";
-            colCodigo.Name = "colCodigo";
-            // 
-            // colNome
-            // 
-            colNome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colNome.HeaderText = "Nome";
-            colNome.Name = "colNome";
-            // 
-            // colCPF
-            // 
-            colCPF.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colCPF.HeaderText = "CPF";
-            colCPF.Name = "colCPF";
-            // 
-            // colContato
-            // 
-            colContato.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colContato.HeaderText = "Contato";
-            colContato.Name = "colContato";
-            // 
-            // colEmail
-            // 
-            colEmail.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colEmail.HeaderText = "Email";
-            colEmail.Name = "colEmail";
             // 
             // btnEditar
             // 
             btnEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
-            dataGridViewCellStyle2.Padding = new Padding(8);
-            btnEditar.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = resources.GetObject("dataGridViewCellStyle5.NullValue");
+            dataGridViewCellStyle5.Padding = new Padding(8);
+            btnEditar.DefaultCellStyle = dataGridViewCellStyle5;
             btnEditar.HeaderText = "";
             btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
             btnEditar.ImageLayout = DataGridViewImageCellLayout.Zoom;
@@ -165,10 +133,10 @@
             // btnExcluir
             // 
             btnExcluir.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
-            dataGridViewCellStyle3.Padding = new Padding(8);
-            btnExcluir.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.NullValue = resources.GetObject("dataGridViewCellStyle6.NullValue");
+            dataGridViewCellStyle6.Padding = new Padding(8);
+            btnExcluir.DefaultCellStyle = dataGridViewCellStyle6;
             btnExcluir.HeaderText = "";
             btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
             btnExcluir.ImageLayout = DataGridViewImageCellLayout.Zoom;
@@ -231,21 +199,13 @@
             lbEmail.TabIndex = 6;
             lbEmail.Text = "Email:";
             // 
-            // txtDtNascimento
+            // txtEmailGClientes
             // 
-            txtDtNascimento.Anchor = AnchorStyles.Left;
-            txtDtNascimento.Location = new Point(146, 108);
-            txtDtNascimento.Name = "txtDtNascimento";
-            txtDtNascimento.Size = new Size(135, 23);
-            txtDtNascimento.TabIndex = 7;
-            // 
-            // txtEmail
-            // 
-            txtEmail.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtEmail.Location = new Point(524, 108);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(176, 23);
-            txtEmail.TabIndex = 8;
+            txtEmailGClientes.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtEmailGClientes.Location = new Point(524, 108);
+            txtEmailGClientes.Name = "txtEmailGClientes";
+            txtEmailGClientes.Size = new Size(176, 23);
+            txtEmailGClientes.TabIndex = 8;
             // 
             // lbTelefone
             // 
@@ -253,17 +213,17 @@
             lbTelefone.AutoSize = true;
             lbTelefone.Location = new Point(303, 114);
             lbTelefone.Name = "lbTelefone";
-            lbTelefone.Size = new Size(55, 15);
+            lbTelefone.Size = new Size(54, 15);
             lbTelefone.TabIndex = 9;
             lbTelefone.Text = "Telefone:";
             // 
-            // txtTelefone
+            // txtTelefoneGClientes
             // 
-            txtTelefone.Anchor = AnchorStyles.Left;
-            txtTelefone.Location = new Point(360, 108);
-            txtTelefone.Name = "txtTelefone";
-            txtTelefone.Size = new Size(110, 23);
-            txtTelefone.TabIndex = 10;
+            txtTelefoneGClientes.Anchor = AnchorStyles.Left;
+            txtTelefoneGClientes.Location = new Point(360, 108);
+            txtTelefoneGClientes.Name = "txtTelefoneGClientes";
+            txtTelefoneGClientes.Size = new Size(110, 23);
+            txtTelefoneGClientes.TabIndex = 10;
             // 
             // pnlSeparador2
             // 
@@ -289,7 +249,7 @@
             // 
             pnlBotoes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             pnlBotoes.Controls.Add(btnCancelarGClientes);
-            pnlBotoes.Controls.Add(botaoPadraoMandecas1);
+            pnlBotoes.Controls.Add(btnSalvarGClientes);
             pnlBotoes.Location = new Point(279, 147);
             pnlBotoes.Name = "pnlBotoes";
             pnlBotoes.Size = new Size(200, 47);
@@ -310,20 +270,21 @@
             btnCancelarGClientes.Text = "Cancelar";
             btnCancelarGClientes.UseVisualStyleBackColor = false;
             // 
-            // botaoPadraoMandecas1
+            // btnSalvarGClientes
             // 
-            botaoPadraoMandecas1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            botaoPadraoMandecas1.BackColor = Color.FromArgb(68, 252, 124);
-            botaoPadraoMandecas1.FlatAppearance.BorderSize = 0;
-            botaoPadraoMandecas1.FlatStyle = FlatStyle.Flat;
-            botaoPadraoMandecas1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            botaoPadraoMandecas1.ForeColor = Color.Black;
-            botaoPadraoMandecas1.Location = new Point(104, 11);
-            botaoPadraoMandecas1.Name = "botaoPadraoMandecas1";
-            botaoPadraoMandecas1.Size = new Size(82, 26);
-            botaoPadraoMandecas1.TabIndex = 14;
-            botaoPadraoMandecas1.Text = "Salvar";
-            botaoPadraoMandecas1.UseVisualStyleBackColor = false;
+            btnSalvarGClientes.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSalvarGClientes.BackColor = Color.FromArgb(68, 252, 124);
+            btnSalvarGClientes.FlatAppearance.BorderSize = 0;
+            btnSalvarGClientes.FlatStyle = FlatStyle.Flat;
+            btnSalvarGClientes.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalvarGClientes.ForeColor = Color.Black;
+            btnSalvarGClientes.Location = new Point(104, 11);
+            btnSalvarGClientes.Name = "btnSalvarGClientes";
+            btnSalvarGClientes.Size = new Size(82, 26);
+            btnSalvarGClientes.TabIndex = 14;
+            btnSalvarGClientes.Text = "Salvar";
+            btnSalvarGClientes.UseVisualStyleBackColor = false;
+            btnSalvarGClientes.Click += btnSalvarGClientes_Click;
             // 
             // pnlSeparador
             // 
@@ -360,15 +321,15 @@
             pnlCadastroCliente.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlCadastroCliente.BackColor = Color.White;
             pnlCadastroCliente.BorderStyle = BorderStyle.FixedSingle;
+            pnlCadastroCliente.Controls.Add(dtpDataNascGclientes);
             pnlCadastroCliente.Controls.Add(pnlTitulo);
             pnlCadastroCliente.Controls.Add(pnlSeparador);
             pnlCadastroCliente.Controls.Add(pnlBotoes);
             pnlCadastroCliente.Controls.Add(lbGratuidade);
             pnlCadastroCliente.Controls.Add(pnlSeparador2);
-            pnlCadastroCliente.Controls.Add(txtTelefone);
+            pnlCadastroCliente.Controls.Add(txtTelefoneGClientes);
             pnlCadastroCliente.Controls.Add(lbTelefone);
-            pnlCadastroCliente.Controls.Add(txtEmail);
-            pnlCadastroCliente.Controls.Add(txtDtNascimento);
+            pnlCadastroCliente.Controls.Add(txtEmailGClientes);
             pnlCadastroCliente.Controls.Add(lbEmail);
             pnlCadastroCliente.Controls.Add(lbDtNascimento);
             pnlCadastroCliente.Controls.Add(txtCPFGClientes);
@@ -379,12 +340,34 @@
             pnlCadastroCliente.Name = "pnlCadastroCliente";
             pnlCadastroCliente.Size = new Size(724, 199);
             pnlCadastroCliente.TabIndex = 3;
+            pnlCadastroCliente.Paint += pnlCadastroCliente_Paint;
+            // 
+            // dtpDataNascGclientes
+            // 
+            dtpDataNascGclientes.Format = DateTimePickerFormat.Short;
+            dtpDataNascGclientes.Location = new Point(149, 107);
+            dtpDataNascGclientes.Name = "dtpDataNascGclientes";
+            dtpDataNascGclientes.Size = new Size(139, 23);
+            dtpDataNascGclientes.TabIndex = 16;
+            // 
+            // lblLimparFiltro
+            // 
+            lblLimparFiltro.AutoSize = true;
+            lblLimparFiltro.Location = new Point(564, 42);
+            lblLimparFiltro.Name = "lblLimparFiltro";
+            lblLimparFiltro.Size = new Size(129, 15);
+            lblLimparFiltro.TabIndex = 5;
+            lblLimparFiltro.Text = "Limpar Filtros de Busca";
+            lblLimparFiltro.Click += lblLimparFiltro_Click;
+            lblLimparFiltro.MouseEnter += lblLimparFiltro_MouseEnter;
+            lblLimparFiltro.MouseLeave += lblLimparFiltro_MouseLeave;
             // 
             // UC_GestaoClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
+            Controls.Add(lblLimparFiltro);
             Controls.Add(dvgClientes);
             Controls.Add(pnlCadastroCliente);
             Controls.Add(btnBuscarGClientes);
@@ -408,31 +391,27 @@
         private TextBox txtBuscaGCliente;
         private BotaoPadraoMandecas btnBuscarGClientes;
         private DataGridView dvgClientes;
-        private DataGridViewTextBoxColumn colCodigo;
-        private DataGridViewTextBoxColumn colNome;
-        private DataGridViewTextBoxColumn colCPF;
-        private DataGridViewTextBoxColumn colContato;
-        private DataGridViewTextBoxColumn colEmail;
-        private DataGridViewImageColumn btnEditar;
-        private DataGridViewImageColumn btnExcluir;
         private Label lbNomeGClientes;
         private Label lbCPFGClientes;
         private TextBox txtNomeGClientes;
         private TextBox txtCPFGClientes;
         private Label lbDtNascimento;
         private Label lbEmail;
-        private TextBox txtDtNascimento;
-        private TextBox txtEmail;
+        private TextBox txtEmailGClientes;
         private Label lbTelefone;
-        private TextBox txtTelefone;
+        private TextBox txtTelefoneGClientes;
         private Panel pnlSeparador2;
         private Label lbGratuidade;
         private Panel pnlBotoes;
         private BotaoPadraoMandecas btnCancelarGClientes;
-        private BotaoPadraoMandecas botaoPadraoMandecas1;
+        private BotaoPadraoMandecas btnSalvarGClientes;
         private Panel pnlSeparador;
         private Panel pnlTitulo;
         private Label lbCadastrarCliente;
         private Panel pnlCadastroCliente;
+        private DataGridViewImageColumn btnEditar;
+        private DataGridViewImageColumn btnExcluir;
+        private DateTimePicker dtpDataNascGclientes;
+        private Label lblLimparFiltro;
     }
 }

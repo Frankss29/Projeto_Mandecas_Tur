@@ -33,6 +33,7 @@ namespace Login
         public Home()
         {
             InitializeComponent();
+            MoverLinhaNav(btnGestaoClientes);
             UC_GestaoClientes uc = new UC_GestaoClientes();
             addUserControl(uc);
 
@@ -100,6 +101,18 @@ namespace Login
 
 
         #region Botões de Controle - Navegação - Menu
+
+        private void MoverLinhaNav(Control btn)
+        {
+            // Ajusta a largura da linha para ser igual à do botão clicado
+            pnlNav.Width = btn.Width;
+            // Move a posição da linha para alinhar com o botão
+            pnlNav.Left = btn.Left;
+            // Garante que a linha fique visível (caso esteja escondida)
+            pnlNav.Visible = true;
+        }
+
+
         private void addUserControl(UserControl userControl)
         {
             panelContainer.Controls.Clear();
@@ -121,30 +134,35 @@ namespace Login
 
         private void btnGestaoClientes_Click(object sender, EventArgs e)
         {
+            MoverLinhaNav((Control)sender); // A mágica acontece aqui
             UC_GestaoClientes Home = new UC_GestaoClientes();
             addUserControl(Home);
         }
 
         private void btnGestaoViagens_Click(object sender, EventArgs e)
         {
+            MoverLinhaNav((Control)sender); // A mágica acontece aqui
             UC_GestaoViagens Viagem = new UC_GestaoViagens();
             addUserControl(Viagem);
         }
 
         private void btnFinanceiro_Click(object sender, EventArgs e)
         {
+            MoverLinhaNav((Control)sender); // A mágica acontece aqui
             UC_Financeiro Financeiro = new UC_Financeiro();
             addUserControl(Financeiro);
         }
 
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
+            MoverLinhaNav((Control)sender); // A mágica acontece aqui
             UC_Relatorio Relatorio = new UC_Relatorio();
             addUserControl(Relatorio);
         }
 
         private void btnFuncionario_Click(object sender, EventArgs e)
         {
+            MoverLinhaNav((Control)sender); // A mágica acontece aqui
             UC_Funcionario Funcionario = new UC_Funcionario();
             addUserControl(Funcionario);
         }
