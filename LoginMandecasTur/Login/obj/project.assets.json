@@ -596,19 +596,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\FRAN SANTOS\\.nuget\\packages\\": {}
+    "C:\\Users\\juliana.snasciment18\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
+      "projectUniqueName": "C:\\Users\\juliana.snasciment18\\Desktop\\Projeto-TI\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
       "projectName": "Login",
-      "projectPath": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
-      "packagesPath": "C:\\Users\\FRAN SANTOS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\obj\\",
+      "projectPath": "C:\\Users\\juliana.snasciment18\\Desktop\\Projeto-TI\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
+      "packagesPath": "C:\\Users\\juliana.snasciment18\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\juliana.snasciment18\\Desktop\\Projeto-TI\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\FRAN SANTOS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\juliana.snasciment18\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -616,6 +621,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -664,7 +670,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -16,5 +16,15 @@ namespace Login.UseControls
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UC_EditarAcesso_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
