@@ -73,6 +73,7 @@ namespace Login.UseControls
                 cmd.Parameters.AddWithValue("@id_cliente", id_usuario);
                 cmd.ExecuteNonQuery();
 
+
                 MessageBox.Show("Cadastro Atualizado com Sucesso");
             }
             catch (Exception ex)
@@ -86,7 +87,7 @@ namespace Login.UseControls
         private void UC_EditarCliente_Load(object sender, EventArgs e)
         {
             carregar();
-            lbIDCliente.Text = id_usuario.ToString();
+            lbIDCliente.Text = id_usuario.ToString(); //Aparece ID
         }
 
         private void btnCancelarEditarCliente_Click(object sender, EventArgs e)
