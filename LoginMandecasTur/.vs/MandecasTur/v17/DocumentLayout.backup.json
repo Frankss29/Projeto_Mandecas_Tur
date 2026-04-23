@@ -1,26 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\",
+  "WorkspaceRootPath": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|c:\\users\\fran santos\\source\\repos\\projeto_mandecas_tur\\loginmandecastur\\login\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|solutionrelative:login\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|c:\\users\\skarllate.lrlsantos\\desktop\\projeto\\projeto_mandecas_tur\\loginmandecastur\\login\\usecontrols\\uc_funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|solutionrelative:login\\usecontrols\\uc_funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|c:\\users\\fran santos\\source\\repos\\projeto_mandecas_tur\\loginmandecastur\\login\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|solutionrelative:login\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|c:\\users\\skarllate.lrlsantos\\desktop\\projeto\\projeto_mandecas_tur\\loginmandecastur\\login\\usecontrols\\uc_funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|solutionrelative:login\\usecontrols\\uc_funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|c:\\users\\fran santos\\source\\repos\\projeto_mandecas_tur\\loginmandecastur\\login\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|solutionrelative:login\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|c:\\users\\skarllate.lrlsantos\\desktop\\projeto\\projeto_mandecas_tur\\loginmandecastur\\login\\usecontrols\\uc_gestaoclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|solutionrelative:login\\usecontrols\\uc_gestaoclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|c:\\users\\fran santos\\source\\repos\\projeto_mandecas_tur\\loginmandecastur\\login\\botaomandecas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|solutionrelative:login\\botaomandecas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|c:\\users\\fran santos\\source\\repos\\projeto_mandecas_tur\\loginmandecastur\\login\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|solutionrelative:login\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|c:\\users\\skarllate.lrlsantos\\desktop\\projeto\\projeto_mandecas_tur\\loginmandecastur\\login\\usecontrols\\uc_gestaoclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C7223F48-A9ED-4652-BEAF-38F95B36C655}|Login\\Login.csproj|solutionrelative:login\\usecontrols\\uc_gestaoclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,70 +26,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Home.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Home.cs",
-              "RelativeDocumentMoniker": "Login\\Home.cs",
-              "ToolTip": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Home.cs [Projeto]",
-              "RelativeToolTip": "Login\\Home.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T20:00:03.413Z",
-              "EditorCaption": " [Projeto]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "BotaoMandecas.cs",
-              "DocumentMoniker": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\BotaoMandecas.cs",
-              "RelativeDocumentMoniker": "Login\\BotaoMandecas.cs",
-              "ToolTip": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\BotaoMandecas.cs",
-              "RelativeToolTip": "Login\\BotaoMandecas.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
+              "Title": "UC_GestaoClientes.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs",
+              "RelativeDocumentMoniker": "Login\\UseControls\\UC_GestaoClientes.cs",
+              "ToolTip": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs [Projeto]",
+              "RelativeToolTip": "Login\\UseControls\\UC_GestaoClientes.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T19:51:00.008Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Form1.cs",
-              "RelativeDocumentMoniker": "Login\\Form1.cs",
-              "ToolTip": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Form1.cs",
-              "RelativeToolTip": "Login\\Form1.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAtwJIAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T19:45:53.052Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Form1.cs",
-              "RelativeDocumentMoniker": "Login\\Form1.cs",
-              "ToolTip": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Form1.cs [Projeto]",
-              "RelativeToolTip": "Login\\Form1.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T19:43:46.746Z",
+              "WhenOpened": "2026-04-22T22:12:49.038Z",
               "EditorCaption": " [Projeto]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Home.cs",
-              "DocumentMoniker": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Home.cs",
-              "RelativeDocumentMoniker": "Login\\Home.cs",
-              "ToolTip": "C:\\Users\\FRAN SANTOS\\source\\repos\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Home.cs",
-              "RelativeToolTip": "Login\\Home.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAqwCMAAAAtAAAAAAAAAA==",
+              "Title": "UC_GestaoClientes.cs",
+              "DocumentMoniker": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs",
+              "RelativeDocumentMoniker": "Login\\UseControls\\UC_GestaoClientes.cs",
+              "ToolTip": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_GestaoClientes.cs",
+              "RelativeToolTip": "Login\\UseControls\\UC_GestaoClientes.cs",
+              "ViewState": "AgIAANgAAAAAAAAAAAAcwPgAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T19:34:26.628Z",
+              "WhenOpened": "2026-04-22T22:12:54.308Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UC_Funcionario.cs",
+              "DocumentMoniker": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_Funcionario.cs",
+              "RelativeDocumentMoniker": "Login\\UseControls\\UC_Funcionario.cs",
+              "ToolTip": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_Funcionario.cs",
+              "RelativeToolTip": "Login\\UseControls\\UC_Funcionario.cs",
+              "ViewState": "AgIAAIkBAAAAAAAAAAAywJ8BAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T22:37:05.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UC_Funcionario.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_Funcionario.cs",
+              "RelativeDocumentMoniker": "Login\\UseControls\\UC_Funcionario.cs",
+              "ToolTip": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\UseControls\\UC_Funcionario.cs [Projeto]",
+              "RelativeToolTip": "Login\\UseControls\\UC_Funcionario.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T23:00:06.513Z",
+              "EditorCaption": " [Projeto]"
             }
           ]
         }

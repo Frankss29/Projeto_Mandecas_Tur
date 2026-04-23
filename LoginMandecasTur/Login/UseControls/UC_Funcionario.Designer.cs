@@ -35,12 +35,6 @@
             btnBuscarFuncionario = new BotaoPadraoMandecas();
             txtBuscaFuncionario = new TextBox();
             dvgFuncionarios = new DataGridView();
-            colID = new DataGridViewTextBoxColumn();
-            colNome = new DataGridViewTextBoxColumn();
-            colCPF = new DataGridViewTextBoxColumn();
-            colEmail = new DataGridViewTextBoxColumn();
-            colSenha = new DataGridViewTextBoxColumn();
-            colPermissao = new DataGridViewTextBoxColumn();
             btnEditar = new DataGridViewImageColumn();
             btnExcluir = new DataGridViewImageColumn();
             pnlCadastraAcesso = new Panel();
@@ -61,6 +55,7 @@
             txtNomeCAcesso = new TextBox();
             lbCPFAcesso = new Label();
             lbNomeCAcesso = new Label();
+            lblLimparFiltro = new Label();
             ((System.ComponentModel.ISupportInitialize)dvgFuncionarios).BeginInit();
             pnlCadastraAcesso.SuspendLayout();
             pnlTitulo.SuspendLayout();
@@ -90,6 +85,7 @@
             txtBuscaFuncionario.Size = new Size(415, 23);
             txtBuscaFuncionario.TabIndex = 2;
             txtBuscaFuncionario.TextChanged += txtBuscaFuncionario_TextChanged;
+            txtBuscaFuncionario.KeyDown += txtNomeCAcesso_KeyDown;
             // 
             // dvgFuncionarios
             // 
@@ -109,7 +105,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dvgFuncionarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dvgFuncionarios.ColumnHeadersHeight = 40;
-            dvgFuncionarios.Columns.AddRange(new DataGridViewColumn[] { colID, colNome, colCPF, colEmail, colSenha, colPermissao, btnEditar, btnExcluir });
+            dvgFuncionarios.Columns.AddRange(new DataGridViewColumn[] { btnEditar, btnExcluir });
             dvgFuncionarios.EnableHeadersVisualStyles = false;
             dvgFuncionarios.Location = new Point(39, 109);
             dvgFuncionarios.Name = "dvgFuncionarios";
@@ -119,42 +115,6 @@
             dvgFuncionarios.TabIndex = 5;
             dvgFuncionarios.CellClick += dvgFuncionarios_CellClick;
             dvgFuncionarios.Paint += dvgFuncionarios_Paint;
-            // 
-            // colID
-            // 
-            colID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colID.HeaderText = "ID";
-            colID.Name = "colID";
-            // 
-            // colNome
-            // 
-            colNome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colNome.HeaderText = "Nome";
-            colNome.Name = "colNome";
-            // 
-            // colCPF
-            // 
-            colCPF.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colCPF.HeaderText = "CPF";
-            colCPF.Name = "colCPF";
-            // 
-            // colEmail
-            // 
-            colEmail.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colEmail.HeaderText = "Email";
-            colEmail.Name = "colEmail";
-            // 
-            // colSenha
-            // 
-            colSenha.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colSenha.HeaderText = "Senha";
-            colSenha.Name = "colSenha";
-            // 
-            // colPermissao
-            // 
-            colPermissao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colPermissao.HeaderText = "Permissão";
-            colPermissao.Name = "colPermissao";
             // 
             // btnEditar
             // 
@@ -214,7 +174,8 @@
             CBPerfilAcesso.Location = new Point(414, 109);
             CBPerfilAcesso.Name = "CBPerfilAcesso";
             CBPerfilAcesso.Size = new Size(172, 23);
-            CBPerfilAcesso.TabIndex = 16;
+            CBPerfilAcesso.TabIndex = 4;
+            CBPerfilAcesso.KeyDown += txtNomeCAcesso_KeyDown;
             // 
             // pnlTitulo
             // 
@@ -270,6 +231,7 @@
             btnCancelarCAcesso.TabIndex = 13;
             btnCancelarCAcesso.Text = "Cancelar";
             btnCancelarCAcesso.UseVisualStyleBackColor = false;
+            btnCancelarCAcesso.Click += btnCancelarCAcesso_Click;
             // 
             // btnSalvarCAcesso
             // 
@@ -282,7 +244,7 @@
             btnSalvarCAcesso.Location = new Point(104, 9);
             btnSalvarCAcesso.Name = "btnSalvarCAcesso";
             btnSalvarCAcesso.Size = new Size(82, 26);
-            btnSalvarCAcesso.TabIndex = 14;
+            btnSalvarCAcesso.TabIndex = 5;
             btnSalvarCAcesso.Text = "Salvar";
             btnSalvarCAcesso.UseVisualStyleBackColor = false;
             btnSalvarCAcesso.Click += btnSalvarCAcesso_Click;
@@ -302,7 +264,8 @@
             txtSenhaCAcesso.Location = new Point(592, 65);
             txtSenhaCAcesso.Name = "txtSenhaCAcesso";
             txtSenhaCAcesso.Size = new Size(110, 23);
-            txtSenhaCAcesso.TabIndex = 10;
+            txtSenhaCAcesso.TabIndex = 2;
+            txtSenhaCAcesso.KeyDown += txtNomeCAcesso_KeyDown;
             // 
             // lbSenhaCAcesso
             // 
@@ -320,7 +283,8 @@
             txtEmailCAcesso.Location = new Point(62, 109);
             txtEmailCAcesso.Name = "txtEmailCAcesso";
             txtEmailCAcesso.Size = new Size(235, 23);
-            txtEmailCAcesso.TabIndex = 8;
+            txtEmailCAcesso.TabIndex = 3;
+            txtEmailCAcesso.KeyDown += txtNomeCAcesso_KeyDown;
             // 
             // lbEmailCAcesso
             // 
@@ -348,7 +312,8 @@
             txtCPFCAcesso.Location = new Point(352, 65);
             txtCPFCAcesso.Name = "txtCPFCAcesso";
             txtCPFCAcesso.Size = new Size(176, 23);
-            txtCPFCAcesso.TabIndex = 4;
+            txtCPFCAcesso.TabIndex = 1;
+            txtCPFCAcesso.KeyDown += txtNomeCAcesso_KeyDown;
             // 
             // txtNomeCAcesso
             // 
@@ -356,7 +321,8 @@
             txtNomeCAcesso.Location = new Point(62, 66);
             txtNomeCAcesso.Name = "txtNomeCAcesso";
             txtNomeCAcesso.Size = new Size(235, 23);
-            txtNomeCAcesso.TabIndex = 3;
+            txtNomeCAcesso.TabIndex = 0;
+            txtNomeCAcesso.KeyDown += txtNomeCAcesso_KeyDown;
             // 
             // lbCPFAcesso
             // 
@@ -378,11 +344,22 @@
             lbNomeCAcesso.TabIndex = 1;
             lbNomeCAcesso.Text = "Nome:";
             // 
+            // lblLimparFiltro
+            // 
+            lblLimparFiltro.AutoSize = true;
+            lblLimparFiltro.Location = new Point(561, 58);
+            lblLimparFiltro.Name = "lblLimparFiltro";
+            lblLimparFiltro.Size = new Size(129, 15);
+            lblLimparFiltro.TabIndex = 7;
+            lblLimparFiltro.Text = "Limpar Filtros de Busca";
+            lblLimparFiltro.Click += lblLimparFiltro_Click;
+            // 
             // UC_Funcionario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
+            Controls.Add(lblLimparFiltro);
             Controls.Add(pnlCadastraAcesso);
             Controls.Add(dvgFuncionarios);
             Controls.Add(btnBuscarFuncionario);
@@ -405,14 +382,6 @@
         private BotaoPadraoMandecas btnBuscarFuncionario;
         private TextBox txtBuscaFuncionario;
         private DataGridView dvgFuncionarios;
-        private DataGridViewTextBoxColumn colID;
-        private DataGridViewTextBoxColumn colNome;
-        private DataGridViewTextBoxColumn colCPF;
-        private DataGridViewTextBoxColumn colEmail;
-        private DataGridViewTextBoxColumn colSenha;
-        private DataGridViewTextBoxColumn colPermissao;
-        private DataGridViewImageColumn btnEditar;
-        private DataGridViewImageColumn btnExcluir;
         private Panel pnlCadastraAcesso;
         private Panel pnlTitulo;
         private Label lbCadastraAcesso;
@@ -431,5 +400,8 @@
         private Label lbCPFAcesso;
         private Label lbNomeCAcesso;
         private ComboBox CBPerfilAcesso;
+        private Label lblLimparFiltro;
+        private DataGridViewImageColumn btnEditar;
+        private DataGridViewImageColumn btnExcluir;
     }
 }

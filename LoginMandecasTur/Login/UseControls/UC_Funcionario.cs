@@ -1,4 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Globalization;
+using System.Threading;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace Login.UseControls
 {
@@ -38,6 +41,69 @@ namespace Login.UseControls
 
 
         }
+
+        public void AtualizarGrid()
+        {
+            Conexao conexao = new Conexao();
+            MySqlConnection con = conexao.Conectar();
+
+            try
+            {
+                con.Open();
+                string sqlMostrar = "SELECT id_funcionario, nome, documento, email, perfil_acesso FROM funcionario";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sqlMostrar, con);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dvgFuncionarios.DataSource = dt;
+
+                if (dvgFuncionarios.Columns.Contains("id_funcionario"))
+                {
+                    dvgFuncionarios.Columns["id_funcionario"].HeaderText = "Código";
+                    dvgFuncionarios.Columns["id_funcionario"].DisplayIndex = 0;
+
+                }
+
+                if (dvgFuncionarios.Columns.Contains("nome"))
+                {
+                    dvgFuncionarios.Columns["nome"].HeaderText = "Nome Completo";
+                    dvgFuncionarios.Columns["nome"].DisplayIndex = 1;
+                }
+
+                if (dvgFuncionarios.Columns.Contains("documento"))
+                {
+                    dvgFuncionarios.Columns["documento"].HeaderText = "CPF";
+                    dvgFuncionarios.Columns["documento"].DisplayIndex = 2;
+                }
+
+                if (dvgFuncionarios.Columns.Contains("email"))
+                {
+                    dvgFuncionarios.Columns["email"].HeaderText = "Email";
+                    dvgFuncionarios.Columns["email"].DisplayIndex = 3;
+                }
+
+                if (dvgFuncionarios.Columns.Contains("perfil_acesso"))
+                {
+                    dvgFuncionarios.Columns["perfil_acesso"].HeaderText = "Perfil de Acesso";
+                    dvgFuncionarios.Columns["perfil_acesso"].DisplayIndex = 4;
+                }
+
+                if (dvgFuncionarios.Columns.Contains("btnEditar"))
+                    dvgFuncionarios.Columns["btnEditar"].DisplayIndex = 5;
+
+                if (dvgFuncionarios.Columns.Contains("btnExcluir"))
+                    dvgFuncionarios.Columns["btnExcluir"].DisplayIndex = 6;
+
+                lblLimparFiltro.Visible = false; // Esconde a label
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro no sistema.");
+            }
+
+
+        }
+
 
 
         private void dvgFuncionarios_Paint(object sender, PaintEventArgs e)
@@ -75,41 +141,67 @@ namespace Login.UseControls
             // 1. Ignora se clicar no cabeçalho
             if (e.RowIndex < 0) return;
 
-            if (e.RowIndex >= 0 &&
-                   dvgFuncionarios.Columns[e.ColumnIndex].Name == "btnEditar")
+
+            // Identifica qual coluna foi clicada pelo Nome
+            string nomeColuna = dvgFuncionarios.Columns[e.ColumnIndex].Name;
+
+            // --- LÓGICA DO EDITAR ---
+            if (nomeColuna == "btnEditar")
             {
-                // Busca o formulário Home (onde a UC está inserida)
                 Form homeForm = this.ParentForm;
 
                 if (homeForm != null)
                 {
-                    // PROCURA o panelContainer dentro da Home, mesmo que ele esteja "escondido"
                     Control[] controls = homeForm.Controls.Find("panelContainer", true);
-
                     if (controls.Length > 0 && controls[0] is Panel pnlPrincipal)
                     {
                         pnlPrincipal.Controls.Clear();
-                        UC_EditarAcesso EditarAcesso = new UC_EditarAcesso();
-                        EditarAcesso.Dock = DockStyle.Fill;
-                        pnlPrincipal.Controls.Add(EditarAcesso);
+                        UC_EditarCliente EditarCliente = new UC_EditarCliente();
+                        EditarCliente.Dock = DockStyle.Fill;
+                        pnlPrincipal.Controls.Add(EditarCliente);
                     }
                     else
                     {
-                        // Se cair aqui, é porque o nome do Painel na Home não é "panelContainer"
-                        MessageBox.Show("Não encontrei o painel de destino no formulário principal.");
+                        MessageBox.Show("Não encontrei o painel de destino (panelContainer) no formulário principal.");
                     }
                 }
+            }
 
-                // --- LÓGICA DO EXCLUIR ---
-                else if (dvgFuncionarios.Columns[e.ColumnIndex].Name == "btnExcluir")
+            // --- LÓGICA DO EXCLUIR ---
+            else if (nomeColuna == "btnExcluir")
+            {
+                var confirmacao = MessageBox.Show("Tem certeza que deseja excluir?", "Atenção",
+                                  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirmacao == DialogResult.Yes)
                 {
-                    var confirmacao = MessageBox.Show("Tem certeza que deseja excluir?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (confirmacao == DialogResult.Yes)
-                    {
-                        // Código para deletar aqui
-                    }
-                }
+                    Conexao conexao = new Conexao();
+                    MySqlConnection con = conexao.Conectar();
 
+                    // O código para remover a linha da grid ou do banco entra aqui
+                    int idSelecionado;
+                    idSelecionado = Convert.ToInt32(dvgFuncionarios.CurrentRow.Cells["id_funcionario"].Value);
+
+                    try
+                    {
+                        con.Open();
+                        string sqlDelete = "DELETE FROM funcionario WHERE id_funcionario = @id_funcionario";
+                        MySqlCommand cmd = new MySqlCommand(sqlDelete, con);
+                        cmd.Parameters.AddWithValue("@id_funcionario", idSelecionado);
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Cliente Excluido com Sucesso!!!");
+
+                        AtualizarGrid();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro no sistema.");
+                    }
+
+
+                }
             }
         }
 
@@ -132,6 +224,9 @@ namespace Login.UseControls
             adp.Fill(dt);
 
             dvgFuncionarios.DataSource = dt;
+
+            AtualizarGrid();
+
         }
 
 
@@ -173,12 +268,12 @@ namespace Login.UseControls
 
                 dvgFuncionarios.DataSource = dt;
 
-              
+                AtualizarGrid();
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Erro no sistema.");
             }
             finally
             {
@@ -186,84 +281,66 @@ namespace Login.UseControls
             }
 
         }
-
-        private void btnBuscarFuncionario_Click(object sender, EventArgs e)
+        private void RealizarBusca()
         {
             Conexao conexao = new Conexao();
             MySqlConnection conn = conexao.Conectar();
 
+            string textoBusca = txtBuscaFuncionario.Text.Trim();
+            string sql;
             try
             {
-                conn.Open();
-                string texto = txtBuscaFuncionario.Text.Trim();
-                string sql;
+                // SQL que busca em ambas as colunas ao mesmo tempo
+                sql = "SELECT id_funcionario, nome, documento, email, perfil_acesso FROM funcionario WHERE " +
+                     " nome LIKE @valor OR documento LIKE @valor";
 
-                // 1. Tenta converter para número para saber se é ID ou CPF
-                bool ehNumero = long.TryParse(texto, out _);
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                if (ehNumero && texto.Length <= 4)
+                // O uso do % antes e depois permite encontrar resultados que contenham o termo
+                // Ex: Se digitar "123", encontra o CPF "000.123.000-00"
+                cmd.Parameters.AddWithValue("@valor", "%" + textoBusca + "%");
+
+                MySqlDataAdapter adt = new MySqlDataAdapter(cmd);
+                DataTable dtt = new DataTable();
+                adt.Fill(dtt);
+
+                dvgFuncionarios.DataSource = dtt;
+
+                // Se o campo de busca não estiver vazio, mostra a label
+                if (!string.IsNullOrWhiteSpace(txtBuscaFuncionario.Text))
                 {
-                    // Se for número e tiver até 4 dígitos, tratamos como ID:
-                    sql = "SELECT id_funcionario, nome, email FROM funcionario WHERE id_funcionario LIKE @id_funcionario";
-                    MySqlCommand cmd4 = new MySqlCommand(sql, conn);
-                    cmd4.Parameters.AddWithValue("@id_funcionario", "%" + texto + "%");
-
-                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd4);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-                    dvgFuncionarios.DataSource = dt;
-
-                    txtBuscaFuncionario.Clear();
-                    txtBuscaFuncionario.Focus();
-
-
+                    lblLimparFiltro.Visible = true;
                 }
-                else if (ehNumero && texto.Length >= 11)
-                {
-                    // Se for número e tiver 11 ou mais dígitos, tratamos como CPF:
-                    sql = "SELECT id_funcionario, nome, email FROM funcionario WHERE documento LIKE @cpf";
-                    MySqlCommand cmd2 = new MySqlCommand(sql, conn);
-                    cmd2.Parameters.AddWithValue("@cpf", "%" + texto + "%");
 
-                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd2);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-                    dvgFuncionarios.DataSource = dt;
-
-                    txtBuscaFuncionario.Clear();
-                    txtBuscaFuncionario.Focus();
-
-                }
-                else
-                {
-
-                    sql = "SELECT id_funcionario, nome, email FROM funcionario WHERE nome LIKE @nome";
-                    MySqlCommand cmd3 = new MySqlCommand(sql, conn);
-                    cmd3.Parameters.AddWithValue("@nome", "%" + texto + "%");
-
-                    MySqlDataAdapter adp  = new MySqlDataAdapter(cmd3);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-                    dvgFuncionarios.DataSource = dt;
-
-                    txtBuscaFuncionario.Clear();
-                    txtBuscaFuncionario.Focus();
-
-                }
-              
             }
+
 
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Erro no sistema.");
 
             }
             finally
             {
-                conn.Close(); 
+                conn.Close();
             }
-
         }
+
+        private void btnBuscarFuncionario_Click(object sender, EventArgs e)
+        {
+            RealizarBusca();
+        }
+
+
+        /*private void txtBuscaFuncionario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Remove o som de erro
+                RealizarBusca(); // Mesma função, sem duplicar nada
+            }
+        }*/
+
 
         private void txtBuscaFuncionario_TextChanged(object sender, EventArgs e)
         {
@@ -283,8 +360,60 @@ namespace Login.UseControls
 
                 // 4. Joga o cursor para o final do texto (se não ele volta pro começo!)
                 txtBuscaFuncionario.SelectionStart = txtBuscaFuncionario.Text.Length;
+
+                if (string.IsNullOrWhiteSpace(txtBuscaFuncionario.Text))
+                {
+                    AtualizarGrid();
+                }
             }
         }
-    
+
+
+        private void btnCancelarCAcesso_Click(object sender, EventArgs e)
+        {
+            txtNomeCAcesso.Clear();
+            txtCPFCAcesso.Clear();
+            txtSenhaCAcesso.Clear();
+            txtEmailCAcesso.Clear();
+
+
+        }
+
+        private void lblLimparFiltro_Click(object sender, EventArgs e)
+        {
+            txtBuscaFuncionario.Clear();   // Limpa o campo de busca
+            AtualizarGrid();   // Chama sua função que dá o SELECT sem WHERE
+            lblLimparFiltro.Visible = false; // Esconde a label novamente
+        }
+
+        private void lblLimparFiltro_MouseEnter(object sender, EventArgs e)
+        {
+            lblLimparFiltro.Font = new Font(lblLimparFiltro.Font, FontStyle.Underline); // Adiciona sublinhado
+        }
+
+        private void lblLimparFiltro_MouseLeave(object sender, EventArgs e)
+        {
+            lblLimparFiltro.Font = new Font(lblLimparFiltro.Font, FontStyle.Regular);   // Remove sublinhado
+        }
+
+        private void txtNomeCAcesso_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Remove o som do "beep"
+
+                // O 'sender' é o campo que o usuário está usando no momento
+                if (sender == txtBuscaFuncionario)
+                {
+                    // Se o campo for o de busca, ele chama a função de buscar
+                    RealizarBusca();
+                }
+                else
+                {
+                    // Se for qualquer outro campo (Nome, CPF, etc.), ele chama o Salvar
+                    btnSalvarCAcesso.PerformClick();
+                }
+            }
+        }
     }
 }

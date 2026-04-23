@@ -1,3 +1,7 @@
+// Importante ter isso no topo
+
+// Defina a cultura ANTES de qualquer coisa
+ 
 namespace Login
 {
     internal static class Program
