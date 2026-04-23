@@ -14,7 +14,11 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Login
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\juliana.snasciment18\Desktop\Projeto-TI\Projeto_Mandecas_Tur\LoginMandecasTur\Login\
+=======
+build_property.ProjectDir = C:\Users\melyssa.esoliveira\source\mandecas\Projeto_Mandecas_Tur\LoginMandecasTur\Login\
+>>>>>>> 1492af3 ( tela de Editar Cliente Logica)
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false

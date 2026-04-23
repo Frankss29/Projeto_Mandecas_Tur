@@ -32,7 +32,7 @@
             lbEditarCliente = new Label();
             panelSeparador1 = new Panel();
             panelEditarCliente = new Panel();
-            txtDataNascEditarCliente = new TextBox();
+            dtpDataNascimento = new DateTimePicker();
             btnCancelarEditarCliente = new BotaoPadraoMandecas();
             panelSeparador2 = new Panel();
             btnSalvarEditarCliente = new BotaoPadraoMandecas();
@@ -78,7 +78,7 @@
             // panelEditarCliente
             // 
             panelEditarCliente.BackColor = Color.White;
-            panelEditarCliente.Controls.Add(txtDataNascEditarCliente);
+            panelEditarCliente.Controls.Add(dtpDataNascimento);
             panelEditarCliente.Controls.Add(btnCancelarEditarCliente);
             panelEditarCliente.Controls.Add(panelSeparador2);
             panelEditarCliente.Controls.Add(btnSalvarEditarCliente);
@@ -96,12 +96,13 @@
             panelEditarCliente.Size = new Size(673, 288);
             panelEditarCliente.TabIndex = 21;
             // 
-            // txtDataNascEditarCliente
+            // dtpDataNascimento
             // 
-            txtDataNascEditarCliente.Location = new Point(215, 94);
-            txtDataNascEditarCliente.Name = "txtDataNascEditarCliente";
-            txtDataNascEditarCliente.Size = new Size(405, 23);
-            txtDataNascEditarCliente.TabIndex = 12;
+            dtpDataNascimento.Format = DateTimePickerFormat.Short;
+            dtpDataNascimento.Location = new Point(215, 96);
+            dtpDataNascimento.Name = "dtpDataNascimento";
+            dtpDataNascimento.Size = new Size(405, 23);
+            dtpDataNascimento.TabIndex = 17;
             // 
             // btnCancelarEditarCliente
             // 
@@ -114,8 +115,9 @@
             btnCancelarEditarCliente.Name = "btnCancelarEditarCliente";
             btnCancelarEditarCliente.Size = new Size(95, 34);
             btnCancelarEditarCliente.TabIndex = 1;
-            btnCancelarEditarCliente.Text = "Cancelar";
+            btnCancelarEditarCliente.Text = "Voltar";
             btnCancelarEditarCliente.UseVisualStyleBackColor = false;
+            btnCancelarEditarCliente.Click += btnCancelarEditarCliente_Click;
             // 
             // panelSeparador2
             // 
@@ -132,12 +134,13 @@
             btnSalvarEditarCliente.FlatStyle = FlatStyle.Flat;
             btnSalvarEditarCliente.Font = new Font("Segoe UI Semibold", 11F);
             btnSalvarEditarCliente.ForeColor = Color.Black;
-            btnSalvarEditarCliente.Location = new Point(351, 238);
+            btnSalvarEditarCliente.Location = new Point(346, 238);
             btnSalvarEditarCliente.Name = "btnSalvarEditarCliente";
             btnSalvarEditarCliente.Size = new Size(95, 34);
             btnSalvarEditarCliente.TabIndex = 1;
             btnSalvarEditarCliente.Text = "Salvar";
             btnSalvarEditarCliente.UseVisualStyleBackColor = false;
+            btnSalvarEditarCliente.Click += btnSalvarEditarCliente_Click;
             // 
             // txtEmail
             // 
@@ -222,6 +225,7 @@
             Controls.Add(panelSeparador1);
             Name = "UC_EditarCliente";
             Size = new Size(826, 506);
+            Load += UC_EditarCliente_Load;
             panelEditarCliente.ResumeLayout(false);
             panelEditarCliente.PerformLayout();
             ResumeLayout(false);
@@ -234,7 +238,6 @@
         private Label lbEditarCliente;
         private Panel panelSeparador1;
         private Panel panelEditarCliente;
-        private TextBox txtDataNascEditarCliente;
         private BotaoPadraoMandecas btnCancelarEditarCliente;
         private Panel panelSeparador2;
         private BotaoPadraoMandecas btnSalvarEditarCliente;
@@ -247,5 +250,6 @@
         private Label lbEmailEditarCliente;
         private TextBox txtNomeCompleto;
         private TextBox txtTelefoneEditarCliente;
+        private DateTimePicker dtpDataNascimento;
     }
 }
