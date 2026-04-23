@@ -168,5 +168,10 @@ namespace Login
         }
 
         #endregion
+
+        private void panelContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

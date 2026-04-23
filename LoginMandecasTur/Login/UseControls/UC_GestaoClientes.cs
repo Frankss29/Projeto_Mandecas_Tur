@@ -155,15 +155,19 @@ namespace Login.UseControls
 
         private void dvgClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 1. Ignora se clicar no cabeçalho ou fora de uma linha válida
+            // ✅ 1. Ignora clique no cabeçalho
             if (e.RowIndex < 0) return;
 
-            // Identifica qual coluna foi clicada pelo Nome
+            // ✅ 2. Descobre qual coluna foi clicada
             string nomeColuna = dvgClientes.Columns[e.ColumnIndex].Name;
 
-            // --- LÓGICA DO EDITAR ---
+            // --- EDITAR ---
             if (nomeColuna == "btnEditar")
             {
+                int idCliente = Convert.ToInt32(
+                    dvgClientes.Rows[e.RowIndex].Cells["id_cliente"].Value
+                );
+
                 Form homeForm = this.ParentForm;
 
                 if (homeForm != null)
@@ -173,48 +177,51 @@ namespace Login.UseControls
                     if (controls.Length > 0 && controls[0] is Panel pnlPrincipal)
                     {
                         pnlPrincipal.Controls.Clear();
-                        UC_EditarCliente EditarCliente = new UC_EditarCliente();
-                        EditarCliente.Dock = DockStyle.Fill;
-                        pnlPrincipal.Controls.Add(EditarCliente);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Não encontrei o painel de destino (panelContainer) no formulário principal.");
+
+                        UC_EditarCliente editarCliente = new UC_EditarCliente(idCliente);
+                        editarCliente.Dock = DockStyle.Fill;
+                        pnlPrincipal.Controls.Add(editarCliente);
                     }
                 }
             }
-            // --- LÓGICA DO EXCLUIR ---
+            // --- EXCLUIR ---
             else if (nomeColuna == "btnExcluir")
             {
-                var confirmacao = MessageBox.Show("Tem certeza que deseja excluir?", "Atenção",
-                                  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var confirmacao = MessageBox.Show(
+                    "Tem certeza que deseja excluir?",
+                    "Atenção",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
                 if (confirmacao == DialogResult.Yes)
                 {
+                    int idSelecionado = Convert.ToInt32(
+                        dvgClientes.Rows[e.RowIndex].Cells["id_cliente"].Value
+                    );
+
                     Conexao conexao = new Conexao();
-                    MySqlConnection con = conexao.Conectar();
-
-                    // O código para remover a linha da grid ou do banco entra aqui
-                    int idSelecionado;
-                    idSelecionado = Convert.ToInt32(dvgClientes.CurrentRow.Cells["id_cliente"].Value);
-
-                    try
+                    using (MySqlConnection con = conexao.Conectar())
                     {
-                        con.Open();
-                        string sqlDelete = "DELETE FROM Cliente WHERE id_cliente = @id_cliente";
-                        MySqlCommand cmd = new MySqlCommand(sqlDelete, con);
-                        cmd.Parameters.AddWithValue("@id_cliente", idSelecionado);
+                        try
+                        {
+                            con.Open();
+                            string sqlDelete = "DELETE FROM Cliente WHERE id_cliente = @id_cliente";
+                            MySqlCommand cmd = new MySqlCommand(sqlDelete, con);
+                            cmd.Parameters.AddWithValue("@id_cliente", idSelecionado);
+                            cmd.ExecuteNonQuery();
 
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show("Cliente Excluido com Sucesso!!");
-
-                        AtualizarGrid();
+                            MessageBox.Show("Cliente excluído com sucesso!");
+                            AtualizarGrid();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
-                    catch (Exception ex) { }
                 }
             }
-        }
+         }
 
 
 

@@ -156,7 +156,7 @@ namespace Login.UseControls
                     if (controls.Length > 0 && controls[0] is Panel pnlPrincipal)
                     {
                         pnlPrincipal.Controls.Clear();
-                        UC_EditarCliente EditarCliente = new UC_EditarCliente();
+                        UC_EditarAcesso EditarCliente = new UC_EditarAcesso();
                         EditarCliente.Dock = DockStyle.Fill;
                         pnlPrincipal.Controls.Add(EditarCliente);
                     }
@@ -281,24 +281,34 @@ namespace Login.UseControls
             }
 
         }
+
+        private string LimparCPF(string cpf)
+        {
+            // Remove pontos, traços e espaços (caso tenha ficado algum) para podermos fazer a Busca.
+            return cpf.Replace(".", "").Replace("-", "").Replace(" ", "");
+        }
+
         private void RealizarBusca()
         {
+            string textoBusca = txtBuscaFuncionario.Text.Trim();
+            string cpfLimpo = LimparCPF(textoBusca); 
+
             Conexao conexao = new Conexao();
             MySqlConnection conn = conexao.Conectar();
 
-            string textoBusca = txtBuscaFuncionario.Text.Trim();
-            string sql;
             try
             {
-                // SQL que busca em ambas as colunas ao mesmo tempo
-                sql = "SELECT id_funcionario, nome, documento, email, perfil_acesso FROM funcionario WHERE " +
-                     " nome LIKE @valor OR documento LIKE @valor";
+                // Criamos dois parâmetros diferentes (@nome e @documento)
+                string sql = "SELECT id_funcionario, nome, documento, email, perfil_acesso FROM funcionario " +
+                             "WHERE nome LIKE @nome OR documento LIKE @documento";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                // O uso do % antes e depois permite encontrar resultados que contenham o termo
-                // Ex: Se digitar "123", encontra o CPF "000.123.000-00"
-                cmd.Parameters.AddWithValue("@valor", "%" + textoBusca + "%");
+                // Parametro 1: Busca pelo nome (com o texto original)
+                cmd.Parameters.AddWithValue("@nome", "%" + textoBusca + "%");
+
+                // Parametro 2: Busca pelo documento (com o texto limpo pela função LimparCPF)
+                cmd.Parameters.AddWithValue("@documento", "%" + cpfLimpo + "%");
 
                 MySqlDataAdapter adt = new MySqlDataAdapter(cmd);
                 DataTable dtt = new DataTable();
@@ -306,19 +316,14 @@ namespace Login.UseControls
 
                 dvgFuncionarios.DataSource = dtt;
 
-                // Se o campo de busca não estiver vazio, mostra a label
                 if (!string.IsNullOrWhiteSpace(txtBuscaFuncionario.Text))
                 {
                     lblLimparFiltro.Visible = true;
                 }
-
             }
-
-
             catch (Exception ex)
             {
-                MessageBox.Show("Erro no sistema.");
-
+                MessageBox.Show("Erro no sistema: " + ex.Message);
             }
             finally
             {
@@ -332,16 +337,7 @@ namespace Login.UseControls
         }
 
 
-        /*private void txtBuscaFuncionario_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true; // Remove o som de erro
-                RealizarBusca(); // Mesma função, sem duplicar nada
-            }
-        }*/
-
-
+     
         private void txtBuscaFuncionario_TextChanged(object sender, EventArgs e)
         {
             // 1. Remove tudo que não for número para processar a máscara
@@ -398,6 +394,7 @@ namespace Login.UseControls
 
         private void txtNomeCAcesso_KeyDown(object sender, KeyEventArgs e)
         {
+            //Esse código é para o ENTER funcionar como o clique
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true; // Remove o som do "beep"

@@ -153,6 +153,7 @@
             panelContainer.Name = "panelContainer";
             panelContainer.Size = new Size(800, 427);
             panelContainer.TabIndex = 4;
+            panelContainer.Paint += panelContainer_Paint;
             // 
             // pnlNavBar
             // 
