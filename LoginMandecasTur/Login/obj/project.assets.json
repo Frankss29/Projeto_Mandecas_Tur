@@ -596,23 +596,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\skarllate.lrlsantos\\.nuget\\packages\\": {},
+    "C:\\Users\\melyssa.esoliveira\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
+      "projectUniqueName": "C:\\Users\\melyssa.esoliveira\\source\\mandecas\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
       "projectName": "Login",
-      "projectPath": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
-      "packagesPath": "C:\\Users\\skarllate.lrlsantos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\obj\\",
+      "projectPath": "C:\\Users\\melyssa.esoliveira\\source\\mandecas\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
+      "packagesPath": "C:\\Users\\melyssa.esoliveira\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\melyssa.esoliveira\\source\\mandecas\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\skarllate.lrlsantos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\melyssa.esoliveira\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

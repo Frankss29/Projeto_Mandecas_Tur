@@ -30,19 +30,19 @@
         {
             pnlTitulo = new Panel();
             pnlCadastro = new Panel();
-            lbNome = new Label();
-            textBox1 = new TextBox();
-            lbCPF = new Label();
-            lbEmail = new Label();
+            btnSalvarEditarAcesso = new BotaoPadraoMandecas();
+            cbmperfil = new ComboBox();
+            pnlEditarCadastro = new Panel();
+            btnVoltar = new BotaoPadraoMandecas();
+            txtemailacesso = new TextBox();
+            txtcpfacesso = new TextBox();
             lbPerfilAcesso = new Label();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            lbEmail = new Label();
+            lbCPF = new Label();
+            txtnomeacesso = new TextBox();
+            lbNome = new Label();
             lbDadosAcesso = new Label();
             lbCodigo = new Label();
-            botaoMandecas1 = new BotaoMandecas();
-            botaoPadraoMandecas1 = new BotaoPadraoMandecas();
-            pnlEditarCadastro = new Panel();
-            comboBox1 = new ComboBox();
             pnlCadastro.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,57 +58,85 @@
             // pnlCadastro
             // 
             pnlCadastro.BackColor = Color.White;
-            pnlCadastro.Controls.Add(comboBox1);
+            pnlCadastro.Controls.Add(btnSalvarEditarAcesso);
+            pnlCadastro.Controls.Add(cbmperfil);
             pnlCadastro.Controls.Add(pnlEditarCadastro);
-            pnlCadastro.Controls.Add(botaoMandecas1);
-            pnlCadastro.Controls.Add(botaoPadraoMandecas1);
-            pnlCadastro.Controls.Add(textBox3);
-            pnlCadastro.Controls.Add(textBox2);
+            pnlCadastro.Controls.Add(btnVoltar);
+            pnlCadastro.Controls.Add(txtemailacesso);
+            pnlCadastro.Controls.Add(txtcpfacesso);
             pnlCadastro.Controls.Add(lbPerfilAcesso);
             pnlCadastro.Controls.Add(lbEmail);
             pnlCadastro.Controls.Add(lbCPF);
-            pnlCadastro.Controls.Add(textBox1);
+            pnlCadastro.Controls.Add(txtnomeacesso);
             pnlCadastro.Controls.Add(lbNome);
             pnlCadastro.Font = new Font("Segoe UI", 9F);
             pnlCadastro.Location = new Point(82, 122);
             pnlCadastro.Name = "pnlCadastro";
             pnlCadastro.Size = new Size(746, 278);
             pnlCadastro.TabIndex = 1;
-
+            pnlCadastro.Paint += pnlCadastro_Paint;
             // 
-            // lbNome
+            // btnSalvarEditarAcesso
             // 
-            lbNome.AutoSize = true;
-            lbNome.Location = new Point(43, 36);
-            lbNome.Name = "lbNome";
-            lbNome.Size = new Size(43, 15);
-            lbNome.TabIndex = 2;
-            lbNome.Text = "Nome:";
+            btnSalvarEditarAcesso.BackColor = Color.FromArgb(68, 252, 124);
+            btnSalvarEditarAcesso.FlatAppearance.BorderSize = 0;
+            btnSalvarEditarAcesso.FlatStyle = FlatStyle.Flat;
+            btnSalvarEditarAcesso.Font = new Font("Segoe UI Semibold", 11F);
+            btnSalvarEditarAcesso.ForeColor = Color.Black;
+            btnSalvarEditarAcesso.Location = new Point(376, 228);
+            btnSalvarEditarAcesso.Name = "btnSalvarEditarAcesso";
+            btnSalvarEditarAcesso.Size = new Size(94, 36);
+            btnSalvarEditarAcesso.TabIndex = 14;
+            btnSalvarEditarAcesso.Text = "Salvar";
+            btnSalvarEditarAcesso.UseVisualStyleBackColor = false;
+            btnSalvarEditarAcesso.Click += btnSalvarEditarAcesso_Click;
             // 
-            // textBox1
+            // cbmperfil
             // 
-            textBox1.Location = new Point(228, 33);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(467, 23);
-            textBox1.TabIndex = 3;
+            cbmperfil.FormattingEnabled = true;
+            cbmperfil.Items.AddRange(new object[] { "Administrador", "Padrão" });
+            cbmperfil.Location = new Point(228, 155);
+            cbmperfil.Name = "cbmperfil";
+            cbmperfil.Size = new Size(467, 23);
+            cbmperfil.TabIndex = 12;
             // 
-            // lbCPF
+            // pnlEditarCadastro
             // 
-            lbCPF.AutoSize = true;
-            lbCPF.Location = new Point(43, 79);
-            lbCPF.Name = "lbCPF";
-            lbCPF.Size = new Size(31, 15);
-            lbCPF.TabIndex = 4;
-            lbCPF.Text = "CPF:";
+            pnlEditarCadastro.BackColor = Color.FromArgb(232, 232, 232);
+            pnlEditarCadastro.Font = new Font("Segoe UI", 9F);
+            pnlEditarCadastro.Location = new Point(0, 208);
+            pnlEditarCadastro.Name = "pnlEditarCadastro";
+            pnlEditarCadastro.Size = new Size(746, 2);
+            pnlEditarCadastro.TabIndex = 1;
             // 
-            // lbEmail
+            // btnVoltar
             // 
-            lbEmail.AutoSize = true;
-            lbEmail.Location = new Point(43, 117);
-            lbEmail.Name = "lbEmail";
-            lbEmail.Size = new Size(39, 15);
-            lbEmail.TabIndex = 5;
-            lbEmail.Text = "Email:";
+            btnVoltar.BackColor = Color.FromArgb(194, 194, 194);
+            btnVoltar.FlatAppearance.BorderSize = 0;
+            btnVoltar.FlatStyle = FlatStyle.Flat;
+            btnVoltar.Font = new Font("Segoe UI Semibold", 11F);
+            btnVoltar.ForeColor = Color.Black;
+            btnVoltar.Location = new Point(266, 228);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.Size = new Size(94, 36);
+            btnVoltar.TabIndex = 13;
+            btnVoltar.Text = "Voltar";
+            btnVoltar.UseVisualStyleBackColor = false;
+            btnVoltar.Click += btnVoltar_Click;
+            // 
+            // txtemailacesso
+            // 
+            txtemailacesso.Location = new Point(228, 109);
+            txtemailacesso.Name = "txtemailacesso";
+            txtemailacesso.Size = new Size(467, 23);
+            txtemailacesso.TabIndex = 8;
+            // 
+            // txtcpfacesso
+            // 
+            txtcpfacesso.Location = new Point(228, 71);
+            txtcpfacesso.Name = "txtcpfacesso";
+            txtcpfacesso.Size = new Size(467, 23);
+            txtcpfacesso.TabIndex = 7;
             // 
             // lbPerfilAcesso
             // 
@@ -119,19 +147,39 @@
             lbPerfilAcesso.TabIndex = 6;
             lbPerfilAcesso.Text = "Perfil de Acesso:";
             // 
-            // textBox2
+            // lbEmail
             // 
-            textBox2.Location = new Point(228, 71);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(467, 23);
-            textBox2.TabIndex = 7;
+            lbEmail.AutoSize = true;
+            lbEmail.Location = new Point(43, 117);
+            lbEmail.Name = "lbEmail";
+            lbEmail.Size = new Size(39, 15);
+            lbEmail.TabIndex = 5;
+            lbEmail.Text = "Email:";
             // 
-            // textBox3
+            // lbCPF
             // 
-            textBox3.Location = new Point(228, 109);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(467, 23);
-            textBox3.TabIndex = 8;
+            lbCPF.AutoSize = true;
+            lbCPF.Location = new Point(43, 79);
+            lbCPF.Name = "lbCPF";
+            lbCPF.Size = new Size(31, 15);
+            lbCPF.TabIndex = 4;
+            lbCPF.Text = "CPF:";
+            // 
+            // txtnomeacesso
+            // 
+            txtnomeacesso.Location = new Point(228, 33);
+            txtnomeacesso.Name = "txtnomeacesso";
+            txtnomeacesso.Size = new Size(467, 23);
+            txtnomeacesso.TabIndex = 3;
+            // 
+            // lbNome
+            // 
+            lbNome.AutoSize = true;
+            lbNome.Location = new Point(43, 36);
+            lbNome.Name = "lbNome";
+            lbNome.Size = new Size(43, 15);
+            lbNome.TabIndex = 2;
+            lbNome.Text = "Nome:";
             // 
             // lbDadosAcesso
             // 
@@ -151,51 +199,6 @@
             lbCodigo.Size = new Size(70, 15);
             lbCodigo.TabIndex = 11;
             lbCodigo.Text = "Codigo: 002";
-            // 
-            // botaoMandecas1
-            // 
-            botaoMandecas1.BackColor = Color.FromArgb(68, 252, 124);
-            botaoMandecas1.FlatAppearance.BorderSize = 0;
-            botaoMandecas1.FlatStyle = FlatStyle.Flat;
-            botaoMandecas1.Font = new Font("Segoe UI Semibold", 11F);
-            botaoMandecas1.ForeColor = Color.Black;
-            botaoMandecas1.Location = new Point(434, 228);
-            botaoMandecas1.Name = "botaoMandecas1";
-            botaoMandecas1.Size = new Size(144, 36);
-            botaoMandecas1.TabIndex = 12;
-            botaoMandecas1.Text = "Salvar Alterações";
-            botaoMandecas1.UseVisualStyleBackColor = false;
-            // 
-            // botaoPadraoMandecas1
-            // 
-            botaoPadraoMandecas1.BackColor = Color.FromArgb(194, 194, 194);
-            botaoPadraoMandecas1.FlatAppearance.BorderSize = 0;
-            botaoPadraoMandecas1.FlatStyle = FlatStyle.Flat;
-            botaoPadraoMandecas1.Font = new Font("Segoe UI Semibold", 11F);
-            botaoPadraoMandecas1.ForeColor = Color.Black;
-            botaoPadraoMandecas1.Location = new Point(266, 228);
-            botaoPadraoMandecas1.Name = "botaoPadraoMandecas1";
-            botaoPadraoMandecas1.Size = new Size(94, 36);
-            botaoPadraoMandecas1.TabIndex = 13;
-            botaoPadraoMandecas1.Text = "Cancelar";
-            botaoPadraoMandecas1.UseVisualStyleBackColor = false;
-            // 
-            // pnlEditarCadastro
-            // 
-            pnlEditarCadastro.BackColor = Color.FromArgb(232, 232, 232);
-            pnlEditarCadastro.Font = new Font("Segoe UI", 9F);
-            pnlEditarCadastro.Location = new Point(0, 208);
-            pnlEditarCadastro.Name = "pnlEditarCadastro";
-            pnlEditarCadastro.Size = new Size(746, 2);
-            pnlEditarCadastro.TabIndex = 1;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(228, 155);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(467, 23);
-            comboBox1.TabIndex = 12;
             // 
             // UC_EditarAcesso
             // 
@@ -219,17 +222,17 @@
         private Panel pnlTitulo;
         private Panel pnlCadastro;
         private Label lbNome;
-        private TextBox textBox1;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox txtnomeacesso;
+        private TextBox txtemailacesso;
+        private TextBox txtcpfacesso;
         private Label lbPerfilAcesso;
         private Label lbEmail;
         private Label lbCPF;
         private Label lbDadosAcesso;
         private Label lbCodigo;
-        private BotaoMandecas botaoMandecas1;
-        private BotaoPadraoMandecas botaoPadraoMandecas1;
+        private BotaoPadraoMandecas btnVoltar;
         private Panel pnlEditarCadastro;
-        private ComboBox comboBox1;
+        private ComboBox cbmperfil;
+        private BotaoPadraoMandecas btnSalvarEditarAcesso;
     }
 }
