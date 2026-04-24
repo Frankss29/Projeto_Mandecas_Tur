@@ -36,12 +36,6 @@
             btnBuscarGViagens = new BotaoPadraoMandecas();
             txtBuscaGViagens = new TextBox();
             dvgViagens = new DataGridView();
-            colCodigo = new DataGridViewTextBoxColumn();
-            colNome = new DataGridViewTextBoxColumn();
-            colCPF = new DataGridViewTextBoxColumn();
-            colEmail = new DataGridViewTextBoxColumn();
-            colSenha = new DataGridViewTextBoxColumn();
-            colPermissao = new DataGridViewTextBoxColumn();
             btnEditar = new DataGridViewImageColumn();
             btnIncluir = new DataGridViewImageColumn();
             btnExcluir = new DataGridViewImageColumn();
@@ -67,6 +61,7 @@
             txtDestinoViagens = new TextBox();
             lbDataGViagens = new Label();
             lbDestinoGViagens = new Label();
+            lblLimparFiltro = new Label();
             ((System.ComponentModel.ISupportInitialize)dvgViagens).BeginInit();
             pnlCadastrarViagens.SuspendLayout();
             pnlBotoesCAcesso.SuspendLayout();
@@ -86,6 +81,7 @@
             btnBuscarGViagens.TabIndex = 5;
             btnBuscarGViagens.Text = "Buscar";
             btnBuscarGViagens.UseVisualStyleBackColor = false;
+            btnBuscarGViagens.Click += btnBuscarGViagens_Click;
             // 
             // txtBuscaGViagens
             // 
@@ -94,6 +90,7 @@
             txtBuscaGViagens.PlaceholderText = "  Buscar por Destino, Código, Status";
             txtBuscaGViagens.Size = new Size(415, 23);
             txtBuscaGViagens.TabIndex = 4;
+            txtBuscaGViagens.KeyDown += txtBuscaGViagens_KeyDown;
             // 
             // dvgViagens
             // 
@@ -113,7 +110,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dvgViagens.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dvgViagens.ColumnHeadersHeight = 40;
-            dvgViagens.Columns.AddRange(new DataGridViewColumn[] { colCodigo, colNome, colCPF, colEmail, colSenha, colPermissao, btnEditar, btnIncluir, btnExcluir });
+            dvgViagens.Columns.AddRange(new DataGridViewColumn[] { btnEditar, btnIncluir, btnExcluir });
             dvgViagens.EnableHeadersVisualStyles = false;
             dvgViagens.Location = new Point(43, 101);
             dvgViagens.Name = "dvgViagens";
@@ -123,42 +120,6 @@
             dvgViagens.TabIndex = 6;
             dvgViagens.CellClick += dvgViagens_CellClick;
             dvgViagens.Paint += dvgViagens_Paint;
-            // 
-            // colCodigo
-            // 
-            colCodigo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colCodigo.HeaderText = "Código";
-            colCodigo.Name = "colCodigo";
-            // 
-            // colNome
-            // 
-            colNome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colNome.HeaderText = "Destino";
-            colNome.Name = "colNome";
-            // 
-            // colCPF
-            // 
-            colCPF.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colCPF.HeaderText = "Data";
-            colCPF.Name = "colCPF";
-            // 
-            // colEmail
-            // 
-            colEmail.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colEmail.HeaderText = "Vagas";
-            colEmail.Name = "colEmail";
-            // 
-            // colSenha
-            // 
-            colSenha.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colSenha.HeaderText = "Transporte";
-            colSenha.Name = "colSenha";
-            // 
-            // colPermissao
-            // 
-            colPermissao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colPermissao.HeaderText = "Status";
-            colPermissao.Name = "colPermissao";
             // 
             // btnEditar
             // 
@@ -228,11 +189,12 @@
             // 
             // txtValorUnitarioCViagem
             // 
-            txtValorUnitarioCViagem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtValorUnitarioCViagem.Anchor = AnchorStyles.Right;
             txtValorUnitarioCViagem.Location = new Point(611, 113);
             txtValorUnitarioCViagem.Name = "txtValorUnitarioCViagem";
             txtValorUnitarioCViagem.Size = new Size(93, 23);
-            txtValorUnitarioCViagem.TabIndex = 17;
+            txtValorUnitarioCViagem.TabIndex = 5;
+            txtValorUnitarioCViagem.KeyDown += txtBuscaGViagens_KeyDown;
             // 
             // pnlBotoesCAcesso
             // 
@@ -258,6 +220,7 @@
             btnCancelarCViagem.TabIndex = 13;
             btnCancelarCViagem.Text = "Cancelar";
             btnCancelarCViagem.UseVisualStyleBackColor = false;
+            btnCancelarCViagem.Click += btnCancelarCViagem_Click;
             // 
             // btnSalvarCViagem
             // 
@@ -273,14 +236,16 @@
             btnSalvarCViagem.TabIndex = 14;
             btnSalvarCViagem.Text = "Salvar";
             btnSalvarCViagem.UseVisualStyleBackColor = false;
+            btnSalvarCViagem.Click += btnSalvarCViagem_Click;
             // 
             // txtCustoHospedagemCViagem
             // 
-            txtCustoHospedagemCViagem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtCustoHospedagemCViagem.Anchor = AnchorStyles.Right;
             txtCustoHospedagemCViagem.Location = new Point(403, 112);
             txtCustoHospedagemCViagem.Name = "txtCustoHospedagemCViagem";
             txtCustoHospedagemCViagem.Size = new Size(106, 23);
-            txtCustoHospedagemCViagem.TabIndex = 16;
+            txtCustoHospedagemCViagem.TabIndex = 4;
+            txtCustoHospedagemCViagem.KeyDown += txtBuscaGViagens_KeyDown;
             // 
             // lbValorUnitarioCViagem
             // 
@@ -294,11 +259,12 @@
             // 
             // txtQTDVagaCViagens
             // 
-            txtQTDVagaCViagens.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtQTDVagaCViagens.Anchor = AnchorStyles.Right;
             txtQTDVagaCViagens.Location = new Point(633, 70);
             txtQTDVagaCViagens.Name = "txtQTDVagaCViagens";
             txtQTDVagaCViagens.Size = new Size(71, 23);
-            txtQTDVagaCViagens.TabIndex = 14;
+            txtQTDVagaCViagens.TabIndex = 2;
+            txtQTDVagaCViagens.KeyDown += txtBuscaGViagens_KeyDown;
             // 
             // lbQTDVagaCViagem
             // 
@@ -312,7 +278,7 @@
             // 
             // DTPDataCViagem
             // 
-            DTPDataCViagem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            DTPDataCViagem.Anchor = AnchorStyles.Right;
             DTPDataCViagem.Format = DateTimePickerFormat.Short;
             DTPDataCViagem.Location = new Point(242, 67);
             DTPDataCViagem.Name = "DTPDataCViagem";
@@ -360,11 +326,12 @@
             // 
             // txtTransporteCViagens
             // 
-            txtTransporteCViagens.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtTransporteCViagens.Anchor = AnchorStyles.Right;
             txtTransporteCViagens.Location = new Point(427, 67);
             txtTransporteCViagens.Name = "txtTransporteCViagens";
             txtTransporteCViagens.Size = new Size(110, 23);
-            txtTransporteCViagens.TabIndex = 10;
+            txtTransporteCViagens.TabIndex = 1;
+            txtTransporteCViagens.KeyDown += txtBuscaGViagens_KeyDown;
             // 
             // lbTransporteGViagens
             // 
@@ -382,7 +349,8 @@
             txtCustoTransporteCViagem.Location = new Point(138, 111);
             txtCustoTransporteCViagem.Name = "txtCustoTransporteCViagem";
             txtCustoTransporteCViagem.Size = new Size(116, 23);
-            txtCustoTransporteCViagem.TabIndex = 8;
+            txtCustoTransporteCViagem.TabIndex = 3;
+            txtCustoTransporteCViagem.KeyDown += txtBuscaGViagens_KeyDown;
             // 
             // lbCustoTransporteCViagem
             // 
@@ -396,7 +364,7 @@
             // 
             // lblbCustoHospedagemCViagem
             // 
-            lblbCustoHospedagemCViagem.Anchor = AnchorStyles.Left;
+            lblbCustoHospedagemCViagem.Anchor = AnchorStyles.Right;
             lblbCustoHospedagemCViagem.AutoSize = true;
             lblbCustoHospedagemCViagem.Location = new Point(269, 116);
             lblbCustoHospedagemCViagem.Name = "lblbCustoHospedagemCViagem";
@@ -406,15 +374,16 @@
             // 
             // txtDestinoViagens
             // 
-            txtDestinoViagens.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtDestinoViagens.Anchor = AnchorStyles.Left;
             txtDestinoViagens.Location = new Point(70, 67);
             txtDestinoViagens.Name = "txtDestinoViagens";
             txtDestinoViagens.Size = new Size(119, 23);
-            txtDestinoViagens.TabIndex = 3;
+            txtDestinoViagens.TabIndex = 0;
+            txtDestinoViagens.KeyDown += txtBuscaGViagens_KeyDown;
             // 
             // lbDataGViagens
             // 
-            lbDataGViagens.Anchor = AnchorStyles.Left;
+            lbDataGViagens.Anchor = AnchorStyles.Right;
             lbDataGViagens.AutoSize = true;
             lbDataGViagens.Location = new Point(202, 72);
             lbDataGViagens.Name = "lbDataGViagens";
@@ -432,16 +401,27 @@
             lbDestinoGViagens.TabIndex = 1;
             lbDestinoGViagens.Text = "Destino:";
             // 
+            // lblLimparFiltro
+            // 
+            lblLimparFiltro.AutoSize = true;
+            lblLimparFiltro.Location = new Point(550, 58);
+            lblLimparFiltro.Name = "lblLimparFiltro";
+            lblLimparFiltro.Size = new Size(129, 15);
+            lblLimparFiltro.TabIndex = 8;
+            lblLimparFiltro.Text = "Limpar Filtros de Busca";
+            // 
             // UC_GestaoViagens
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(lblLimparFiltro);
             Controls.Add(pnlCadastrarViagens);
             Controls.Add(dvgViagens);
             Controls.Add(btnBuscarGViagens);
             Controls.Add(txtBuscaGViagens);
             Name = "UC_GestaoViagens";
             Size = new Size(826, 506);
+            Load += UC_GestaoViagens_Load;
             ((System.ComponentModel.ISupportInitialize)dvgViagens).EndInit();
             pnlCadastrarViagens.ResumeLayout(false);
             pnlCadastrarViagens.PerformLayout();
@@ -457,15 +437,6 @@
         private BotaoPadraoMandecas btnBuscarGViagens;
         private TextBox txtBuscaGViagens;
         private DataGridView dvgViagens;
-        private DataGridViewTextBoxColumn colCodigo;
-        private DataGridViewTextBoxColumn colNome;
-        private DataGridViewTextBoxColumn colCPF;
-        private DataGridViewTextBoxColumn colEmail;
-        private DataGridViewTextBoxColumn colSenha;
-        private DataGridViewTextBoxColumn colPermissao;
-        private DataGridViewImageColumn btnEditar;
-        private DataGridViewImageColumn btnIncluir;
-        private DataGridViewImageColumn btnExcluir;
         private Panel pnlCadastrarViagens;
         private Panel pnlTitulo;
         private Label lbCadastraViagem;
@@ -488,5 +459,9 @@
         private TextBox txtValorUnitarioCViagem;
         private TextBox txtCustoHospedagemCViagem;
         private Label lbValorUnitarioCViagem;
+        private Label lblLimparFiltro;
+        private DataGridViewImageColumn btnEditar;
+        private DataGridViewImageColumn btnIncluir;
+        private DataGridViewImageColumn btnExcluir;
     }
 }

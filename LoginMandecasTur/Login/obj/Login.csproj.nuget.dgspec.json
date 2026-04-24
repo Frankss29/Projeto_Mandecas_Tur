@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj": {}
+    "C:\\Users\\vanessa.lsantos24\\Desktop\\git\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj": {}
   },
   "projects": {
-    "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj": {
+    "C:\\Users\\vanessa.lsantos24\\Desktop\\git\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
+        "projectUniqueName": "C:\\Users\\vanessa.lsantos24\\Desktop\\git\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
         "projectName": "Login",
-        "projectPath": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
-        "packagesPath": "C:\\Users\\skarllate.lrlsantos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\skarllate.lrlsantos\\Desktop\\PROJETO\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\obj\\",
+        "projectPath": "C:\\Users\\vanessa.lsantos24\\Desktop\\git\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\Login.csproj",
+        "packagesPath": "C:\\Users\\vanessa.lsantos24\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vanessa.lsantos24\\Desktop\\git\\Projeto_Mandecas_Tur\\LoginMandecasTur\\Login\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\skarllate.lrlsantos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\vanessa.lsantos24\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
