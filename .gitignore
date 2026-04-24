@@ -1,10 +1,20 @@
 # Visual Studio
 .vs/
 
-# Build
+# Build folders
 bin/
 obj/
 
-# Logs
-*.log
-``
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Debug files
+*.pdb
+*.dll
+
+# Cache
+*.cache
+*.db
