@@ -138,69 +138,70 @@ namespace Login.UseControls
 
         private void dvgFuncionarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 1. Ignora se clicar no cabeçalho
+            // ✅ 1. Ignora clique no cabeçalho
             if (e.RowIndex < 0) return;
 
-
-            // Identifica qual coluna foi clicada pelo Nome
+            // ✅ 2. Descobre qual coluna foi clicada
             string nomeColuna = dvgFuncionarios.Columns[e.ColumnIndex].Name;
 
-            // --- LÓGICA DO EDITAR ---
+            // --- EDITAR ---
             if (nomeColuna == "btnEditar")
             {
+                int idfuncionarios = Convert.ToInt32(
+                    dvgFuncionarios.Rows[e.RowIndex].Cells["id_funcionario"].Value
+                );
+
                 Form homeForm = this.ParentForm;
 
                 if (homeForm != null)
                 {
                     Control[] controls = homeForm.Controls.Find("panelContainer", true);
+
                     if (controls.Length > 0 && controls[0] is Panel pnlPrincipal)
                     {
                         pnlPrincipal.Controls.Clear();
-                        UC_EditarAcesso EditarCliente = new UC_EditarAcesso();
-                        EditarCliente.Dock = DockStyle.Fill;
-                        pnlPrincipal.Controls.Add(EditarCliente);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Não encontrei o painel de destino (panelContainer) no formulário principal.");
+
+                        UC_EditarAcesso editarFuncionario = new UC_EditarAcesso(idfuncionarios);
+                        editarFuncionario.Dock = DockStyle.Fill;
+                        pnlPrincipal.Controls.Add(editarFuncionario);
                     }
                 }
             }
-
-            // --- LÓGICA DO EXCLUIR ---
+            // --- EXCLUIR ---
             else if (nomeColuna == "btnExcluir")
             {
-                var confirmacao = MessageBox.Show("Tem certeza que deseja excluir?", "Atenção",
-                                  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var confirmacao = MessageBox.Show(
+                    "Tem certeza que deseja excluir?",
+                    "Atenção",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
                 if (confirmacao == DialogResult.Yes)
                 {
+                    int idSelecionado = Convert.ToInt32(
+                        dvgFuncionarios.Rows[e.RowIndex].Cells["id_funcionario"].Value
+                    );
+
                     Conexao conexao = new Conexao();
-                    MySqlConnection con = conexao.Conectar();
-
-                    // O código para remover a linha da grid ou do banco entra aqui
-                    int idSelecionado;
-                    idSelecionado = Convert.ToInt32(dvgFuncionarios.CurrentRow.Cells["id_funcionario"].Value);
-
-                    try
+                    using (MySqlConnection con = conexao.Conectar())
                     {
-                        con.Open();
-                        string sqlDelete = "DELETE FROM funcionario WHERE id_funcionario = @id_funcionario";
-                        MySqlCommand cmd = new MySqlCommand(sqlDelete, con);
-                        cmd.Parameters.AddWithValue("@id_funcionario", idSelecionado);
+                        try
+                        {
+                            con.Open();
+                            string sqlDelete = "DELETE FROM funcionario WHERE id_funcionario = @id_funcionario";
+                            MySqlCommand cmd = new MySqlCommand(sqlDelete, con);
+                            cmd.Parameters.AddWithValue("@id_funcionario", idSelecionado);
+                            cmd.ExecuteNonQuery();
 
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show("Cliente Excluido com Sucesso!!!");
-
-                        AtualizarGrid();
+                            MessageBox.Show("Cliente excluído com sucesso!");
+                            AtualizarGrid();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro no sistema.");
-                    }
-
-
                 }
             }
         }
