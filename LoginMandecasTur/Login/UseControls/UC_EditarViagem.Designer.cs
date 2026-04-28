@@ -43,12 +43,12 @@
             lbDestino = new Label();
             lbQtdDeViagem = new Label();
             lbData = new Label();
-            txtData = new TextBox();
             txtValorUnitario = new TextBox();
             btnSalvarEditarViagem = new BotaoPadraoMandecas();
             btnCancelarEditarViagem = new BotaoPadraoMandecas();
             txtQtdDeViagem = new TextBox();
             panelEditarViagem = new Panel();
+            dtpDataViagemEditarViagem = new DateTimePicker();
             panelEditarViagem.SuspendLayout();
             SuspendLayout();
             // 
@@ -178,13 +178,6 @@
             lbData.TabIndex = 4;
             lbData.Text = "Data:";
             // 
-            // txtData
-            // 
-            txtData.Location = new Point(215, 60);
-            txtData.Name = "txtData";
-            txtData.Size = new Size(405, 23);
-            txtData.TabIndex = 14;
-            // 
             // txtValorUnitario
             // 
             txtValorUnitario.Location = new Point(215, 170);
@@ -205,6 +198,7 @@
             btnSalvarEditarViagem.TabIndex = 1;
             btnSalvarEditarViagem.Text = "Salvar";
             btnSalvarEditarViagem.UseVisualStyleBackColor = false;
+            btnSalvarEditarViagem.Click += btnSalvarEditarViagem_Click;
             // 
             // btnCancelarEditarViagem
             // 
@@ -219,6 +213,7 @@
             btnCancelarEditarViagem.TabIndex = 1;
             btnCancelarEditarViagem.Text = "Cancelar";
             btnCancelarEditarViagem.UseVisualStyleBackColor = false;
+            btnCancelarEditarViagem.Click += btnCancelarEditarViagem_Click;
             // 
             // txtQtdDeViagem
             // 
@@ -230,12 +225,12 @@
             // panelEditarViagem
             // 
             panelEditarViagem.BackColor = Color.White;
+            panelEditarViagem.Controls.Add(dtpDataViagemEditarViagem);
             panelEditarViagem.Controls.Add(txtQtdDeViagem);
             panelEditarViagem.Controls.Add(btnCancelarEditarViagem);
             panelEditarViagem.Controls.Add(panelSeparador2);
             panelEditarViagem.Controls.Add(btnSalvarEditarViagem);
             panelEditarViagem.Controls.Add(txtValorUnitario);
-            panelEditarViagem.Controls.Add(txtData);
             panelEditarViagem.Controls.Add(lbData);
             panelEditarViagem.Controls.Add(lbQtdDeViagem);
             panelEditarViagem.Controls.Add(lbDestino);
@@ -252,6 +247,14 @@
             panelEditarViagem.Size = new Size(673, 362);
             panelEditarViagem.TabIndex = 20;
             // 
+            // dtpDataViagemEditarViagem
+            // 
+            dtpDataViagemEditarViagem.Format = DateTimePickerFormat.Short;
+            dtpDataViagemEditarViagem.Location = new Point(215, 62);
+            dtpDataViagemEditarViagem.Name = "dtpDataViagemEditarViagem";
+            dtpDataViagemEditarViagem.Size = new Size(405, 23);
+            dtpDataViagemEditarViagem.TabIndex = 21;
+            // 
             // UC_EditarViagem
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -263,6 +266,7 @@
             Controls.Add(panelSeparador1);
             Name = "UC_EditarViagem";
             Size = new Size(826, 506);
+            Load += UC_EditarViagem_Load;
             panelEditarViagem.ResumeLayout(false);
             panelEditarViagem.PerformLayout();
             ResumeLayout(false);
@@ -285,11 +289,11 @@
         private Label lbDestino;
         private Label lbQtdDeViagem;
         private Label lbData;
-        private TextBox txtData;
         private TextBox txtValorUnitario;
         private BotaoPadraoMandecas btnSalvarEditarViagem;
         private BotaoPadraoMandecas btnCancelarEditarViagem;
         private TextBox txtQtdDeViagem;
         private Panel panelEditarViagem;
+        private DateTimePicker dtpDataViagemEditarViagem;
     }
 }

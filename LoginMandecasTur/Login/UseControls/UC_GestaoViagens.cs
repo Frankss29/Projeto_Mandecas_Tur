@@ -195,10 +195,19 @@ namespace Login.UseControls
                     Control[] controls = homeForm.Controls.Find("panelContainer", true);
                     if (controls.Length > 0 && controls[0] is Panel pnlPrincipal)
                     {
+
+                        // Pega o ID da viagem da linha clicada
+                        int idViagem = Convert.ToInt32(
+                            dvgViagens.Rows[e.RowIndex].Cells["id_viagem"].Value
+                        );
+
+                        // Abre o UserControl de edição passando o ID
+                        UC_EditarViagem editarViagem = new UC_EditarViagem(idViagem);
+                        editarViagem.Dock = DockStyle.Fill;
+
                         pnlPrincipal.Controls.Clear();
-                        UC_EditarViagem EditarViagem = new UC_EditarViagem();
-                        EditarViagem.Dock = DockStyle.Fill;
-                        pnlPrincipal.Controls.Add(EditarViagem);
+                        pnlPrincipal.Controls.Add(editarViagem);
+
                     }
                 }
             }
