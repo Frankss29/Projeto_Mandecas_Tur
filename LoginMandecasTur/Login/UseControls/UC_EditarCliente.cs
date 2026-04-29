@@ -75,6 +75,26 @@ namespace Login.UseControls
 
 
                 MessageBox.Show("Cadastro Atualizado com Sucesso");
+
+                // Pega o formulário principal
+                Form homeForm = this.ParentForm;
+
+                if (homeForm != null)
+                {
+                    // Encontra o panelContainer
+                    Control[] controls = homeForm.Controls.Find("panelContainer", true);
+
+                    if (controls.Length > 0 && controls[0] is Panel pnlPrincipal)
+                    {
+                        pnlPrincipal.Controls.Clear();
+
+                        // Volta para o UC_GestaoClientes
+                        UC_GestaoClientes gestaoClientes = new UC_GestaoClientes();
+                        gestaoClientes.Dock = DockStyle.Fill;
+                        pnlPrincipal.Controls.Add(gestaoClientes);
+                    }
+                }
+
             }
             catch (Exception ex)
             {
