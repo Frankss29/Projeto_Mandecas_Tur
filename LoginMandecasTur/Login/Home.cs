@@ -41,9 +41,9 @@ namespace Login
         private void Home_Load(object sender, EventArgs e)
         {
             // Primeiro define o limite
-            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+           // this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             // Depois define o estado
-            this.WindowState = FormWindowState.Maximized;
+           // this.WindowState = FormWindowState.Maximized;
         }
 
         #region Botões Ciclo de Vida - Tela

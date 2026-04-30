@@ -69,7 +69,7 @@
             pnlMenu.Dock = DockStyle.Top;
             pnlMenu.Location = new Point(0, 81);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(800, 53);
+            pnlMenu.Size = new Size(1218, 53);
             pnlMenu.TabIndex = 3;
             // 
             // pnlNav
@@ -151,7 +151,7 @@
             panelContainer.Dock = DockStyle.Fill;
             panelContainer.Location = new Point(0, 134);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(800, 427);
+            panelContainer.Size = new Size(1218, 671);
             panelContainer.TabIndex = 4;
             panelContainer.Paint += panelContainer_Paint;
             // 
@@ -165,7 +165,7 @@
             pnlNavBar.Dock = DockStyle.Top;
             pnlNavBar.Location = new Point(0, 0);
             pnlNavBar.Name = "pnlNavBar";
-            pnlNavBar.Size = new Size(800, 81);
+            pnlNavBar.Size = new Size(1218, 81);
             pnlNavBar.TabIndex = 2;
             pnlNavBar.MouseDown += pnlNavBar_MouseDown;
             // 
@@ -175,7 +175,7 @@
             pnlFecharMinimizarTela.Controls.Add(lbRecolher);
             pnlFecharMinimizarTela.Controls.Add(lbMinimizar);
             pnlFecharMinimizarTela.Controls.Add(lbFechar);
-            pnlFecharMinimizarTela.Location = new Point(715, 0);
+            pnlFecharMinimizarTela.Location = new Point(1133, 0);
             pnlFecharMinimizarTela.Name = "pnlFecharMinimizarTela";
             pnlFecharMinimizarTela.Size = new Size(85, 29);
             pnlFecharMinimizarTela.TabIndex = 4;
@@ -241,7 +241,7 @@
             pnlUserName.Controls.Add(lbUserName);
             pnlUserName.Controls.Add(imgIconUserHome);
             pnlUserName.Controls.Add(lbUsuario);
-            pnlUserName.Location = new Point(659, 35);
+            pnlUserName.Location = new Point(1077, 35);
             pnlUserName.Name = "pnlUserName";
             pnlUserName.Size = new Size(127, 40);
             pnlUserName.TabIndex = 0;
@@ -281,7 +281,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(800, 561);
+            ClientSize = new Size(1218, 805);
             Controls.Add(panelContainer);
             Controls.Add(pnlMenu);
             Controls.Add(pnlNavBar);
@@ -289,7 +289,6 @@
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
-            WindowState = FormWindowState.Maximized;
             Load += Home_Load;
             pnlMenu.ResumeLayout(false);
             pnlNavBar.ResumeLayout(false);

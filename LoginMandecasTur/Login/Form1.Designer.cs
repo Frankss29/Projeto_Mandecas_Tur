@@ -80,7 +80,7 @@
             pnlLogin.Controls.Add(txtUsuarioLogin);
             pnlLogin.Controls.Add(lbSloganLogin);
             pnlLogin.Controls.Add(imgLogoLogin);
-            pnlLogin.Location = new Point(263, 64);
+            pnlLogin.Location = new Point(447, 152);
             pnlLogin.Name = "pnlLogin";
             pnlLogin.Size = new Size(300, 450);
             pnlLogin.TabIndex = 1;
@@ -93,7 +93,7 @@
             lbRodape.ForeColor = Color.Gainsboro;
             lbRodape.Location = new Point(45, 414);
             lbRodape.Name = "lbRodape";
-            lbRodape.Size = new Size(210, 15);
+            lbRodape.Size = new Size(211, 15);
             lbRodape.TabIndex = 13;
             lbRodape.Text = "Viagens Terrestres • Aéreas • Marítimas";
             // 
@@ -249,7 +249,7 @@
             pnlFecharMinimizarTela.Controls.Add(lbRecolher);
             pnlFecharMinimizarTela.Controls.Add(lbMinimizar);
             pnlFecharMinimizarTela.Controls.Add(lbFechar);
-            pnlFecharMinimizarTela.Location = new Point(740, 12);
+            pnlFecharMinimizarTela.Location = new Point(1108, 12);
             pnlFecharMinimizarTela.Name = "pnlFecharMinimizarTela";
             pnlFecharMinimizarTela.Size = new Size(88, 36);
             pnlFecharMinimizarTela.TabIndex = 5;
@@ -297,7 +297,7 @@
             imgLogoCodsis.Image = (Image)resources.GetObject("imgLogoCodsis.Image");
             imgLogoCodsis.Location = new Point(27, 20);
             imgLogoCodsis.Name = "imgLogoCodsis";
-            imgLogoCodsis.Size = new Size(799, 34);
+            imgLogoCodsis.Size = new Size(1167, 34);
             imgLogoCodsis.SizeMode = PictureBoxSizeMode.Zoom;
             imgLogoCodsis.TabIndex = 6;
             imgLogoCodsis.TabStop = false;
@@ -309,9 +309,9 @@
             lbCodsis.BackColor = Color.Transparent;
             lbCodsis.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbCodsis.ForeColor = Color.White;
-            lbCodsis.Location = new Point(417, 6);
+            lbCodsis.Location = new Point(601, 6);
             lbCodsis.Name = "lbCodsis";
-            lbCodsis.Size = new Size(18, 13);
+            lbCodsis.Size = new Size(19, 13);
             lbCodsis.TabIndex = 7;
             lbCodsis.Text = "By";
             lbCodsis.TextAlign = ContentAlignment.TopRight;
@@ -322,9 +322,9 @@
             pnlCodsis.Controls.Add(imgLogoCodsis);
             pnlCodsis.Controls.Add(lbCodsis);
             pnlCodsis.Dock = DockStyle.Bottom;
-            pnlCodsis.Location = new Point(0, 568);
+            pnlCodsis.Location = new Point(0, 744);
             pnlCodsis.Name = "pnlCodsis";
-            pnlCodsis.Size = new Size(850, 61);
+            pnlCodsis.Size = new Size(1218, 61);
             pnlCodsis.TabIndex = 8;
             // 
             // TelaLogin
@@ -334,7 +334,7 @@
             BackColor = Color.Linen;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(850, 629);
+            ClientSize = new Size(1218, 805);
             Controls.Add(pnlCodsis);
             Controls.Add(pnlFecharMinimizarTela);
             Controls.Add(pnlLogin);
@@ -343,7 +343,6 @@
             Name = "TelaLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
-            WindowState = FormWindowState.Maximized;
             Load += TelaLogin_Load;
             MouseDown += TelaLogin_MouseDown;
             Resize += TelaLogin_Resize;
