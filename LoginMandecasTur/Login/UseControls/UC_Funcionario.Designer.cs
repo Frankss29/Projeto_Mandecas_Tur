@@ -81,7 +81,7 @@
             // 
             txtBuscaFuncionario.Location = new Point(39, 48);
             txtBuscaFuncionario.Name = "txtBuscaFuncionario";
-            txtBuscaFuncionario.PlaceholderText = "  Buscar por Nome, ID, CPF";
+            txtBuscaFuncionario.PlaceholderText = "  Buscar por Nome ou CPF";
             txtBuscaFuncionario.Size = new Size(415, 23);
             txtBuscaFuncionario.TabIndex = 2;
             txtBuscaFuncionario.TextChanged += txtBuscaFuncionario_TextChanged;

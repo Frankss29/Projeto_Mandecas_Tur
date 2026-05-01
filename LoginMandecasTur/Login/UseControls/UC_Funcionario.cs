@@ -233,6 +233,19 @@ namespace Login.UseControls
 
         private void btnSalvarCAcesso_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(txtNomeCAcesso.Text) ||
+                string.IsNullOrWhiteSpace(txtEmailCAcesso.Text) ||
+                string.IsNullOrWhiteSpace(txtSenhaCAcesso.Text) ||
+                string.IsNullOrWhiteSpace(txtCPFCAcesso.Text) ||
+                CBPerfilAcesso.SelectedItem == null)
+
+            {
+                MessageBox.Show("Por favor, preencha todos os campos antes de salvar!", "Campos Vazios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtNomeCAcesso.Focus();
+                return; // Esse 'return' é CRUCIAL. Ele impede que o código abaixo seja executado.
+            }
+        
             Conexao conexao = new Conexao();
             MySqlConnection conn = conexao.Conectar();
 
@@ -334,6 +347,14 @@ namespace Login.UseControls
 
         private void btnBuscarFuncionario_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtBuscaFuncionario.Text))
+            {
+                MessageBox.Show("Por favor, digite um Nome ou CPF para realizar a busca.", "Campo de Busca Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtBuscaFuncionario.Focus(); // Deixa o cursor pronto para o usuário digitar
+                return; // IMPORTANTE: Para o código aqui e não tenta buscar nada no banco
+            }
+
             RealizarBusca();
         }
 

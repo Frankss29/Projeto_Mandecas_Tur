@@ -71,6 +71,7 @@
             txtBuscaGCliente.Size = new Size(415, 23);
             txtBuscaGCliente.TabIndex = 0;
             txtBuscaGCliente.TextChanged += txtBuscaGCliente_TextChanged;
+            txtBuscaGCliente.KeyDown += txtBuscaGCliente_KeyDown;
             // 
             // btnBuscarGClientes
             // 
@@ -114,7 +115,6 @@
             dvgClientes.Size = new Size(723, 134);
             dvgClientes.TabIndex = 4;
             dvgClientes.CellClick += dvgClientes_CellClick;
-           
             dvgClientes.Paint += dvgClientes_Paint;
             // 
             // btnEditar
@@ -169,7 +169,8 @@
             txtNomeGClientes.Location = new Point(123, 64);
             txtNomeGClientes.Name = "txtNomeGClientes";
             txtNomeGClientes.Size = new Size(356, 23);
-            txtNomeGClientes.TabIndex = 3;
+            txtNomeGClientes.TabIndex = 0;
+            txtNomeGClientes.KeyDown += txtBuscaGCliente_KeyDown;
             // 
             // txtCPFGClientes
             // 
@@ -177,7 +178,8 @@
             txtCPFGClientes.Location = new Point(524, 64);
             txtCPFGClientes.Name = "txtCPFGClientes";
             txtCPFGClientes.Size = new Size(176, 23);
-            txtCPFGClientes.TabIndex = 4;
+            txtCPFGClientes.TabIndex = 1;
+            txtCPFGClientes.KeyDown += txtBuscaGCliente_KeyDown;
             // 
             // lbDtNascimento
             // 
@@ -205,7 +207,8 @@
             txtEmailGClientes.Location = new Point(524, 108);
             txtEmailGClientes.Name = "txtEmailGClientes";
             txtEmailGClientes.Size = new Size(176, 23);
-            txtEmailGClientes.TabIndex = 8;
+            txtEmailGClientes.TabIndex = 4;
+            txtEmailGClientes.KeyDown += txtBuscaGCliente_KeyDown;
             // 
             // lbTelefone
             // 
@@ -213,7 +216,7 @@
             lbTelefone.AutoSize = true;
             lbTelefone.Location = new Point(303, 114);
             lbTelefone.Name = "lbTelefone";
-            lbTelefone.Size = new Size(54, 15);
+            lbTelefone.Size = new Size(55, 15);
             lbTelefone.TabIndex = 9;
             lbTelefone.Text = "Telefone:";
             // 
@@ -223,7 +226,8 @@
             txtTelefoneGClientes.Location = new Point(360, 108);
             txtTelefoneGClientes.Name = "txtTelefoneGClientes";
             txtTelefoneGClientes.Size = new Size(110, 23);
-            txtTelefoneGClientes.TabIndex = 10;
+            txtTelefoneGClientes.TabIndex = 3;
+            txtTelefoneGClientes.KeyDown += txtBuscaGCliente_KeyDown;
             // 
             // pnlSeparador2
             // 
@@ -269,6 +273,7 @@
             btnCancelarGClientes.TabIndex = 13;
             btnCancelarGClientes.Text = "Cancelar";
             btnCancelarGClientes.UseVisualStyleBackColor = false;
+            btnCancelarGClientes.Click += btnCancelarGClientes_Click;
             // 
             // btnSalvarGClientes
             // 
@@ -348,7 +353,8 @@
             dtpDataNascGclientes.Location = new Point(149, 107);
             dtpDataNascGclientes.Name = "dtpDataNascGclientes";
             dtpDataNascGclientes.Size = new Size(139, 23);
-            dtpDataNascGclientes.TabIndex = 16;
+            dtpDataNascGclientes.TabIndex = 2;
+            dtpDataNascGclientes.KeyDown += txtBuscaGCliente_KeyDown;
             // 
             // lblLimparFiltro
             // 

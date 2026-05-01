@@ -87,7 +87,7 @@
             // 
             txtBuscaGViagens.Location = new Point(44, 50);
             txtBuscaGViagens.Name = "txtBuscaGViagens";
-            txtBuscaGViagens.PlaceholderText = "  Buscar por Destino, Código, Status";
+            txtBuscaGViagens.PlaceholderText = "  Buscar por Destino ou Status";
             txtBuscaGViagens.Size = new Size(415, 23);
             txtBuscaGViagens.TabIndex = 4;
             txtBuscaGViagens.KeyDown += txtBuscaGViagens_KeyDown;

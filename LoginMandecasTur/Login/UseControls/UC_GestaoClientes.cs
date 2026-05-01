@@ -221,12 +221,14 @@ namespace Login.UseControls
                     }
                 }
             }
-         }
+        }
 
 
 
-        private void btnBuscarGClientes_Click(object sender, EventArgs e)
+
+        private void RealizarBusca()
         {
+
             Conexao conexao = new Conexao();
             MySqlConnection con = conexao.Conectar();
 
@@ -260,10 +262,43 @@ namespace Login.UseControls
             {
                 MessageBox.Show("Erro ao pesquisar: " + ex.Message);
             }
+
+        }
+
+        private void btnBuscarGClientes_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBuscaGCliente.Text))
+            {
+                MessageBox.Show("Por favor, digite um Nome ou CPF para realizar a busca.", "Campo de Busca Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtBuscaGCliente.Focus(); // Deixa o cursor pronto para o usuário digitar
+                return; // IMPORTANTE: Para o código aqui e não tenta buscar nada no banco
+            }
+
+            RealizarBusca();
         }
 
         private void btnSalvarGClientes_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(txtNomeGClientes.Text) ||
+                string.IsNullOrWhiteSpace(txtEmailGClientes.Text) ||
+                string.IsNullOrWhiteSpace(txtTelefoneGClientes.Text) ||
+                string.IsNullOrWhiteSpace(txtCPFGClientes.Text))
+
+            {
+                MessageBox.Show("Por favor, preencha todos os campos antes de salvar!", "Campos Vazios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtNomeGClientes.Focus();
+                return; // Esse 'return' é CRUCIAL. Ele impede que o código abaixo seja executado.
+            }
+
+            if (dtpDataNascGclientes.Value > DateTime.Now)
+            {
+                MessageBox.Show("A data de nascimento não pode ser uma data futura!", "Data Inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDataNascGclientes.Focus();
+                return; // Impede o cadastro
+            }
+
             Conexao conexao = new Conexao();
             MySqlConnection con = conexao.Conectar();
 
@@ -320,5 +355,36 @@ namespace Login.UseControls
         {
 
         }
+
+        private void btnCancelarGClientes_Click(object sender, EventArgs e)
+        {
+            txtNomeGClientes.Clear();
+            txtEmailGClientes.Clear();
+            txtTelefoneGClientes.Clear();
+            txtCPFGClientes.Clear();
+
+        }
+
+        private void txtBuscaGCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Esse código é para o ENTER funcionar como o clique
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Remove o som do "beep"
+
+                // O 'sender' é o campo que o usuário está usando no momento
+                if (sender == txtBuscaGCliente)
+                {
+                    // Se o campo for o de busca, ele chama a função de buscar
+                    RealizarBusca();
+                }
+                else
+                {
+                    // Se for qualquer outro campo (Nome, CPF, etc.), ele chama o Salvar
+                    btnSalvarGClientes.PerformClick();
+                }
+            }
+        }
     }
+    
 }

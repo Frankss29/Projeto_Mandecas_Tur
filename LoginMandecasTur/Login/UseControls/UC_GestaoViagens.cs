@@ -49,7 +49,7 @@ namespace Login.UseControls
 
                 con.Open();
 
-                string sqlMostrar = "SELECT id_viagem, destino, data_viagem, qtdd_vagas, tipo_transporte FROM viagem ";
+                string sqlMostrar = "SELECT id_viagem, destino, data_viagem, qtdd_vagas, tipo_transporte, status FROM viagem ";
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sqlMostrar, con);
 
@@ -119,6 +119,12 @@ namespace Login.UseControls
 
                     dvgViagens.Columns["tipo_transporte"].DisplayIndex = 4;
 
+                }
+                if (dvgViagens.Columns.Contains("status"))
+                {
+                    dvgViagens.Columns["status"].HeaderText = "Status";
+                    
+                    dvgViagens.Columns["status"].DisplayIndex = 5;
                 }
 
 
@@ -313,6 +319,13 @@ namespace Login.UseControls
 
         private void btnBuscarGViagens_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtBuscaGViagens.Text))
+            {
+                MessageBox.Show("Por favor, digite um Destino ou Status para realizar a busca.", "Campo de Busca Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtBuscaGViagens.Focus(); // Deixa o cursor pronto para o usuário digitar
+                return; // IMPORTANTE: Para o código aqui e não tenta buscar nada no banco
+            }
             RealizarBusca();
         }
 
@@ -362,6 +375,18 @@ namespace Login.UseControls
 
         private void btnSalvarCViagem_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(txtDestinoViagens.Text) ||
+                string.IsNullOrWhiteSpace(txtTransporteCViagens.Text) ||
+                string.IsNullOrWhiteSpace(txtQTDVagaCViagens.Text))
+                
+
+            {
+                MessageBox.Show("Por favor, preencha todos os campos antes de salvar!", "Campos Vazios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtDestinoViagens.Focus();
+                return; // Esse 'return' é CRUCIAL. Ele impede que o código abaixo seja executado.
+            }
+
             Conexao conexao = new Conexao();
 
             MySqlConnection conn = conexao.Conectar();
@@ -372,7 +397,7 @@ namespace Login.UseControls
 
                 conn.Open();
 
-                string sqlInserir = "INSERT INTO Viagem (destino, data_viagem, qtdd_vagas, tipo_transporte) VALUES (@destino, @data_viagem, @qtdd_vagas, @tipo_transporte)";
+                string sqlInserir = "INSERT INTO Viagem (destino, data_viagem, qtdd_vagas, tipo_transporte, status) VALUES (@destino, @data_viagem, @qtdd_vagas, @tipo_transporte, 'Programada')";
 
                 MySqlCommand cmd = new MySqlCommand(sqlInserir, conn);
 
@@ -395,7 +420,12 @@ namespace Login.UseControls
 
                 txtQTDVagaCViagens.Clear();
 
-                string sqlMostrar = "SELECT * FROM Viagem";
+                string sqlMostrar = @"SELECT id_viagem, destino, data_viagem, qtdd_vagas, tipo_transporte, 
+                    CASE 
+                        WHEN data_viagem >= CURDATE() THEN 'Programada' 
+                        ELSE 'Concluída' 
+                    END AS status 
+                    FROM Viagem";
 
                 //vai adaptar as informações do banco e dados para o DGV.
 
@@ -411,11 +441,11 @@ namespace Login.UseControls
 
             }
 
-            catch (Exception ex)
+            catch (Exception ex )
 
             {
 
-                MessageBox.Show("Erro no sistema.");
+                MessageBox.Show("Erro no sistema." + ex.Message);
 
             }
 
