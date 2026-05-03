@@ -49,7 +49,7 @@ namespace Login.UseControls
 
                 con.Open();
 
-                string sqlMostrar = "SELECT id_viagem, destino, data_viagem, qtdd_vagas, tipo_transporte, status FROM viagem ";
+                string sqlMostrar = "SELECT id_viagem, destino, data_viagem, qtdd_vagas, tipo_transporte FROM viagem ";
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sqlMostrar, con);
 
@@ -64,79 +64,57 @@ namespace Login.UseControls
                 // O DisplayIndex define a posição da esquerda para a direita (0 é a primeira)
 
                 if (dvgViagens.Columns.Contains("id_viagem"))
-
                 {
-
                     dvgViagens.Columns["id_viagem"].HeaderText = "Código";
-
                     dvgViagens.Columns["id_viagem"].DisplayIndex = 0;
-
                 }
 
                 // 1. Nome Completo
 
                 if (dvgViagens.Columns.Contains("destino"))
-
                 {
-
                     dvgViagens.Columns["destino"].HeaderText = "Destino";
-
                     dvgViagens.Columns["destino"].DisplayIndex = 1;
-
                 }
 
                 // 2. CPF
 
                 if (dvgViagens.Columns.Contains("data_viagem"))
-
                 {
-
                     dvgViagens.Columns["data_viagem"].HeaderText = "Data";
-
                     dvgViagens.Columns["data_viagem"].DisplayIndex = 2;
-
                 }
 
                 // 3. Data de Nascimento
 
                 if (dvgViagens.Columns.Contains("qtdd_vagas"))
-
                 {
-
                     dvgViagens.Columns["qtdd_vagas"].HeaderText = "Vagas";
-
                     dvgViagens.Columns["qtdd_vagas"].DisplayIndex = 3;
-
                 }
 
                 // 4. Telefone
 
                 if (dvgViagens.Columns.Contains("tipo_transporte"))
-
                 {
-
                     dvgViagens.Columns["tipo_transporte"].HeaderText = "Transporte";
-
                     dvgViagens.Columns["tipo_transporte"].DisplayIndex = 4;
-
                 }
-                if (dvgViagens.Columns.Contains("status"))
+               /* if (dvgViagens.Columns.Contains("status"))
                 {
                     dvgViagens.Columns["status"].HeaderText = "Status";
                     
                     dvgViagens.Columns["status"].DisplayIndex = 5;
-                }
+                }*/
 
 
 
                 // 6 e 7. Ações (Botões sempre por último e colados um no outro)
 
                 if (dvgViagens.Columns.Contains("btnEditar"))
-
                     dvgViagens.Columns["btnEditar"].DisplayIndex = 6;
 
                 if (dvgViagens.Columns.Contains("btnExcluir"))
-
                     dvgViagens.Columns["btnExcluir"].DisplayIndex = 7;
 
                 lblLimparFiltro.Visible = false; // Esconde a label
@@ -196,8 +174,11 @@ namespace Login.UseControls
             // --- LÓGICA DO EDITAR ---
             if (dvgViagens.Columns[e.ColumnIndex].Name == "btnEditar")
             {
-                if (homeForm != null)
+
+                if (homeForm is Home home)
                 {
+
+                    home.BloquearMenu();
                     Control[] controls = homeForm.Controls.Find("panelContainer", true);
                     if (controls.Length > 0 && controls[0] is Panel pnlPrincipal)
                     {
@@ -220,13 +201,20 @@ namespace Login.UseControls
             // --- LÓGICA DO INCLUIR (Note que agora ele é independente) ---
             else if (dvgViagens.Columns[e.ColumnIndex].Name == "btnIncluir")
             {
-                if (homeForm != null)
+                if (homeForm is Home home)
                 {
+
+                    home.BloquearMenu();
                     Control[] controls = homeForm.Controls.Find("panelContainer", true);
                     if (controls.Length > 0 && controls[0] is Panel pnlPrincipal)
                     {
+                        // Pega o ID da viagem da linha clicada
+                        int idIncluirPassageiro = Convert.ToInt32(
+                            dvgViagens.Rows[e.RowIndex].Cells["id_viagem"].Value
+                        );
+
                         pnlPrincipal.Controls.Clear();
-                        UC_IncluirPassageiros IncluirPassageiros = new UC_IncluirPassageiros();
+                        UC_IncluirPassageiros IncluirPassageiros = new UC_IncluirPassageiros(idIncluirPassageiro);
                         IncluirPassageiros.Dock = DockStyle.Fill;
                         pnlPrincipal.Controls.Add(IncluirPassageiros);
                     }
@@ -397,27 +385,26 @@ namespace Login.UseControls
 
                 conn.Open();
 
-                string sqlInserir = "INSERT INTO Viagem (destino, data_viagem, qtdd_vagas, tipo_transporte, status) VALUES (@destino, @data_viagem, @qtdd_vagas, @tipo_transporte, 'Programada')";
+                string sqlInserir = "INSERT INTO Viagem (destino, data_viagem, qtdd_vagas, tipo_transporte, custo_transporte," +
+                    " custo_hospedagem, valor_unitario) VALUES (@destino, @data_viagem, @qtdd_vagas, @tipo_transporte, @custo_transporte, " +
+                    "@custo_hospedagem, @valor_unitario)";
 
                 MySqlCommand cmd = new MySqlCommand(sqlInserir, conn);
 
                 cmd.Parameters.AddWithValue("@destino", txtDestinoViagens.Text);
-
                 cmd.Parameters.AddWithValue("@data_viagem", DTPDataCViagem.Value);
-
                 cmd.Parameters.AddWithValue("@qtdd_vagas", txtQTDVagaCViagens.Text);
-
                 cmd.Parameters.AddWithValue("@tipo_transporte", txtTransporteCViagens.Text);
-
+                cmd.Parameters.AddWithValue("@custo_transporte",decimal.Parse(txtCustoTransporteCViagem.Text));
+                cmd.Parameters.AddWithValue("@custo_hospedagem",decimal.Parse(txtCustoHospedagemCViagem.Text));
+                cmd.Parameters.AddWithValue("@valor_unitario",decimal.Parse(txtValorUnitarioCViagem.Text));
 
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Viagem cadastrada com sucesso!");
 
                 txtDestinoViagens.Clear();
-
                 txtTransporteCViagens.Clear();
-
                 txtQTDVagaCViagens.Clear();
 
                 string sqlMostrar = @"SELECT id_viagem, destino, data_viagem, qtdd_vagas, tipo_transporte, 

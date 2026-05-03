@@ -36,9 +36,6 @@
             btnBuscarGViagens = new BotaoPadraoMandecas();
             txtBuscaGViagens = new TextBox();
             dvgViagens = new DataGridView();
-            btnEditar = new DataGridViewImageColumn();
-            btnIncluir = new DataGridViewImageColumn();
-            btnExcluir = new DataGridViewImageColumn();
             pnlCadastrarViagens = new Panel();
             txtValorUnitarioCViagem = new TextBox();
             pnlBotoesCAcesso = new Panel();
@@ -62,6 +59,9 @@
             lbDataGViagens = new Label();
             lbDestinoGViagens = new Label();
             lblLimparFiltro = new Label();
+            btnEditar = new DataGridViewImageColumn();
+            btnIncluir = new DataGridViewImageColumn();
+            btnExcluir = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)dvgViagens).BeginInit();
             pnlCadastrarViagens.SuspendLayout();
             pnlBotoesCAcesso.SuspendLayout();
@@ -120,44 +120,6 @@
             dvgViagens.TabIndex = 6;
             dvgViagens.CellClick += dvgViagens_CellClick;
             dvgViagens.Paint += dvgViagens_Paint;
-            // 
-            // btnEditar
-            // 
-            btnEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
-            dataGridViewCellStyle2.Padding = new Padding(8);
-            btnEditar.DefaultCellStyle = dataGridViewCellStyle2;
-            btnEditar.HeaderText = "";
-            btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
-            btnEditar.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            btnEditar.Name = "btnEditar";
-            btnEditar.Width = 50;
-            // 
-            // btnIncluir
-            // 
-            btnIncluir.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
-            dataGridViewCellStyle3.Padding = new Padding(8);
-            btnIncluir.DefaultCellStyle = dataGridViewCellStyle3;
-            btnIncluir.HeaderText = "";
-            btnIncluir.Image = (Image)resources.GetObject("btnIncluir.Image");
-            btnIncluir.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            btnIncluir.Name = "btnIncluir";
-            // 
-            // btnExcluir
-            // 
-            btnExcluir.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.NullValue = resources.GetObject("dataGridViewCellStyle4.NullValue");
-            dataGridViewCellStyle4.Padding = new Padding(8);
-            btnExcluir.DefaultCellStyle = dataGridViewCellStyle4;
-            btnExcluir.HeaderText = "";
-            btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
-            btnExcluir.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            btnExcluir.Name = "btnExcluir";
-            btnExcluir.Width = 50;
             // 
             // pnlCadastrarViagens
             // 
@@ -339,7 +301,7 @@
             lbTransporteGViagens.AutoSize = true;
             lbTransporteGViagens.Location = new Point(360, 72);
             lbTransporteGViagens.Name = "lbTransporteGViagens";
-            lbTransporteGViagens.Size = new Size(66, 15);
+            lbTransporteGViagens.Size = new Size(65, 15);
             lbTransporteGViagens.TabIndex = 9;
             lbTransporteGViagens.Text = "Transporte:";
             // 
@@ -358,7 +320,7 @@
             lbCustoTransporteCViagem.AutoSize = true;
             lbCustoTransporteCViagem.Location = new Point(17, 116);
             lbCustoTransporteCViagem.Name = "lbCustoTransporteCViagem";
-            lbCustoTransporteCViagem.Size = new Size(117, 15);
+            lbCustoTransporteCViagem.Size = new Size(116, 15);
             lbCustoTransporteCViagem.TabIndex = 6;
             lbCustoTransporteCViagem.Text = "Custo do Transporte:";
             // 
@@ -374,7 +336,7 @@
             // 
             // txtDestinoViagens
             // 
-            txtDestinoViagens.Anchor = AnchorStyles.Left;
+            txtDestinoViagens.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             txtDestinoViagens.Location = new Point(70, 67);
             txtDestinoViagens.Name = "txtDestinoViagens";
             txtDestinoViagens.Size = new Size(119, 23);
@@ -409,6 +371,44 @@
             lblLimparFiltro.Size = new Size(129, 15);
             lblLimparFiltro.TabIndex = 8;
             lblLimparFiltro.Text = "Limpar Filtros de Busca";
+            // 
+            // btnEditar
+            // 
+            btnEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
+            dataGridViewCellStyle2.Padding = new Padding(6);
+            btnEditar.DefaultCellStyle = dataGridViewCellStyle2;
+            btnEditar.HeaderText = "";
+            btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
+            btnEditar.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            btnEditar.Name = "btnEditar";
+            btnEditar.Width = 50;
+            // 
+            // btnIncluir
+            // 
+            btnIncluir.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
+            dataGridViewCellStyle3.Padding = new Padding(8);
+            btnIncluir.DefaultCellStyle = dataGridViewCellStyle3;
+            btnIncluir.HeaderText = "";
+            btnIncluir.Image = (Image)resources.GetObject("btnIncluir.Image");
+            btnIncluir.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            btnIncluir.Name = "btnIncluir";
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.NullValue = resources.GetObject("dataGridViewCellStyle4.NullValue");
+            dataGridViewCellStyle4.Padding = new Padding(8);
+            btnExcluir.DefaultCellStyle = dataGridViewCellStyle4;
+            btnExcluir.HeaderText = "";
+            btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
+            btnExcluir.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Width = 50;
             // 
             // UC_GestaoViagens
             // 

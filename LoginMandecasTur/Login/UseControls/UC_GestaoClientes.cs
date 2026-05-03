@@ -155,10 +155,10 @@ namespace Login.UseControls
 
         private void dvgClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // ✅ 1. Ignora clique no cabeçalho
+            // 1. Ignora clique no cabeçalho
             if (e.RowIndex < 0) return;
 
-            // ✅ 2. Descobre qual coluna foi clicada
+            //2. Descobre qual coluna foi clicada
             string nomeColuna = dvgClientes.Columns[e.ColumnIndex].Name;
 
             // --- EDITAR ---
@@ -167,12 +167,14 @@ namespace Login.UseControls
                 int idCliente = Convert.ToInt32(
                     dvgClientes.Rows[e.RowIndex].Cells["id_cliente"].Value
                 );
-
                 Form homeForm = this.ParentForm;
 
-                if (homeForm != null)
+                if (homeForm is Home home)
                 {
-                    Control[] controls = homeForm.Controls.Find("panelContainer", true);
+                    //BLOQUEIA O MENU
+                    home.BloquearMenu();
+
+                    Control[] controls = home.Controls.Find("panelContainer", true);
 
                     if (controls.Length > 0 && controls[0] is Panel pnlPrincipal)
                     {
@@ -222,9 +224,6 @@ namespace Login.UseControls
                 }
             }
         }
-
-
-
 
         private void RealizarBusca()
         {

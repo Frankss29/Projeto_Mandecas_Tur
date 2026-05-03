@@ -102,6 +102,25 @@ namespace Login
 
         #region Botões de Controle - Navegação - Menu
 
+        public void BloquearMenu()
+        {
+            btnGestaoClientes.Enabled = false;
+            btnGestaoViagens.Enabled = false;
+            btnFinanceiro.Enabled = false;
+            btnRelatorio.Enabled = false;
+            btnFuncionario.Enabled = false;         
+        }
+
+        public void DesbloquearMenu()
+        {
+            btnGestaoClientes.Enabled = true;
+            btnGestaoViagens.Enabled = true;
+            btnFinanceiro.Enabled = true;
+            btnRelatorio.Enabled = true;
+            btnFuncionario.Enabled = true;
+        }
+
+
         private void MoverLinhaNav(Control btn)
         {
             // Ajusta a largura da linha para ser igual à do botão clicado

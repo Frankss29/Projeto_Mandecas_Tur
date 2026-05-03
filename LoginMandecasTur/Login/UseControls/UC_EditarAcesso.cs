@@ -93,7 +93,7 @@ namespace Login.UseControls
                 cmd.Parameters.AddWithValue("@documento", txtcpfacesso.Text);
                 cmd.Parameters.AddWithValue("@email", txtemailacesso.Text);
                 cmd.Parameters.AddWithValue("@perfil_acesso", cbmperfil.Text);
-                cmd.Parameters.AddWithValue("@id_funcionario", lbCodigo.Text); // ✅ ESSENCIAL
+                cmd.Parameters.AddWithValue("@id_funcionario", lbCodigo.Text); // ESSENCIAL
 
                 cmd.ExecuteNonQuery();
 
@@ -101,8 +101,10 @@ namespace Login.UseControls
                 MessageBox.Show("Perfil Atualizado com Sucesso");
                 Form homeForm = this.ParentForm;
 
-                if (homeForm != null)
+                if (homeForm is Home home)
                 {
+
+                    home.DesbloquearMenu();
                     // Encontra o panelContainer
                     Control[] controls = homeForm.Controls.Find("panelContainer", true);
 
@@ -133,8 +135,9 @@ namespace Login.UseControls
             {
                 Form homeForm = this.ParentForm;
 
-                if (homeForm != null)
+                if (homeForm is Home home)
                 {
+                    home.DesbloquearMenu();
                     // Busca o painel onde as telas são carregadas
                     Control[] controls = homeForm.Controls.Find("panelContainer", true);
 

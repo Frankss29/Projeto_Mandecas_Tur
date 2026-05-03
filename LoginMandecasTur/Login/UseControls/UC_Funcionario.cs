@@ -153,8 +153,10 @@ namespace Login.UseControls
 
                 Form homeForm = this.ParentForm;
 
-                if (homeForm != null)
+                if (homeForm is Home home)
                 {
+
+                    home.BloquearMenu();
                     Control[] controls = homeForm.Controls.Find("panelContainer", true);
 
                     if (controls.Length > 0 && controls[0] is Panel pnlPrincipal)

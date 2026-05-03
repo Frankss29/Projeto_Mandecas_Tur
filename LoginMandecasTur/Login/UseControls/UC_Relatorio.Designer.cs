@@ -37,8 +37,8 @@
             radioButton3 = new RadioButton();
             radioButton2 = new RadioButton();
             panel2 = new Panel();
+            btnGerarPDF = new BotaoPadraoMandecas();
             comboBox2 = new ComboBox();
-            button1 = new Button();
             comboBox1 = new ComboBox();
             label3 = new Label();
             label2 = new Label();
@@ -52,21 +52,22 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 27F);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ControlText;
-            label1.Location = new Point(58, 97);
+            label1.Location = new Point(49, 23);
             label1.Name = "label1";
-            label1.Size = new Size(261, 48);
+            label1.Size = new Size(172, 32);
             label1.TabIndex = 3;
             label1.Text = "Gerar Relatório";
             label1.Click += label1_Click;
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanel1.BackColor = Color.FromArgb(68, 252, 124);
             flowLayoutPanel1.Controls.Add(dataGridView1);
             flowLayoutPanel1.ForeColor = SystemColors.ControlText;
-            flowLayoutPanel1.Location = new Point(49, 171);
+            flowLayoutPanel1.Location = new Point(49, 61);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(727, 2);
             flowLayoutPanel1.TabIndex = 4;
@@ -94,19 +95,21 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.ControlLightLight;
             panel1.Controls.Add(radioButton3);
             panel1.Controls.Add(radioButton2);
             panel1.Controls.Add(Lis);
             panel1.Font = new Font("Microsoft Sans Serif", 9.75F);
             panel1.ForeColor = SystemColors.ControlText;
-            panel1.Location = new Point(53, 191);
+            panel1.Location = new Point(53, 81);
             panel1.Name = "panel1";
             panel1.Size = new Size(724, 54);
             panel1.TabIndex = 7;
             // 
             // radioButton3
             // 
+            radioButton3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             radioButton3.AutoSize = true;
             radioButton3.Font = new Font("Segoe UI", 10F);
             radioButton3.Location = new Point(447, 15);
@@ -119,6 +122,7 @@
             // 
             // radioButton2
             // 
+            radioButton2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             radioButton2.AutoSize = true;
             radioButton2.Font = new Font("Segoe UI", 10F);
             radioButton2.Location = new Point(260, 15);
@@ -132,42 +136,46 @@
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = SystemColors.ControlLightLight;
+            panel2.Controls.Add(btnGerarPDF);
             panel2.Controls.Add(comboBox2);
-            panel2.Controls.Add(button1);
             panel2.Controls.Add(comboBox1);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
             panel2.Font = new Font("Microsoft Sans Serif", 9.75F);
             panel2.ForeColor = SystemColors.ControlText;
-            panel2.Location = new Point(53, 268);
+            panel2.Location = new Point(53, 158);
             panel2.Name = "panel2";
             panel2.Size = new Size(723, 115);
             panel2.TabIndex = 8;
             // 
+            // btnGerarPDF
+            // 
+            btnGerarPDF.BackColor = Color.FromArgb(68, 252, 124);
+            btnGerarPDF.FlatAppearance.BorderSize = 0;
+            btnGerarPDF.FlatStyle = FlatStyle.Flat;
+            btnGerarPDF.Font = new Font("Segoe UI Semibold", 11F);
+            btnGerarPDF.ForeColor = Color.Black;
+            btnGerarPDF.Location = new Point(315, 71);
+            btnGerarPDF.Name = "btnGerarPDF";
+            btnGerarPDF.Size = new Size(102, 28);
+            btnGerarPDF.TabIndex = 12;
+            btnGerarPDF.Text = "Gerar PDF";
+            btnGerarPDF.UseVisualStyleBackColor = false;
+            // 
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(464, 14);
+            comboBox2.Location = new Point(464, 24);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(229, 24);
             comboBox2.TabIndex = 11;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(68, 252, 124);
-            button1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(321, 69);
-            button1.Name = "button1";
-            button1.Size = new Size(84, 32);
-            button1.TabIndex = 12;
-            button1.Text = "Gerar PDF";
-            button1.UseVisualStyleBackColor = false;
-            // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(170, 14);
+            comboBox1.Location = new Point(170, 24);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(222, 24);
             comboBox1.TabIndex = 10;
@@ -175,7 +183,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(407, 17);
+            label3.Location = new Point(407, 27);
             label3.Name = "label3";
             label3.Size = new Size(51, 16);
             label3.TabIndex = 9;
@@ -184,7 +192,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(16, 17);
+            label2.Location = new Point(16, 27);
             label2.Name = "label2";
             label2.Size = new Size(153, 16);
             label2.TabIndex = 0;
@@ -228,9 +236,9 @@
         private Panel panel2;
         private Label label3;
         private Label label2;
-        private Button button1;
         private ContextMenuStrip contextMenuStrip1;
         private ComboBox comboBox2;
         private ComboBox comboBox1;
+        private BotaoPadraoMandecas btnGerarPDF;
     }
 }

@@ -130,8 +130,10 @@ namespace Login.UseControls
             {
                 Form homeForm = this.ParentForm;
 
-                if (homeForm != null)
+                if (homeForm is Home home)
                 {
+
+                    home.DesbloquearMenu();
                     // Busca o painel onde as telas são carregadas
                     Control[] controls = homeForm.Controls.Find("panelContainer", true);
 

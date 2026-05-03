@@ -46,9 +46,6 @@ namespace Login.UseControls
                     txtCustoDoTransporte.Text = reader["custo_transporte"].ToString();
                     txtCustoDaHospedagem.Text = reader["custo_hospedagem"].ToString();
 
-
-
-
                 }
 
             }
@@ -79,8 +76,10 @@ namespace Login.UseControls
 
                 Form homeForm = this.ParentForm;
 
-                if (homeForm != null)
+                if (homeForm is Home home)
                 {
+
+                    home.DesbloquearMenu();
                     // Encontra o panelContainer
                     Control[] controls = homeForm.Controls.Find("panelContainer", true);
 
@@ -113,8 +112,10 @@ namespace Login.UseControls
         {
             Form homeForm = this.ParentForm;
 
-            if (homeForm != null)
+            if (homeForm is Home home)
             {
+
+                home.DesbloquearMenu();
                 // Encontra o panelContainer
                 Control[] controls = homeForm.Controls.Find("panelContainer", true);
 

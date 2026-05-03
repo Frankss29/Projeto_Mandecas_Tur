@@ -129,7 +129,7 @@
             lbCustodoTransporte.AutoSize = true;
             lbCustodoTransporte.Location = new Point(65, 213);
             lbCustodoTransporte.Name = "lbCustodoTransporte";
-            lbCustodoTransporte.Size = new Size(117, 15);
+            lbCustodoTransporte.Size = new Size(116, 15);
             lbCustodoTransporte.TabIndex = 8;
             lbCustodoTransporte.Text = "Custo do Transporte:";
             // 
@@ -147,7 +147,7 @@
             lbTransporte.AutoSize = true;
             lbTransporte.Location = new Point(65, 141);
             lbTransporte.Name = "lbTransporte";
-            lbTransporte.Size = new Size(66, 15);
+            lbTransporte.Size = new Size(65, 15);
             lbTransporte.TabIndex = 6;
             lbTransporte.Text = "Transporte:";
             // 
@@ -211,7 +211,7 @@
             btnCancelarEditarViagem.Name = "btnCancelarEditarViagem";
             btnCancelarEditarViagem.Size = new Size(95, 34);
             btnCancelarEditarViagem.TabIndex = 1;
-            btnCancelarEditarViagem.Text = "Cancelar";
+            btnCancelarEditarViagem.Text = "Voltar";
             btnCancelarEditarViagem.UseVisualStyleBackColor = false;
             btnCancelarEditarViagem.Click += btnCancelarEditarViagem_Click;
             // 
