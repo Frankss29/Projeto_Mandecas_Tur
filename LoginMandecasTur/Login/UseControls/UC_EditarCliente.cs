@@ -57,10 +57,10 @@ namespace Login.UseControls
         private void btnSalvarEditarCliente_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNomeCompleto.Text) ||
-        string.IsNullOrWhiteSpace(txtCPFEditarCliente.Text) ||
-        string.IsNullOrWhiteSpace(txtTelefoneEditarCliente.Text) ||
-        string.IsNullOrWhiteSpace(txtEmail.Text)
-        )
+                string.IsNullOrWhiteSpace(txtCPFEditarCliente.Text) ||
+                string.IsNullOrWhiteSpace(txtTelefoneEditarCliente.Text) ||
+                string.IsNullOrWhiteSpace(txtEmail.Text)
+                )
 
             {
                 MessageBox.Show("Os campos não podem ficar vazios durante a edição!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);

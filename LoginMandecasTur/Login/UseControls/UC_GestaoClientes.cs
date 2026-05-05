@@ -26,6 +26,8 @@ namespace Login.UseControls
             dvgClientes.EnableHeadersVisualStyles = false; // Permite mudar a cor do cabeçalho
             dvgClientes.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(232, 232, 232);
             dvgClientes.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dvgClientes.DefaultCellStyle.Padding = new Padding(15, 10, 15, 10);
+            dvgClientes.ColumnHeadersDefaultCellStyle.Padding = new Padding(12, 10, 12, 10);
             dvgClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Seleciona a linha toda
             dvgClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 

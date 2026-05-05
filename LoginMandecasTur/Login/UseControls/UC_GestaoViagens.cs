@@ -23,6 +23,8 @@ namespace Login.UseControls
             dvgViagens.EnableHeadersVisualStyles = false; // Permite mudar a cor do cabeçalho
             dvgViagens.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(232, 232, 232);
             dvgViagens.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dvgViagens.DefaultCellStyle.Padding = new Padding(15, 10, 15, 10);
+            dvgViagens.ColumnHeadersDefaultCellStyle.Padding = new Padding(12, 10, 12, 10);
             dvgViagens.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Seleciona a linha toda
             dvgViagens.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -226,10 +228,31 @@ namespace Login.UseControls
                 var confirmacao = MessageBox.Show("Tem certeza que deseja excluir?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirmacao == DialogResult.Yes)
                 {
-                    // Código para deletar aqui
+                  int idSelecionado = Convert.ToInt32(
+                  dvgViagens.Rows[e.RowIndex].Cells["id_viagem"].Value
+                   );
+                        Conexao conexao = new Conexao();
+                        using (MySqlConnection con = conexao.Conectar())
+                        {
+                            try
+                            {
+                                con.Open();
+                                string sqlDelete = "DELETE FROM Viagem WHERE id_viagem = @id_viagem";
+                                MySqlCommand cmd = new MySqlCommand(sqlDelete, con);
+                                cmd.Parameters.AddWithValue("@id_viagem", idSelecionado);
+                                cmd.ExecuteNonQuery();
+
+                                MessageBox.Show("Viagem excluído com sucesso!");
+                                AtualizarGrid();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                    }
                 }
-            }
-        }
+             }
 
 
         private void RealizarBusca()

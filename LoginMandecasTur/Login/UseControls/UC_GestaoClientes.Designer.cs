@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_GestaoClientes));
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             txtBuscaGCliente = new TextBox();
             btnBuscarGClientes = new BotaoPadraoMandecas();
             dvgClientes = new DataGridView();
@@ -65,7 +65,7 @@
             // 
             // txtBuscaGCliente
             // 
-            txtBuscaGCliente.Location = new Point(46, 36);
+            txtBuscaGCliente.Location = new Point(44, 50);
             txtBuscaGCliente.Name = "txtBuscaGCliente";
             txtBuscaGCliente.PlaceholderText = "  Buscar por Nome, CPF";
             txtBuscaGCliente.Size = new Size(415, 23);
@@ -80,7 +80,7 @@
             btnBuscarGClientes.FlatStyle = FlatStyle.Flat;
             btnBuscarGClientes.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBuscarGClientes.ForeColor = Color.Black;
-            btnBuscarGClientes.Location = new Point(471, 34);
+            btnBuscarGClientes.Location = new Point(469, 48);
             btnBuscarGClientes.Name = "btnBuscarGClientes";
             btnBuscarGClientes.Size = new Size(75, 27);
             btnBuscarGClientes.TabIndex = 1;
@@ -97,14 +97,14 @@
             dvgClientes.BorderStyle = BorderStyle.None;
             dvgClientes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dvgClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dvgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dvgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dvgClientes.ColumnHeadersHeight = 40;
             dvgClientes.Columns.AddRange(new DataGridViewColumn[] { btnEditar, btnExcluir });
             dvgClientes.EnableHeadersVisualStyles = false;
@@ -120,10 +120,10 @@
             // btnEditar
             // 
             btnEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = resources.GetObject("dataGridViewCellStyle5.NullValue");
-            dataGridViewCellStyle5.Padding = new Padding(8);
-            btnEditar.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.NullValue = resources.GetObject("dataGridViewCellStyle8.NullValue");
+            dataGridViewCellStyle8.Padding = new Padding(8);
+            btnEditar.DefaultCellStyle = dataGridViewCellStyle8;
             btnEditar.HeaderText = "";
             btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
             btnEditar.ImageLayout = DataGridViewImageCellLayout.Zoom;
@@ -133,10 +133,10 @@
             // btnExcluir
             // 
             btnExcluir.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.NullValue = resources.GetObject("dataGridViewCellStyle6.NullValue");
-            dataGridViewCellStyle6.Padding = new Padding(8);
-            btnExcluir.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.NullValue = resources.GetObject("dataGridViewCellStyle9.NullValue");
+            dataGridViewCellStyle9.Padding = new Padding(8);
+            btnExcluir.DefaultCellStyle = dataGridViewCellStyle9;
             btnExcluir.HeaderText = "";
             btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
             btnExcluir.ImageLayout = DataGridViewImageCellLayout.Zoom;
@@ -359,7 +359,7 @@
             // lblLimparFiltro
             // 
             lblLimparFiltro.AutoSize = true;
-            lblLimparFiltro.Location = new Point(564, 42);
+            lblLimparFiltro.Location = new Point(550, 58);
             lblLimparFiltro.Name = "lblLimparFiltro";
             lblLimparFiltro.Size = new Size(129, 15);
             lblLimparFiltro.TabIndex = 5;

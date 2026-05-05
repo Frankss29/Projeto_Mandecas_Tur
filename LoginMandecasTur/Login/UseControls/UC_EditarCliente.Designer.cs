@@ -45,13 +45,14 @@
             lbEmailEditarCliente = new Label();
             txtNomeCompleto = new TextBox();
             txtTelefoneEditarCliente = new TextBox();
+            label1 = new Label();
             panelEditarCliente.SuspendLayout();
             SuspendLayout();
             // 
             // lbIDCliente
             // 
             lbIDCliente.AutoSize = true;
-            lbIDCliente.Location = new Point(36, 110);
+            lbIDCliente.Location = new Point(87, 106);
             lbIDCliente.Name = "lbIDCliente";
             lbIDCliente.Size = new Size(38, 15);
             lbIDCliente.TabIndex = 13;
@@ -69,7 +70,8 @@
             // 
             // panelSeparador1
             // 
-            panelSeparador1.BackColor = Color.FromArgb(232, 232, 232);
+            panelSeparador1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panelSeparador1.BackColor = Color.FromArgb(68, 252, 124);
             panelSeparador1.Location = new Point(36, 101);
             panelSeparador1.Name = "panelSeparador1";
             panelSeparador1.Size = new Size(749, 2);
@@ -77,6 +79,7 @@
             // 
             // panelEditarCliente
             // 
+            panelEditarCliente.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelEditarCliente.BackColor = Color.White;
             panelEditarCliente.Controls.Add(dtpDataNascimento);
             panelEditarCliente.Controls.Add(btnCancelarEditarCliente);
@@ -98,6 +101,7 @@
             // 
             // dtpDataNascimento
             // 
+            dtpDataNascimento.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtpDataNascimento.Format = DateTimePickerFormat.Short;
             dtpDataNascimento.Location = new Point(215, 96);
             dtpDataNascimento.Name = "dtpDataNascimento";
@@ -121,6 +125,7 @@
             // 
             // panelSeparador2
             // 
+            panelSeparador2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelSeparador2.BackColor = Color.FromArgb(232, 232, 232);
             panelSeparador2.Location = new Point(1, 219);
             panelSeparador2.Name = "panelSeparador2";
@@ -144,6 +149,7 @@
             // 
             // txtEmail
             // 
+            txtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtEmail.Location = new Point(215, 170);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(405, 23);
@@ -151,6 +157,7 @@
             // 
             // txtCPFEditarCliente
             // 
+            txtCPFEditarCliente.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtCPFEditarCliente.Location = new Point(215, 60);
             txtCPFEditarCliente.Name = "txtCPFEditarCliente";
             txtCPFEditarCliente.Size = new Size(405, 23);
@@ -203,6 +210,7 @@
             // 
             // txtNomeCompleto
             // 
+            txtNomeCompleto.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtNomeCompleto.Location = new Point(215, 23);
             txtNomeCompleto.Name = "txtNomeCompleto";
             txtNomeCompleto.Size = new Size(405, 23);
@@ -210,15 +218,26 @@
             // 
             // txtTelefoneEditarCliente
             // 
+            txtTelefoneEditarCliente.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtTelefoneEditarCliente.Location = new Point(215, 133);
             txtTelefoneEditarCliente.Name = "txtTelefoneEditarCliente";
             txtTelefoneEditarCliente.Size = new Size(405, 23);
             txtTelefoneEditarCliente.TabIndex = 16;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(36, 106);
+            label1.Name = "label1";
+            label1.Size = new Size(49, 15);
+            label1.TabIndex = 22;
+            label1.Text = "Código:";
+            // 
             // UC_EditarCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label1);
             Controls.Add(panelEditarCliente);
             Controls.Add(lbIDCliente);
             Controls.Add(lbEditarCliente);
@@ -251,5 +270,6 @@
         private TextBox txtNomeCompleto;
         private TextBox txtTelefoneEditarCliente;
         private DateTimePicker dtpDataNascimento;
+        private Label label1;
     }
 }
