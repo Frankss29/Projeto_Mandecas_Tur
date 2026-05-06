@@ -51,6 +51,7 @@
             imgLogoCodsis = new PictureBox();
             lbCodsis = new Label();
             pnlCodsis = new Panel();
+            label1 = new Label();
             pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgOnibusLogin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgNavioLogin).BeginInit();
@@ -66,6 +67,7 @@
             // pnlLogin
             // 
             pnlLogin.Anchor = AnchorStyles.None;
+            pnlLogin.Controls.Add(label1);
             pnlLogin.Controls.Add(lbRodape);
             pnlLogin.Controls.Add(imgOnibusLogin);
             pnlLogin.Controls.Add(imgNavioLogin);
@@ -93,7 +95,7 @@
             lbRodape.ForeColor = Color.Gainsboro;
             lbRodape.Location = new Point(45, 414);
             lbRodape.Name = "lbRodape";
-            lbRodape.Size = new Size(211, 15);
+            lbRodape.Size = new Size(210, 15);
             lbRodape.TabIndex = 13;
             lbRodape.Text = "Viagens Terrestres • Aéreas • Marítimas";
             // 
@@ -311,7 +313,7 @@
             lbCodsis.ForeColor = Color.White;
             lbCodsis.Location = new Point(601, 6);
             lbCodsis.Name = "lbCodsis";
-            lbCodsis.Size = new Size(19, 13);
+            lbCodsis.Size = new Size(18, 13);
             lbCodsis.TabIndex = 7;
             lbCodsis.Text = "By";
             lbCodsis.TextAlign = ContentAlignment.TopRight;
@@ -326,6 +328,19 @@
             pnlCodsis.Name = "pnlCodsis";
             pnlCodsis.Size = new Size(1218, 61);
             pnlCodsis.TabIndex = 8;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Gainsboro;
+            label1.Location = new Point(102, 318);
+            label1.Name = "label1";
+            label1.Size = new Size(101, 17);
+            label1.TabIndex = 14;
+            label1.Text = "Esqueci a senha";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // TelaLogin
             // 
@@ -385,5 +400,6 @@
         private PictureBox imgLogoCodsis;
         private Label lbCodsis;
         private Panel pnlCodsis;
+        private Label label1;
     }
 }

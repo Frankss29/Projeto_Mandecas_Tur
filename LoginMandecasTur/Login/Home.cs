@@ -41,9 +41,9 @@ namespace Login
         private void Home_Load(object sender, EventArgs e)
         {
             // Primeiro define o limite
-           // this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            // this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             // Depois define o estado
-           // this.WindowState = FormWindowState.Maximized;
+            // this.WindowState = FormWindowState.Maximized;
         }
 
         #region Botões Ciclo de Vida - Tela
@@ -107,8 +107,8 @@ namespace Login
             btnGestaoClientes.Enabled = false;
             btnGestaoViagens.Enabled = false;
             btnFinanceiro.Enabled = false;
-            btnRelatorio.Enabled = false;
-            btnFuncionario.Enabled = false;         
+            btnReservas.Enabled = false;
+            btnFuncionario.Enabled = false;
         }
 
         public void DesbloquearMenu()
@@ -116,7 +116,7 @@ namespace Login
             btnGestaoClientes.Enabled = true;
             btnGestaoViagens.Enabled = true;
             btnFinanceiro.Enabled = true;
-            btnRelatorio.Enabled = true;
+            btnReservas.Enabled = true;
             btnFuncionario.Enabled = true;
         }
 
@@ -172,13 +172,13 @@ namespace Login
             addUserControl(Financeiro);
         }
 
-        private void btnRelatorio_Click(object sender, EventArgs e)
+        private void btnReservas_Click(object sender, EventArgs e)
         {
             MoverLinhaNav((Control)sender); // A mágica acontece aqui
-            UC_Relatorio Relatorio = new UC_Relatorio();
-            addUserControl(Relatorio);
-        }
+            UC_RegistrarEntrada Reservar = new UC_RegistrarEntrada();
+            addUserControl(Reservar);
 
+        }
         private void btnFuncionario_Click(object sender, EventArgs e)
         {
             MoverLinhaNav((Control)sender); // A mágica acontece aqui
@@ -192,5 +192,7 @@ namespace Login
         {
 
         }
+
+        
     }
 }

@@ -1,0 +1,255 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+
+namespace Login.UseControls
+{
+    public partial class UC_RegistrarEntrada : UserControl
+    {
+        public UC_RegistrarEntrada()
+        {
+            InitializeComponent();
+           // CarregarViagens();
+        }
+
+        private void CarregarViagens()
+        {
+            // 1. Usa a classe de conexão que vocês criaram (igual à img1)
+            Conexao conexao = new Conexao();
+            MySqlConnection con = conexao.Conectar();
+
+            try
+            {
+                con.Open();
+
+                // 2. Sua query com o CONCAT para não confundir as datas
+                string query = "SELECT id_viagem, CONCAT(destino, ' - ', DATE_FORMAT(data_viagem, '%d/%m/%Y')) AS info_viagem FROM viagem ORDER BY data_viagem ASC";
+
+                // 3. Usa o DataAdapter com a sua conexão 'con'
+                MySqlDataAdapter da = new MySqlDataAdapter(query, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                // 4. Configura o ComboBox
+                cbViagens.DataSource = dt;
+                cbViagens.DisplayMember = "info_viagem"; // O que aparece para a Amanda
+                cbViagens.ValueMember = "id_viagem";     // O ID que fica escondido
+
+                cbViagens.SelectedIndex = -1; // Deixa o campo em branco ao abrir
+                cbPassageiros.DataSource = null; // Garante que a lista de clientes comece vazia
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar viagens: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbViagens_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            // Verifica se existe um valor selecionado para não dar erro ao carregar a tela
+            if (cbViagens.SelectedValue != null && int.TryParse(cbViagens.SelectedValue.ToString(), out int idViagem))
+            {
+                CarregarClientesDaViagem(idViagem);
+            }
+
+            AtualizarInfoParcela();
+
+
+        }
+
+        private void CarregarClientesDaViagem(int idViagem)
+        {
+            Conexao conexao = new Conexao();
+            MySqlConnection con = conexao.Conectar();
+
+            try
+            {
+                con.Open();
+
+                // SQL que filtra os clientes pela tabela de reserva
+
+                string sql = @"SELECT c.id_cliente, c.nome 
+                       FROM cliente c 
+                       INNER JOIN reserva r ON c.id_cliente = r.id_cliente 
+                       WHERE r.id_viagem = " + idViagem +
+                       " ORDER BY c.nome ASC";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, con);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                cbPassageiros.DataSource = dt;
+                cbPassageiros.DisplayMember = "nome";      // O que a Amanda vê
+                cbPassageiros.ValueMember = "id_cliente";  // O que o código salva
+
+                cbPassageiros.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar clientes: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        private void AtualizarInfoParcela()
+        {
+
+            // Texto padrão 
+            string textoPadrao = "Selecione a viagem e o cliente para gerenciar os pagamentos";
+
+            // 1. Se não selecionou a viagem ou o cliente ainda:
+            if (cbViagens.SelectedIndex == -1 || cbPassageiros.SelectedIndex == -1)
+            {
+                lblInformativo.Text = textoPadrao;
+                lblInformativo.ForeColor = Color.Black; 
+                return;
+            }
+
+
+
+            // Só faz a conta se a viagem e o cliente estiverem selecionados
+            if (cbViagens.SelectedValue != null && cbPassageiros.SelectedValue != null)
+            {
+                Conexao conexao = new Conexao();
+                MySqlConnection conn = conexao.Conectar();
+
+                try
+                {
+                    conn.Open();
+                    // 1. Primeiro, pegamos o ID da Reserva e a Qtd Total de Parcelas
+                    string sqlReserva = "SELECT id_reserva, qtdd_parcelas FROM reserva WHERE id_viagem = @idV AND id_cliente = @idC";
+                    MySqlCommand cmdReserva = new MySqlCommand(sqlReserva, conn);
+                    cmdReserva.Parameters.AddWithValue("@idV", cbViagens.SelectedValue);
+                    cmdReserva.Parameters.AddWithValue("@idC", cbPassageiros.SelectedValue);
+
+                    MySqlDataReader reader = cmdReserva.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        int idReserva = Convert.ToInt32(reader["id_reserva"]);
+                        int totalParcelas = Convert.ToInt32(reader["qtdd_parcelas"]);
+                        reader.Close(); // Fecha o reader para fazer a próxima consulta
+
+                        // 2. Agora contamos quantos pagamentos já existem para essa reserva
+                        string sqlContagem = "SELECT COUNT(*) FROM financeiro WHERE id_reserva = @idR";
+                        MySqlCommand cmdCount = new MySqlCommand(sqlContagem, conn);
+                        cmdCount.Parameters.AddWithValue("@idR", idReserva);
+
+                        int jaPagos = Convert.ToInt32(cmdCount.ExecuteScalar());
+                        int proximaParcela = jaPagos + 1;
+
+                        // 3. Atualiza a label 
+                        lblInformativo.Text = $"Lançando pagamento para: {cbViagens.Text} (Parcela {proximaParcela}/{totalParcelas})";
+                        lblInformativo.ForeColor = Color.DarkGreen;
+                    }
+
+                    else
+                    {
+                        lblInformativo.Text = "Nenhuma reserva encontrada para este cliente nesta viagem.";
+                        lblInformativo.ForeColor = Color.Red;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao calcular parcelas: " + ex.Message);
+                }
+                finally { conn.Close(); }
+            }
+
+        }
+
+
+
+
+
+
+
+        private void btnregistrar_Click(object sender, EventArgs e)
+        {
+            // Validação básica: não deixa registrar sem valor ou sem cliente
+            if (cbPassageiros.SelectedValue == null || string.IsNullOrEmpty(txtValorParcela.Text))
+            {
+                MessageBox.Show("Por favor, selecione um cliente e informe o valor do pagamento.");
+                return;
+            }
+
+            Conexao conexao = new Conexao();
+            MySqlConnection con = conexao.Conectar();
+
+            try
+            {
+                con.Open();
+
+                // O SQL de inserção
+                // id_reserva: pegamos da tabela reserva usando o cliente e viagem selecionados
+                // valor_parcela: o que está no txt
+                // data_pagamento: a data atual do sistema
+                string sql = @"INSERT INTO financeiro (id_reserva, valor_parcela, data_pagamento) 
+                       SELECT id_reserva, @valor, @data 
+                       FROM reserva 
+                       WHERE id_cliente = @idCliente AND id_viagem = @idViagem";
+
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+
+                cmd.Parameters.AddWithValue("@valor", decimal.Parse(txtValorParcela.Text));
+                cmd.Parameters.AddWithValue("@data", DateTime.Now);
+                cmd.Parameters.AddWithValue("@idCliente", cbPassageiros.SelectedValue);
+                cmd.Parameters.AddWithValue("@idViagem", cbViagens.SelectedValue);
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Pagamento registrado com sucesso!");
+
+                // Limpa o campo de valor para o próximo lançamento
+                txtValorParcela.Clear();
+                txtFormaPgto.Clear();
+                cbViagens.SelectedIndex = -1;
+                cbPassageiros.SelectedIndex = -1;
+
+                AtualizarInfoParcela();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao registrar pagamento: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            txtValorParcela.Clear();
+            txtFormaPgto.Clear();
+            cbViagens.SelectedIndex = -1;
+            cbPassageiros.SelectedIndex = -1;
+
+            AtualizarInfoParcela();
+        }
+
+        private void cbPassageiros_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AtualizarInfoParcela();
+        }
+    }
+}

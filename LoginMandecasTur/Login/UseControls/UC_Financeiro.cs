@@ -1,13 +1,15 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.Cmp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
 
 
 namespace Login.UseControls
@@ -17,44 +19,337 @@ namespace Login.UseControls
         public UC_Financeiro()
         {
             InitializeComponent();
+            ConfigurarEstiloGrid();
+
+            AtualizarGrid();
+            AtualizarCards();
         }
 
-        private void ArredondarPainel(Panel panel, int radius, Color corFundo)
+        #region Configurações de Design e UI
+
+        private void ConfigurarEstiloGrid()
         {
-            panel.Paint += (s, e) =>
-             {
-                 Graphics g = e.Graphics;
-                 g.SmoothingMode = SmoothingMode.AntiAlias;
+            dgv_Financeiro.ReadOnly = true;
+            dgv_Financeiro.RowHeadersVisible = false; // Tira o espaço cinza antes do Código
 
-                 Rectangle rect = new Rectangle(0, 0, panel.Width - 1, panel.Height - 1);
-                 GraphicsPath path = new GraphicsPath();
+            // --- CORES MODO CLARO ---
+            Color verdeClaroZebrado = Color.FromArgb(235, 247, 240);
+            Color verdeMandecas = Color.FromArgb(46, 204, 113);
+            Color cinzaCabecalho = Color.FromArgb(230, 230, 235);
 
-                 path.AddArc(rect.X, rect.Y, radius, radius, 180, 90);
-                 path.AddArc(rect.Width - radius, rect.Y, radius, radius, 270, 90);
-                 path.AddArc(rect.Width - radius, rect.Height - radius, radius, radius, 0, 90);
-                 path.AddArc(rect.X, rect.Height - radius, radius, radius, 90, 90);
-                 path.CloseAllFigures();
+            dgv_Financeiro.BackgroundColor = Color.White;
+            dgv_Financeiro.BorderStyle = BorderStyle.None;
+            dgv_Financeiro.AllowUserToAddRows = false;
+            dgv_Financeiro.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_Financeiro.Font = new Font("Segoe UI", 9);
 
-                 using (SolidBrush brush = new SolidBrush(corFundo))
-                 {
-                     g.FillPath(brush, path);
-                 }
+            dgv_Financeiro.RowsDefaultCellStyle.BackColor = Color.White;
+            dgv_Financeiro.AlternatingRowsDefaultCellStyle.BackColor = verdeClaroZebrado;
+            dgv_Financeiro.RowsDefaultCellStyle.SelectionBackColor = verdeMandecas;
+            dgv_Financeiro.RowsDefaultCellStyle.SelectionForeColor = Color.White;
 
-                 panel.Region = new Region(path);
-             };
+            // Cabeçalho
+            dgv_Financeiro.EnableHeadersVisualStyles = false;
+            dgv_Financeiro.ColumnHeadersDefaultCellStyle.BackColor = cinzaCabecalho;
+            dgv_Financeiro.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dgv_Financeiro.ColumnHeadersHeight = 35;
+            dgv_Financeiro.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+        private void dgv_Financeiro_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // Verifica se é a coluna de status 
+            if (e.ColumnIndex >= 0 && dgv_Financeiro.Columns[e.ColumnIndex].Name == "status_pagamento" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All & ~DataGridViewPaintParts.ContentForeground);
+
+                string status = e.Value?.ToString() ?? "";
+                Color corPilula = Color.Gray;
+                Color corTexto = Color.White;
+
+                if (status == "Pago") corPilula = Color.FromArgb(46, 204, 113);
+                else if (status == "Pendente") corPilula = Color.FromArgb(241, 196, 15);
+                else if (status == "Vencido") corPilula = Color.FromArgb(231, 76, 60);
+
+                var g = e.Graphics;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+
+                // Desenha a pílula
+                Rectangle rect = new Rectangle(e.CellBounds.X + 10, e.CellBounds.Y + 5, e.CellBounds.Width - 20, e.CellBounds.Height - 11);
+                using (GraphicsPath path = new GraphicsPath())
+                {
+                    int r = rect.Height;
+                    path.AddArc(rect.X, rect.Y, r, r, 90, 180);
+                    path.AddArc(rect.Right - r, rect.Y, r, r, 270, 180);
+                    path.CloseFigure();
+                    g.FillPath(new SolidBrush(corPilula), path);
+                }
+
+                TextRenderer.DrawText(g, status, dgv_Financeiro.Font, rect, corTexto, TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter);
+                e.Handled = true;
+            }
+        }
+
+        private void DesenharCard(object sender, PaintEventArgs e)
+        {
+            Panel pnl = (Panel)sender;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            Color corCard = Color.Gray;
+            // Use Contains para evitar erro se o nome tiver espaços ou prefixos
+            if (pnl.Name.Contains("Entrada")) corCard = Color.FromArgb(46, 204, 113);
+            else if (pnl.Name.Contains("Pendentes")) corCard = Color.FromArgb(241, 196, 15);
+            else if (pnl.Name.Contains("Vencidos")) corCard = Color.FromArgb(231, 76, 60);
+
+            int radius = 20;
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                Rectangle rect = new Rectangle(0, 0, pnl.Width - 1, pnl.Height - 1);
+                path.AddArc(rect.X, rect.Y, radius, radius, 180, 90);
+                path.AddArc(rect.Right - radius, rect.Y, radius, radius, 270, 90);
+                path.AddArc(rect.Right - radius, rect.Bottom - radius, radius, radius, 0, 90);
+                path.AddArc(rect.X, rect.Bottom - radius, radius, radius, 90, 90);
+                path.CloseFigure();
+
+                e.Graphics.FillPath(new SolidBrush(Color.FromArgb(40, corCard)), path);
+                e.Graphics.DrawPath(new Pen(corCard, 3), path);
+            }
+        }
+
+        #endregion
+
+        #region Lógica de Dados da DataGrid
+
+        public void AtualizarGrid()
+        {
+            Conexao conexao = new Conexao();
+            MySqlConnection con = conexao.Conectar();
+
+            try
+            {
+                con.Open();
+
+                // SQL com os apelidos configurados para bater com os IFs abaixo
+                string sql = @"SELECT 
+                                    r.id_reserva, 
+                                    c.nome AS nome_cliente, 
+                                    v.destino AS nome_viagem,
+                                    COALESCE(v.valor_unitario, 0) AS valor_viagem,
+                                    (SELECT COALESCE(SUM(f.valor_parcela), 0) FROM financeiro f WHERE f.id_reserva = r.id_reserva) AS total_pago,
+                                    r.data_inicio_pag,
+                                    CASE 
+                                        WHEN r.status_pagamento = 'Pago' THEN 'Pago'
+                                        WHEN r.data_inicio_pag < CURDATE() AND r.status_pagamento != 'Pago' THEN 'Vencido'
+                                        ELSE 'Pendente'
+                                    END AS status_pagamento
+                                   FROM reserva r
+                                   LEFT JOIN cliente c ON r.id_cliente = c.id_cliente
+                                   LEFT JOIN viagem v ON r.id_viagem = v.id_viagem
+                                   ORDER BY r.id_reserva DESC";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, con);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dgv_Financeiro.DataSource = dt;
+
+                // --- Configuração das colunas ---
+
+                if (dgv_Financeiro.Columns.Contains("id_reserva"))
+                {
+                    dgv_Financeiro.Columns["id_reserva"].HeaderText = "Código";
+                    dgv_Financeiro.Columns["id_reserva"].DisplayIndex = 0;
+                }
+
+                if (dgv_Financeiro.Columns.Contains("nome_cliente"))
+                {
+                    dgv_Financeiro.Columns["nome_cliente"].HeaderText = "Cliente";
+                    dgv_Financeiro.Columns["nome_cliente"].DisplayIndex = 1;
+                }
+
+                if (dgv_Financeiro.Columns.Contains("nome_viagem"))
+                {
+                    dgv_Financeiro.Columns["nome_viagem"].HeaderText = "Viagem";
+                    dgv_Financeiro.Columns["nome_viagem"].DisplayIndex = 2;
+                }
+
+                if (dgv_Financeiro.Columns.Contains("total_pago"))
+                {
+                    dgv_Financeiro.Columns["total_pago"].HeaderText = "Total Pago";
+                    dgv_Financeiro.Columns["total_pago"].DisplayIndex = 3;
+                    dgv_Financeiro.Columns["total_pago"].DefaultCellStyle.Format = "C2";
+                }
+
+                if (dgv_Financeiro.Columns.Contains("valor_viagem"))
+                {
+                    dgv_Financeiro.Columns["valor_viagem"].HeaderText = "Valor da Viagem";
+                    dgv_Financeiro.Columns["valor_viagem"].DisplayIndex = 4;
+                    dgv_Financeiro.Columns["valor_viagem"].DefaultCellStyle.Format = "C2";
+                }
+
+                if (dgv_Financeiro.Columns.Contains("data_inicio_pag"))
+                {
+                    dgv_Financeiro.Columns["data_inicio_pag"].HeaderText = "Vencimento";
+                    dgv_Financeiro.Columns["data_inicio_pag"].DisplayIndex = 5;
+                }
+
+                if (dgv_Financeiro.Columns.Contains("status_pagamento"))
+                {
+                    dgv_Financeiro.Columns["status_pagamento"].HeaderText = "Status";
+                    dgv_Financeiro.Columns["status_pagamento"].DisplayIndex = 6;
+                }
+
+                // Alerta se estiver vazio
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Nenhuma reserva encontrada.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar dados financeiros: " + ex.Message);
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+            }
+        }
+        #endregion
+
+        #region Lógica de dados dos Cards
+        public void AtualizarCards()
+        {
+            Conexao conexao = new Conexao();
+            MySqlConnection con = conexao.Conectar();
+
+            try
+            {
+                con.Open();
+
+                // 1. Receita Realizada (Tudo o que já foi pago no financeiro)
+                string sqlEntradas = "SELECT SUM(valor_parcela) FROM financeiro";
+                MySqlCommand cmd1 = new MySqlCommand(sqlEntradas, con);
+                object resultadoEntradas = cmd1.ExecuteScalar();
+                decimal entradas = resultadoEntradas != DBNull.Value ? Convert.ToDecimal(resultadoEntradas) : 0;
+                lblEntradas.Text = entradas.ToString("C2");
+
+                // 2. Contas Pendentes (Valor das viagens - Valor pago)
+                // Usamos uma subconsulta para pegar a diferença
+                string sqlPendentes = @"
+                SELECT 
+                (SELECT SUM(COALESCE(v.valor_unitario, 0)) FROM reserva r JOIN viagem v ON r.id_viagem = v.id_viagem) - 
+                (SELECT SUM(COALESCE(valor_parcela, 0)) FROM financeiro)";
+                MySqlCommand cmd2 = new MySqlCommand(sqlPendentes, con);
+                object resultadoPendentes = cmd2.ExecuteScalar();
+                decimal pendentes = resultadoPendentes != DBNull.Value ? Convert.ToDecimal(resultadoPendentes) : 0;
+                lblPendentes.Text = pendentes.ToString("C2");
+
+                // 3. Vencidos (Exemplo: Reservas com status 'Pendente' e data anterior a hoje)
+                string sqlVencidos = "SELECT SUM(v.valor_unitario) FROM reserva r JOIN viagem v ON r.id_viagem = v.id_viagem WHERE r.status_pagamento = 'Pendente' AND r.data_inicio_pag < CURDATE()";
+                MySqlCommand cmd3 = new MySqlCommand(sqlVencidos, con);
+                object resultadoVencidos = cmd3.ExecuteScalar();
+                decimal vencidos = resultadoVencidos != DBNull.Value ? Convert.ToDecimal(resultadoVencidos) : 0;
+                lblVencidos.Text = vencidos.ToString("C2");
+
+            }
+            catch (Exception ex)
+            {
+                // Silencioso ou um aviso simples para não atrapalhar
+                Console.WriteLine("Erro nos cards: " + ex.Message);
+            }
+            finally { if (con.State == ConnectionState.Open) con.Close(); }
+        }
+        #endregion
+
+        #region Lógica de Busca
+
+        public void RealizarBusca()
+        {
+            Conexao conexao = new Conexao();
+            MySqlConnection con = conexao.Conectar();
+
+            try
+            {
+                con.Open();
+
+                string sqlBusca = @"SELECT 
+                                r.id_reserva, 
+                                c.nome AS nome_cliente, 
+                                v.destino AS nome_viagem, 
+                                r.valor_entrada, 
+                                r.data_inicio_pag, 
+                                r.status_pagamento 
+                              FROM reserva r
+                              INNER JOIN cliente c ON r.id_cliente = c.id_cliente
+                              INNER JOIN viagem v ON r.id_viagem = v.id_viagem
+                              WHERE 1=1"; // Esse '1=1' é um truque para facilitar a adição de filtros
+
+                // Filtro 1: Status (ComboBox)
+                if (cboStatus.SelectedIndex != -1 && cboStatus.Text != "Todos")
+                {
+                    sqlBusca += " AND r.status_pagamento = @status";
+                }
+
+                // Filtro 2: Nome do Cliente ou Viagem (TextBox)
+                if (!string.IsNullOrWhiteSpace(txtBuscaFinanceiro.Text))
+                {
+                    sqlBusca += " AND (c.nome LIKE @busca OR v.destino LIKE @busca)";
+                }
+
+                MySqlCommand cmd = new MySqlCommand(sqlBusca, con);
+
+                // Passando os parâmetros com segurança
+                cmd.Parameters.AddWithValue("@status", cboStatus.Text);
+                cmd.Parameters.AddWithValue("@busca", "%" + txtBuscaFinanceiro.Text + "%");
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dgv_Financeiro.DataSource = dt;
+
+                // Se o campo de busca NÃO estiver vazio OU o combo de status NÃO estiver em "Todos"
+                if (!string.IsNullOrWhiteSpace(txtBuscaFinanceiro.Text) || (cboStatus.SelectedIndex != -1 && cboStatus.Text != "Todos"))
+                {
+                    lblLimparFiltro.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro na busca: " + ex.Message);
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open) con.Close();
+            }
+        }
+        #endregion
+
+
 
         private void UC_Financeiro_Load(object sender, EventArgs e)
         {
 
-            ArredondarPainel(Panel_Entrada, 20, Color.FromArgb(67, 184, 119));      // Verde
-            ArredondarPainel(Panel_Pendentes, 20, Color.FromArgb(255, 193, 7));     // Amarelo
-            ArredondarPainel(Panel_Vencidos, 20, Color.FromArgb(255, 87, 34)); // Vermelho
+
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void lblLimparFiltro_Click(object sender, EventArgs e)
         {
+            txtBuscaFinanceiro.Clear();               // Limpa o texto
+            cboStatus.SelectedIndex = 0;              // Volta para a primeira opção, que é o "Todos"
+            AtualizarGrid();                          // Mostra tudo de novo
+            lblLimparFiltro.Visible = false;          // Esconde a label
+        }
+
+        private void btnBuscarFinanceiro_Click(object sender, EventArgs e)
+        {
+            RealizarBusca();
+
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            AtualizarGrid();
+            AtualizarCards();
 
         }
     }

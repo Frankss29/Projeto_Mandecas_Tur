@@ -32,7 +32,7 @@
             pnlMenu = new Panel();
             pnlNav = new Panel();
             btnFuncionario = new Button();
-            btnRelatorio = new Button();
+            btnReservas = new Button();
             btnFinanceiro = new Button();
             btnGestaoViagens = new Button();
             btnGestaoClientes = new Button();
@@ -45,6 +45,7 @@
             imgNomeLogoHome = new PictureBox();
             imgLogoHome = new PictureBox();
             pnlUserName = new Panel();
+            pictureBox1 = new PictureBox();
             lbUserName = new Label();
             imgIconUserHome = new PictureBox();
             lbUsuario = new Label();
@@ -54,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)imgNomeLogoHome).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoHome).BeginInit();
             pnlUserName.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgIconUserHome).BeginInit();
             SuspendLayout();
             // 
@@ -62,7 +64,7 @@
             pnlMenu.BackColor = Color.White;
             pnlMenu.Controls.Add(pnlNav);
             pnlMenu.Controls.Add(btnFuncionario);
-            pnlMenu.Controls.Add(btnRelatorio);
+            pnlMenu.Controls.Add(btnReservas);
             pnlMenu.Controls.Add(btnFinanceiro);
             pnlMenu.Controls.Add(btnGestaoViagens);
             pnlMenu.Controls.Add(btnGestaoClientes);
@@ -85,7 +87,7 @@
             btnFuncionario.FlatAppearance.BorderSize = 0;
             btnFuncionario.FlatStyle = FlatStyle.Flat;
             btnFuncionario.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            btnFuncionario.Location = new Point(603, 0);
+            btnFuncionario.Location = new Point(607, 0);
             btnFuncionario.Name = "btnFuncionario";
             btnFuncionario.Size = new Size(147, 51);
             btnFuncionario.TabIndex = 6;
@@ -93,25 +95,25 @@
             btnFuncionario.UseVisualStyleBackColor = true;
             btnFuncionario.Click += btnFuncionario_Click;
             // 
-            // btnRelatorio
+            // btnReservas
             // 
-            btnRelatorio.FlatAppearance.BorderSize = 0;
-            btnRelatorio.FlatStyle = FlatStyle.Flat;
-            btnRelatorio.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            btnRelatorio.Location = new Point(454, 0);
-            btnRelatorio.Name = "btnRelatorio";
-            btnRelatorio.Size = new Size(147, 51);
-            btnRelatorio.TabIndex = 5;
-            btnRelatorio.Text = "Relatórios";
-            btnRelatorio.UseVisualStyleBackColor = true;
-            btnRelatorio.Click += btnRelatorio_Click;
+            btnReservas.FlatAppearance.BorderSize = 0;
+            btnReservas.FlatStyle = FlatStyle.Flat;
+            btnReservas.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            btnReservas.Location = new Point(307, 0);
+            btnReservas.Name = "btnReservas";
+            btnReservas.Size = new Size(147, 51);
+            btnReservas.TabIndex = 5;
+            btnReservas.Text = "Reservas";
+            btnReservas.UseVisualStyleBackColor = true;
+            btnReservas.Click += btnReservas_Click;
             // 
             // btnFinanceiro
             // 
             btnFinanceiro.FlatAppearance.BorderSize = 0;
             btnFinanceiro.FlatStyle = FlatStyle.Flat;
             btnFinanceiro.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            btnFinanceiro.Location = new Point(305, 0);
+            btnFinanceiro.Location = new Point(456, 0);
             btnFinanceiro.Name = "btnFinanceiro";
             btnFinanceiro.Size = new Size(147, 51);
             btnFinanceiro.TabIndex = 4;
@@ -238,14 +240,25 @@
             // 
             pnlUserName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pnlUserName.BackColor = Color.White;
+            pnlUserName.Controls.Add(pictureBox1);
             pnlUserName.Controls.Add(lbUserName);
             pnlUserName.Controls.Add(imgIconUserHome);
             pnlUserName.Controls.Add(lbUsuario);
-            pnlUserName.Location = new Point(1077, 35);
+            pnlUserName.Location = new Point(1049, 35);
             pnlUserName.Name = "pnlUserName";
-            pnlUserName.Size = new Size(127, 40);
+            pnlUserName.Size = new Size(155, 40);
             pnlUserName.TabIndex = 0;
             pnlUserName.Paint += pnlUserName_Paint;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(119, 8);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(22, 22);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
             // 
             // lbUserName
             // 
@@ -298,6 +311,7 @@
             ((System.ComponentModel.ISupportInitialize)imgLogoHome).EndInit();
             pnlUserName.ResumeLayout(false);
             pnlUserName.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgIconUserHome).EndInit();
             ResumeLayout(false);
         }
@@ -315,7 +329,7 @@
         private PictureBox imgIconUserHome;
         private Label lbUsuario;
         private Panel panelContainer;
-        private Button btnRelatorio;
+        private Button btnReservas;
         private Button btnFinanceiro;
         private Panel pnlFecharMinimizarTela;
         private Label lbMinimizar;
@@ -323,5 +337,6 @@
         private Label lbRecolher;
         private Button btnFuncionario;
         private Panel pnlNav;
+        private PictureBox pictureBox1;
     }
 }

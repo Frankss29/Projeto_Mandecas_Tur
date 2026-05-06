@@ -67,7 +67,7 @@
             // 
             // pnlSeparador1
             // 
-            pnlSeparador1.BackColor = Color.FromArgb(232, 232, 232);
+            pnlSeparador1.BackColor = Color.FromArgb(68, 252, 124);
             pnlSeparador1.Location = new Point(16, 94);
             pnlSeparador1.Name = "pnlSeparador1";
             pnlSeparador1.Size = new Size(793, 2);
@@ -218,7 +218,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.FromArgb(232, 232, 232);
+            panel3.BackColor = Color.FromArgb(68, 252, 124);
             panel3.Location = new Point(25, 405);
             panel3.Name = "panel3";
             panel3.Size = new Size(788, 2);

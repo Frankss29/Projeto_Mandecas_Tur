@@ -37,6 +37,9 @@
     <Compile Update="UseControls\UC_IncluirPassageiros.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UseControls\UC_RegistrarEntrada.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UseControls\UC_Relatorio.cs">
       <SubType>UserControl</SubType>
     </Compile>
