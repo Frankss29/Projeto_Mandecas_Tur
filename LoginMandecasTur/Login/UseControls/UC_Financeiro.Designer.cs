@@ -31,16 +31,11 @@
             panel1 = new Panel();
             btnAtualizar = new BotaoPadraoMandecas();
             panel2 = new Panel();
-<<<<<<< HEAD
+            cboClienteRelatorio = new ComboBox();
             rbCustoViagem = new RadioButton();
             rbReciboCliente = new RadioButton();
             rbListaPassageiros = new RadioButton();
-=======
             comboBox1 = new ComboBox();
-            radioButton3 = new RadioButton();
-            radioButton2 = new RadioButton();
-            Lis = new RadioButton();
->>>>>>> 0f9171aa90387ae121e2a25c6a415b0458574b84
             label8 = new Label();
             botaoPadraoMandecas3 = new BotaoPadraoMandecas();
             cboViagemRelatorio = new ComboBox();
@@ -63,7 +58,6 @@
             lblEntradas = new Label();
             label2 = new Label();
             dgv_Financeiro = new DataGridView();
-            cboClienteRelatorio = new ComboBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
@@ -96,7 +90,7 @@
             btnAtualizar.FlatStyle = FlatStyle.Flat;
             btnAtualizar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAtualizar.ForeColor = Color.Black;
-            btnAtualizar.Location = new Point(694, 520);
+            btnAtualizar.Location = new Point(684, 520);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.Size = new Size(92, 23);
             btnAtualizar.TabIndex = 9;
@@ -108,17 +102,11 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel2.BackColor = SystemColors.ButtonHighlight;
-<<<<<<< HEAD
             panel2.Controls.Add(cboClienteRelatorio);
             panel2.Controls.Add(rbCustoViagem);
             panel2.Controls.Add(rbReciboCliente);
             panel2.Controls.Add(rbListaPassageiros);
-=======
             panel2.Controls.Add(comboBox1);
-            panel2.Controls.Add(radioButton3);
-            panel2.Controls.Add(radioButton2);
-            panel2.Controls.Add(Lis);
->>>>>>> 0f9171aa90387ae121e2a25c6a415b0458574b84
             panel2.Controls.Add(label8);
             panel2.Controls.Add(botaoPadraoMandecas3);
             panel2.Controls.Add(cboViagemRelatorio);
@@ -130,19 +118,15 @@
             panel2.Size = new Size(319, 424);
             panel2.TabIndex = 1;
             // 
-<<<<<<< HEAD
+            // cboClienteRelatorio
+            // 
+            cboClienteRelatorio.FormattingEnabled = true;
+            cboClienteRelatorio.Location = new Point(85, 242);
+            cboClienteRelatorio.Name = "cboClienteRelatorio";
+            cboClienteRelatorio.Size = new Size(203, 23);
+            cboClienteRelatorio.TabIndex = 11;
+            // 
             // rbCustoViagem
-=======
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(85, 242);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(203, 23);
-            comboBox1.TabIndex = 11;
-            // 
-            // radioButton3
->>>>>>> 0f9171aa90387ae121e2a25c6a415b0458574b84
             // 
             rbCustoViagem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             rbCustoViagem.AutoSize = true;
@@ -181,6 +165,14 @@
             rbListaPassageiros.Text = "Lista de Passageiros";
             rbListaPassageiros.UseVisualStyleBackColor = true;
             rbListaPassageiros.CheckedChanged += Lis_CheckedChanged;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(85, 242);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(203, 23);
+            comboBox1.TabIndex = 11;
             // 
             // label8
             // 
@@ -435,14 +427,6 @@
             dgv_Financeiro.CellContentClick += dgv_Financeiro_CellContentClick;
             dgv_Financeiro.CellPainting += dgv_Financeiro_CellPainting;
             // 
-            // cboClienteRelatorio
-            // 
-            cboClienteRelatorio.FormattingEnabled = true;
-            cboClienteRelatorio.Location = new Point(85, 242);
-            cboClienteRelatorio.Name = "cboClienteRelatorio";
-            cboClienteRelatorio.Size = new Size(203, 23);
-            cboClienteRelatorio.TabIndex = 11;
-            // 
             // UC_Financeiro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -502,10 +486,10 @@
         private Label lblLimparFiltro;
         private BotaoPadraoMandecas btnBuscarFinanceiro;
         private BotaoPadraoMandecas btnAtualizar;
-<<<<<<< HEAD
+
         private ComboBox cboClienteRelatorio;
-=======
+
         private ComboBox comboBox1;
->>>>>>> 0f9171aa90387ae121e2a25c6a415b0458574b84
+ 
     }
 }

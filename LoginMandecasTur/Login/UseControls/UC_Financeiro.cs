@@ -372,16 +372,16 @@ namespace Login.UseControls
 
         private void UC_Financeiro_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
+
             CarregarClientes();
             CarregarViagens();
-=======
+
             AtualizarGrid();
             AtualizarCards();
             lblVencidos.ForeColor = Color.Black;
 
 
->>>>>>> 0f9171aa90387ae121e2a25c6a415b0458574b84
+ 
         }
 
         private void lblLimparFiltro_Click(object sender, EventArgs e)
@@ -405,7 +405,7 @@ namespace Login.UseControls
 
         }
 
-<<<<<<< HEAD
+
         private void botaoPadraoMandecas3_Click(object sender, EventArgs e)
         {
 
@@ -550,12 +550,12 @@ namespace Login.UseControls
         }
 
 
-=======
+
         private void cboStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
->>>>>>> 0f9171aa90387ae121e2a25c6a415b0458574b84
+
     }
 
 
