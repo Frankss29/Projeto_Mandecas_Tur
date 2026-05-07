@@ -31,12 +31,12 @@
             panel1 = new Panel();
             btnAtualizar = new BotaoPadraoMandecas();
             panel2 = new Panel();
-            radioButton3 = new RadioButton();
-            radioButton2 = new RadioButton();
-            Lis = new RadioButton();
+            rbCustoViagem = new RadioButton();
+            rbReciboCliente = new RadioButton();
+            rbListaPassageiros = new RadioButton();
             label8 = new Label();
             botaoPadraoMandecas3 = new BotaoPadraoMandecas();
-            comboBox3 = new ComboBox();
+            cboViagemRelatorio = new ComboBox();
             lbViagemFinanceiro = new Label();
             lbRelatorioFinanceiro = new Label();
             panel4 = new Panel();
@@ -56,6 +56,7 @@
             lblEntradas = new Label();
             label2 = new Label();
             dgv_Financeiro = new DataGridView();
+            cboClienteRelatorio = new ComboBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
@@ -100,12 +101,13 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel2.BackColor = SystemColors.ButtonHighlight;
-            panel2.Controls.Add(radioButton3);
-            panel2.Controls.Add(radioButton2);
-            panel2.Controls.Add(Lis);
+            panel2.Controls.Add(cboClienteRelatorio);
+            panel2.Controls.Add(rbCustoViagem);
+            panel2.Controls.Add(rbReciboCliente);
+            panel2.Controls.Add(rbListaPassageiros);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(botaoPadraoMandecas3);
-            panel2.Controls.Add(comboBox3);
+            panel2.Controls.Add(cboViagemRelatorio);
             panel2.Controls.Add(lbViagemFinanceiro);
             panel2.Controls.Add(lbRelatorioFinanceiro);
             panel2.Controls.Add(panel4);
@@ -114,43 +116,45 @@
             panel2.Size = new Size(319, 424);
             panel2.TabIndex = 1;
             // 
-            // radioButton3
+            // rbCustoViagem
             // 
-            radioButton3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            radioButton3.AutoSize = true;
-            radioButton3.Font = new Font("Segoe UI", 10F);
-            radioButton3.Location = new Point(42, 172);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(246, 23);
-            radioButton3.TabIndex = 10;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "Demonstrativo de Custo da Viagem";
-            radioButton3.UseVisualStyleBackColor = true;
+            rbCustoViagem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            rbCustoViagem.AutoSize = true;
+            rbCustoViagem.Font = new Font("Segoe UI", 10F);
+            rbCustoViagem.Location = new Point(42, 172);
+            rbCustoViagem.Name = "rbCustoViagem";
+            rbCustoViagem.Size = new Size(246, 23);
+            rbCustoViagem.TabIndex = 10;
+            rbCustoViagem.TabStop = true;
+            rbCustoViagem.Text = "Demonstrativo de Custo da Viagem";
+            rbCustoViagem.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbReciboCliente
             // 
-            radioButton2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            radioButton2.AutoSize = true;
-            radioButton2.Font = new Font("Segoe UI", 10F);
-            radioButton2.Location = new Point(42, 143);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(132, 23);
-            radioButton2.TabIndex = 9;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Recibo de Cliente";
-            radioButton2.UseVisualStyleBackColor = true;
+            rbReciboCliente.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            rbReciboCliente.AutoSize = true;
+            rbReciboCliente.Font = new Font("Segoe UI", 10F);
+            rbReciboCliente.Location = new Point(42, 143);
+            rbReciboCliente.Name = "rbReciboCliente";
+            rbReciboCliente.Size = new Size(132, 23);
+            rbReciboCliente.TabIndex = 9;
+            rbReciboCliente.TabStop = true;
+            rbReciboCliente.Text = "Recibo de Cliente";
+            rbReciboCliente.UseVisualStyleBackColor = true;
+            rbReciboCliente.CheckedChanged += radioButton2_CheckedChanged;
             // 
-            // Lis
+            // rbListaPassageiros
             // 
-            Lis.AutoSize = true;
-            Lis.Font = new Font("Segoe UI", 10F);
-            Lis.Location = new Point(42, 113);
-            Lis.Name = "Lis";
-            Lis.Size = new Size(149, 23);
-            Lis.TabIndex = 8;
-            Lis.TabStop = true;
-            Lis.Text = "Lista de Passageiros";
-            Lis.UseVisualStyleBackColor = true;
+            rbListaPassageiros.AutoSize = true;
+            rbListaPassageiros.Font = new Font("Segoe UI", 10F);
+            rbListaPassageiros.Location = new Point(42, 113);
+            rbListaPassageiros.Name = "rbListaPassageiros";
+            rbListaPassageiros.Size = new Size(149, 23);
+            rbListaPassageiros.TabIndex = 8;
+            rbListaPassageiros.TabStop = true;
+            rbListaPassageiros.Text = "Lista de Passageiros";
+            rbListaPassageiros.UseVisualStyleBackColor = true;
+            rbListaPassageiros.CheckedChanged += Lis_CheckedChanged;
             // 
             // label8
             // 
@@ -175,14 +179,15 @@
             botaoPadraoMandecas3.TabIndex = 6;
             botaoPadraoMandecas3.Text = "Gerar PDF";
             botaoPadraoMandecas3.UseVisualStyleBackColor = false;
+            botaoPadraoMandecas3.Click += botaoPadraoMandecas3_Click;
             // 
-            // comboBox3
+            // cboViagemRelatorio
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(85, 288);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(203, 23);
-            comboBox3.TabIndex = 5;
+            cboViagemRelatorio.FormattingEnabled = true;
+            cboViagemRelatorio.Location = new Point(85, 288);
+            cboViagemRelatorio.Name = "cboViagemRelatorio";
+            cboViagemRelatorio.Size = new Size(203, 23);
+            cboViagemRelatorio.TabIndex = 5;
             // 
             // lbViagemFinanceiro
             // 
@@ -398,7 +403,16 @@
             dgv_Financeiro.Name = "dgv_Financeiro";
             dgv_Financeiro.Size = new Size(763, 168);
             dgv_Financeiro.TabIndex = 8;
+            dgv_Financeiro.CellContentClick += dgv_Financeiro_CellContentClick;
             dgv_Financeiro.CellPainting += dgv_Financeiro_CellPainting;
+            // 
+            // cboClienteRelatorio
+            // 
+            cboClienteRelatorio.FormattingEnabled = true;
+            cboClienteRelatorio.Location = new Point(85, 242);
+            cboClienteRelatorio.Name = "cboClienteRelatorio";
+            cboClienteRelatorio.Size = new Size(203, 23);
+            cboClienteRelatorio.TabIndex = 11;
             // 
             // UC_Financeiro
             // 
@@ -450,14 +464,15 @@
         private Label lbRelatorioFinanceiro;
         private BotaoPadraoMandecas botaoPadraoMandecas2;
         private BotaoPadraoMandecas botaoPadraoMandecas1;
-        private ComboBox comboBox3;
+        private ComboBox cboViagemRelatorio;
         private Label label8;
         private BotaoPadraoMandecas botaoPadraoMandecas3;
-        private RadioButton Lis;
-        private RadioButton radioButton2;
-        private RadioButton radioButton3;
+        private RadioButton rbListaPassageiros;
+        private RadioButton rbReciboCliente;
+        private RadioButton rbCustoViagem;
         private Label lblLimparFiltro;
         private BotaoPadraoMandecas btnBuscarFinanceiro;
         private BotaoPadraoMandecas btnAtualizar;
+        private ComboBox cboClienteRelatorio;
     }
 }
