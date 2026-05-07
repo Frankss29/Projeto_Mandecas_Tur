@@ -26,6 +26,8 @@ namespace Login.UseControls
             dgvListaDePassageiros.EnableHeadersVisualStyles = false; // Permite mudar a cor do cabeçalho
             dgvListaDePassageiros.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(232, 232, 232);
             dgvListaDePassageiros.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvListaDePassageiros.DefaultCellStyle.Padding = new Padding(15, 10, 15, 10);
+            dgvListaDePassageiros.ColumnHeadersDefaultCellStyle.Padding = new Padding(12, 10, 12, 10);
             dgvListaDePassageiros.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Seleciona a linha toda
             dgvListaDePassageiros.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 

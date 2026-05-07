@@ -31,9 +31,16 @@
             panel1 = new Panel();
             btnAtualizar = new BotaoPadraoMandecas();
             panel2 = new Panel();
+<<<<<<< HEAD
             rbCustoViagem = new RadioButton();
             rbReciboCliente = new RadioButton();
             rbListaPassageiros = new RadioButton();
+=======
+            comboBox1 = new ComboBox();
+            radioButton3 = new RadioButton();
+            radioButton2 = new RadioButton();
+            Lis = new RadioButton();
+>>>>>>> 0f9171aa90387ae121e2a25c6a415b0458574b84
             label8 = new Label();
             botaoPadraoMandecas3 = new BotaoPadraoMandecas();
             cboViagemRelatorio = new ComboBox();
@@ -89,7 +96,7 @@
             btnAtualizar.FlatStyle = FlatStyle.Flat;
             btnAtualizar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAtualizar.ForeColor = Color.Black;
-            btnAtualizar.Location = new Point(691, 519);
+            btnAtualizar.Location = new Point(694, 520);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.Size = new Size(92, 23);
             btnAtualizar.TabIndex = 9;
@@ -101,22 +108,41 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel2.BackColor = SystemColors.ButtonHighlight;
+<<<<<<< HEAD
             panel2.Controls.Add(cboClienteRelatorio);
             panel2.Controls.Add(rbCustoViagem);
             panel2.Controls.Add(rbReciboCliente);
             panel2.Controls.Add(rbListaPassageiros);
+=======
+            panel2.Controls.Add(comboBox1);
+            panel2.Controls.Add(radioButton3);
+            panel2.Controls.Add(radioButton2);
+            panel2.Controls.Add(Lis);
+>>>>>>> 0f9171aa90387ae121e2a25c6a415b0458574b84
             panel2.Controls.Add(label8);
             panel2.Controls.Add(botaoPadraoMandecas3);
             panel2.Controls.Add(cboViagemRelatorio);
             panel2.Controls.Add(lbViagemFinanceiro);
             panel2.Controls.Add(lbRelatorioFinanceiro);
             panel2.Controls.Add(panel4);
-            panel2.Location = new Point(820, 80);
+            panel2.Location = new Point(808, 80);
             panel2.Name = "panel2";
             panel2.Size = new Size(319, 424);
             panel2.TabIndex = 1;
             // 
+<<<<<<< HEAD
             // rbCustoViagem
+=======
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(85, 242);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(203, 23);
+            comboBox1.TabIndex = 11;
+            // 
+            // radioButton3
+>>>>>>> 0f9171aa90387ae121e2a25c6a415b0458574b84
             // 
             rbCustoViagem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             rbCustoViagem.AutoSize = true;
@@ -201,7 +227,7 @@
             // lbRelatorioFinanceiro
             // 
             lbRelatorioFinanceiro.AutoSize = true;
-            lbRelatorioFinanceiro.Location = new Point(32, 245);
+            lbRelatorioFinanceiro.Location = new Point(29, 245);
             lbRelatorioFinanceiro.Name = "lbRelatorioFinanceiro";
             lbRelatorioFinanceiro.Size = new Size(47, 15);
             lbRelatorioFinanceiro.TabIndex = 1;
@@ -246,7 +272,7 @@
             btnBuscarFinanceiro.FlatStyle = FlatStyle.Flat;
             btnBuscarFinanceiro.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBuscarFinanceiro.ForeColor = Color.Black;
-            btnBuscarFinanceiro.Location = new Point(496, 20);
+            btnBuscarFinanceiro.Location = new Point(510, 20);
             btnBuscarFinanceiro.Name = "btnBuscarFinanceiro";
             btnBuscarFinanceiro.Size = new Size(79, 23);
             btnBuscarFinanceiro.TabIndex = 4;
@@ -257,7 +283,7 @@
             // lblLimparFiltro
             // 
             lblLimparFiltro.AutoSize = true;
-            lblLimparFiltro.Location = new Point(589, 23);
+            lblLimparFiltro.Location = new Point(599, 24);
             lblLimparFiltro.Name = "lblLimparFiltro";
             lblLimparFiltro.Size = new Size(129, 15);
             lblLimparFiltro.TabIndex = 3;
@@ -267,9 +293,9 @@
             // txtBuscaFinanceiro
             // 
             txtBuscaFinanceiro.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtBuscaFinanceiro.Location = new Point(225, 20);
+            txtBuscaFinanceiro.Location = new Point(226, 21);
             txtBuscaFinanceiro.Name = "txtBuscaFinanceiro";
-            txtBuscaFinanceiro.Size = new Size(255, 23);
+            txtBuscaFinanceiro.Size = new Size(265, 23);
             txtBuscaFinanceiro.TabIndex = 1;
             // 
             // cboStatus
@@ -279,10 +305,11 @@
             cboStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cboStatus.FormattingEnabled = true;
             cboStatus.Items.AddRange(new object[] { "Filtrar por Status", "Pago", "Pendente", "Vencido" });
-            cboStatus.Location = new Point(19, 20);
+            cboStatus.Location = new Point(17, 20);
             cboStatus.Name = "cboStatus";
             cboStatus.Size = new Size(188, 24);
             cboStatus.TabIndex = 0;
+            cboStatus.SelectedIndexChanged += cboStatus_SelectedIndexChanged;
             // 
             // Panel_Vencidos
             // 
@@ -372,7 +399,7 @@
             lblEntradas.BackColor = Color.Transparent;
             lblEntradas.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblEntradas.ForeColor = SystemColors.ButtonHighlight;
-            lblEntradas.Location = new Point(83, 65);
+            lblEntradas.Location = new Point(74, 65);
             lblEntradas.Name = "lblEntradas";
             lblEntradas.Size = new Size(0, 25);
             lblEntradas.TabIndex = 0;
@@ -391,16 +418,18 @@
             // 
             // dgv_Financeiro
             // 
-            dgv_Financeiro.AllowUserToOrderColumns = true;
+            dgv_Financeiro.AllowUserToAddRows = false;
             dgv_Financeiro.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             dgv_Financeiro.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_Financeiro.BackgroundColor = SystemColors.ControlLight;
             dgv_Financeiro.BorderStyle = BorderStyle.None;
             dgv_Financeiro.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgv_Financeiro.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_Financeiro.ColumnHeadersVisible = false;
+            dgv_Financeiro.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv_Financeiro.ColumnHeadersHeight = 40;
+            dgv_Financeiro.EnableHeadersVisualStyles = false;
             dgv_Financeiro.Location = new Point(23, 336);
             dgv_Financeiro.Name = "dgv_Financeiro";
+            dgv_Financeiro.RowHeadersVisible = false;
             dgv_Financeiro.Size = new Size(763, 168);
             dgv_Financeiro.TabIndex = 8;
             dgv_Financeiro.CellContentClick += dgv_Financeiro_CellContentClick;
@@ -473,6 +502,10 @@
         private Label lblLimparFiltro;
         private BotaoPadraoMandecas btnBuscarFinanceiro;
         private BotaoPadraoMandecas btnAtualizar;
+<<<<<<< HEAD
         private ComboBox cboClienteRelatorio;
+=======
+        private ComboBox comboBox1;
+>>>>>>> 0f9171aa90387ae121e2a25c6a415b0458574b84
     }
 }

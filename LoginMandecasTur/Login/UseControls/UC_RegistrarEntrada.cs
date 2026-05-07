@@ -16,7 +16,7 @@ namespace Login.UseControls
         public UC_RegistrarEntrada()
         {
             InitializeComponent();
-           // CarregarViagens();
+            
         }
 
         private void CarregarViagens()
@@ -62,7 +62,7 @@ namespace Login.UseControls
 
         private void cbViagens_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             // Verifica se existe um valor selecionado para não dar erro ao carregar a tela
             if (cbViagens.SelectedValue != null && int.TryParse(cbViagens.SelectedValue.ToString(), out int idViagem))
             {
@@ -120,7 +120,7 @@ namespace Login.UseControls
             if (cbViagens.SelectedIndex == -1 || cbPassageiros.SelectedIndex == -1)
             {
                 lblInformativo.Text = textoPadrao;
-                lblInformativo.ForeColor = Color.Black; 
+                lblInformativo.ForeColor = Color.Black;
                 return;
             }
 
@@ -250,6 +250,11 @@ namespace Login.UseControls
         private void cbPassageiros_SelectedIndexChanged(object sender, EventArgs e)
         {
             AtualizarInfoParcela();
+        }
+
+        private void UC_RegistrarEntrada_Load(object sender, EventArgs e)
+        {
+            CarregarViagens();
         }
     }
 }
