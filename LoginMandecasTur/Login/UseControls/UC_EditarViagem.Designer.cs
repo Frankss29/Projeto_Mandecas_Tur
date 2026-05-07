@@ -49,6 +49,7 @@
             txtQtdDeViagem = new TextBox();
             panelEditarViagem = new Panel();
             dtpDataViagemEditarViagem = new DateTimePicker();
+            label1 = new Label();
             panelEditarViagem.SuspendLayout();
             SuspendLayout();
             // 
@@ -64,6 +65,7 @@
             // 
             // panelSeparador2
             // 
+            panelSeparador2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelSeparador2.BackColor = Color.FromArgb(232, 232, 232);
             panelSeparador2.Location = new Point(3, 297);
             panelSeparador2.Name = "panelSeparador2";
@@ -72,7 +74,8 @@
             // 
             // panelSeparador1
             // 
-            panelSeparador1.BackColor = Color.FromArgb(232, 232, 232);
+            panelSeparador1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panelSeparador1.BackColor = Color.FromArgb(68, 252, 124);
             panelSeparador1.Location = new Point(42, 65);
             panelSeparador1.Name = "panelSeparador1";
             panelSeparador1.Size = new Size(749, 2);
@@ -80,15 +83,18 @@
             // 
             // lbIDViagem
             // 
+            lbIDViagem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lbIDViagem.AutoSize = true;
-            lbIDViagem.Location = new Point(42, 74);
+            lbIDViagem.Location = new Point(102, 70);
             lbIDViagem.Name = "lbIDViagem";
             lbIDViagem.Size = new Size(38, 15);
             lbIDViagem.TabIndex = 10;
             lbIDViagem.Text = "label9";
+            lbIDViagem.Click += lbIDViagem_Click;
             // 
             // txtTransporte
             // 
+            txtTransporte.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtTransporte.Location = new Point(215, 133);
             txtTransporte.Name = "txtTransporte";
             txtTransporte.Size = new Size(405, 23);
@@ -96,6 +102,7 @@
             // 
             // txtCustoDaHospedagem
             // 
+            txtCustoDaHospedagem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtCustoDaHospedagem.Location = new Point(215, 244);
             txtCustoDaHospedagem.Name = "txtCustoDaHospedagem";
             txtCustoDaHospedagem.Size = new Size(405, 23);
@@ -103,6 +110,7 @@
             // 
             // txtCustoDoTransporte
             // 
+            txtCustoDoTransporte.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtCustoDoTransporte.Location = new Point(215, 205);
             txtCustoDoTransporte.Name = "txtCustoDoTransporte";
             txtCustoDoTransporte.Size = new Size(405, 23);
@@ -110,6 +118,7 @@
             // 
             // txtDestino
             // 
+            txtDestino.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtDestino.Location = new Point(215, 23);
             txtDestino.Name = "txtDestino";
             txtDestino.Size = new Size(405, 23);
@@ -129,7 +138,7 @@
             lbCustodoTransporte.AutoSize = true;
             lbCustodoTransporte.Location = new Point(65, 213);
             lbCustodoTransporte.Name = "lbCustodoTransporte";
-            lbCustodoTransporte.Size = new Size(116, 15);
+            lbCustodoTransporte.Size = new Size(117, 15);
             lbCustodoTransporte.TabIndex = 8;
             lbCustodoTransporte.Text = "Custo do Transporte:";
             // 
@@ -147,7 +156,7 @@
             lbTransporte.AutoSize = true;
             lbTransporte.Location = new Point(65, 141);
             lbTransporte.Name = "lbTransporte";
-            lbTransporte.Size = new Size(65, 15);
+            lbTransporte.Size = new Size(66, 15);
             lbTransporte.TabIndex = 6;
             lbTransporte.Text = "Transporte:";
             // 
@@ -180,6 +189,7 @@
             // 
             // txtValorUnitario
             // 
+            txtValorUnitario.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtValorUnitario.Location = new Point(215, 170);
             txtValorUnitario.Name = "txtValorUnitario";
             txtValorUnitario.Size = new Size(405, 23);
@@ -217,6 +227,7 @@
             // 
             // txtQtdDeViagem
             // 
+            txtQtdDeViagem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtQtdDeViagem.Location = new Point(215, 94);
             txtQtdDeViagem.Name = "txtQtdDeViagem";
             txtQtdDeViagem.Size = new Size(405, 23);
@@ -224,6 +235,7 @@
             // 
             // panelEditarViagem
             // 
+            panelEditarViagem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelEditarViagem.BackColor = Color.White;
             panelEditarViagem.Controls.Add(dtpDataViagemEditarViagem);
             panelEditarViagem.Controls.Add(txtQtdDeViagem);
@@ -249,17 +261,28 @@
             // 
             // dtpDataViagemEditarViagem
             // 
+            dtpDataViagemEditarViagem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtpDataViagemEditarViagem.Format = DateTimePickerFormat.Short;
             dtpDataViagemEditarViagem.Location = new Point(215, 62);
             dtpDataViagemEditarViagem.Name = "dtpDataViagemEditarViagem";
             dtpDataViagemEditarViagem.Size = new Size(405, 23);
             dtpDataViagemEditarViagem.TabIndex = 21;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(51, 69);
+            label1.Name = "label1";
+            label1.Size = new Size(49, 15);
+            label1.TabIndex = 21;
+            label1.Text = "Código:";
+            // 
             // UC_EditarViagem
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
+            Controls.Add(label1);
             Controls.Add(panelEditarViagem);
             Controls.Add(lbIDViagem);
             Controls.Add(lbEditarViagem);
@@ -295,5 +318,6 @@
         private TextBox txtQtdDeViagem;
         private Panel panelEditarViagem;
         private DateTimePicker dtpDataViagemEditarViagem;
+        private Label label1;
     }
 }

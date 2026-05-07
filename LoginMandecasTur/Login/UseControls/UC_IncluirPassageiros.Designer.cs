@@ -51,6 +51,7 @@
             lbIDViagemIncluirPassageiros = new Label();
             dgvListaDePassageiros = new DataGridView();
             btnExcluir = new DataGridViewImageColumn();
+            label1 = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListaDePassageiros).BeginInit();
             SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             // pnlSeparador1
             // 
+            pnlSeparador1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnlSeparador1.BackColor = Color.FromArgb(68, 252, 124);
             pnlSeparador1.Location = new Point(16, 94);
             pnlSeparador1.Name = "pnlSeparador1";
@@ -86,6 +88,7 @@
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = Color.White;
             panel2.Controls.Add(cbCliente);
             panel2.Controls.Add(btnVoltarIncluirPassageiros);
@@ -105,6 +108,7 @@
             // 
             // cbCliente
             // 
+            cbCliente.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             cbCliente.FormattingEnabled = true;
             cbCliente.Location = new Point(194, 15);
             cbCliente.Name = "cbCliente";
@@ -143,6 +147,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(232, 232, 232);
             panel1.Location = new Point(0, 162);
             panel1.Name = "panel1";
@@ -151,6 +156,7 @@
             // 
             // txtNumeroDeParcelasIncluirPassageiros
             // 
+            txtNumeroDeParcelasIncluirPassageiros.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtNumeroDeParcelasIncluirPassageiros.Location = new Point(194, 118);
             txtNumeroDeParcelasIncluirPassageiros.Name = "txtNumeroDeParcelasIncluirPassageiros";
             txtNumeroDeParcelasIncluirPassageiros.Size = new Size(565, 23);
@@ -158,6 +164,7 @@
             // 
             // txtValorDaEntradaIncluirPassageiros
             // 
+            txtValorDaEntradaIncluirPassageiros.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtValorDaEntradaIncluirPassageiros.Location = new Point(194, 85);
             txtValorDaEntradaIncluirPassageiros.Name = "txtValorDaEntradaIncluirPassageiros";
             txtValorDaEntradaIncluirPassageiros.Size = new Size(565, 23);
@@ -165,6 +172,7 @@
             // 
             // txtFormaDePagamentoIncluirPassageiros
             // 
+            txtFormaDePagamentoIncluirPassageiros.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtFormaDePagamentoIncluirPassageiros.Location = new Point(194, 48);
             txtFormaDePagamentoIncluirPassageiros.Name = "txtFormaDePagamentoIncluirPassageiros";
             txtFormaDePagamentoIncluirPassageiros.Size = new Size(565, 23);
@@ -218,6 +226,7 @@
             // 
             // panel3
             // 
+            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = Color.FromArgb(68, 252, 124);
             panel3.Location = new Point(25, 405);
             panel3.Name = "panel3";
@@ -227,7 +236,7 @@
             // lbIDViagemIncluirPassageiros
             // 
             lbIDViagemIncluirPassageiros.AutoSize = true;
-            lbIDViagemIncluirPassageiros.Location = new Point(19, 96);
+            lbIDViagemIncluirPassageiros.Location = new Point(73, 97);
             lbIDViagemIncluirPassageiros.Name = "lbIDViagemIncluirPassageiros";
             lbIDViagemIncluirPassageiros.Size = new Size(38, 15);
             lbIDViagemIncluirPassageiros.TabIndex = 8;
@@ -253,7 +262,7 @@
             dgvListaDePassageiros.ColumnHeadersHeight = 40;
             dgvListaDePassageiros.Columns.AddRange(new DataGridViewColumn[] { btnExcluir });
             dgvListaDePassageiros.EnableHeadersVisualStyles = false;
-            dgvListaDePassageiros.Location = new Point(29, 438);
+            dgvListaDePassageiros.Location = new Point(34, 440);
             dgvListaDePassageiros.Name = "dgvListaDePassageiros";
             dgvListaDePassageiros.RowHeadersVisible = false;
             dgvListaDePassageiros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -275,10 +284,20 @@
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Width = 50;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(24, 96);
+            label1.Name = "label1";
+            label1.Size = new Size(49, 15);
+            label1.TabIndex = 10;
+            label1.Text = "Código:";
+            // 
             // UC_IncluirPassageiros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label1);
             Controls.Add(dgvListaDePassageiros);
             Controls.Add(lbIDViagemIncluirPassageiros);
             Controls.Add(panel3);
@@ -319,5 +338,6 @@
         private ComboBox cbCliente;
         private DataGridView dgvListaDePassageiros;
         private DataGridViewImageColumn btnExcluir;
+        private Label label1;
     }
 }

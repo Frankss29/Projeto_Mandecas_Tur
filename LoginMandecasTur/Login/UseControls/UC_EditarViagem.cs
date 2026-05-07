@@ -129,6 +129,11 @@ namespace Login.UseControls
                     pnlPrincipal.Controls.Add(EditarViagem);
                 }
             }
-        }   
+        }
+
+        private void lbIDViagem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
