@@ -33,6 +33,8 @@
             panel2 = new Panel();
             lblInformativo = new Label();
             panel3 = new Panel();
+            dtpVencimento = new DateTimePicker();
+            lbDtVencimentoRegistrarEntrada = new Label();
             panel5 = new Panel();
             panel4 = new Panel();
             btnregistrar = new Button();
@@ -96,6 +98,8 @@
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = Color.White;
+            panel3.Controls.Add(dtpVencimento);
+            panel3.Controls.Add(lbDtVencimentoRegistrarEntrada);
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
             panel3.Controls.Add(cbPassageiros);
@@ -108,14 +112,32 @@
             panel3.Controls.Add(label17);
             panel3.Location = new Point(59, 171);
             panel3.Name = "panel3";
-            panel3.Size = new Size(707, 229);
+            panel3.Size = new Size(707, 268);
             panel3.TabIndex = 3;
+            // 
+            // dtpVencimento
+            // 
+            dtpVencimento.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dtpVencimento.Location = new Point(292, 170);
+            dtpVencimento.Name = "dtpVencimento";
+            dtpVencimento.Size = new Size(285, 23);
+            dtpVencimento.TabIndex = 11;
+            // 
+            // lbDtVencimentoRegistrarEntrada
+            // 
+            lbDtVencimentoRegistrarEntrada.AutoSize = true;
+            lbDtVencimentoRegistrarEntrada.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbDtVencimentoRegistrarEntrada.Location = new Point(98, 173);
+            lbDtVencimentoRegistrarEntrada.Name = "lbDtVencimentoRegistrarEntrada";
+            lbDtVencimentoRegistrarEntrada.Size = new Size(151, 20);
+            lbDtVencimentoRegistrarEntrada.TabIndex = 10;
+            lbDtVencimentoRegistrarEntrada.Text = "Data de Vencimento:";
             // 
             // panel5
             // 
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel5.BackColor = Color.FromArgb(232, 232, 232);
-            panel5.Location = new Point(1, 169);
+            panel5.Location = new Point(1, 215);
             panel5.Name = "panel5";
             panel5.Size = new Size(704, 2);
             panel5.TabIndex = 9;
@@ -125,7 +147,7 @@
             panel4.BackColor = Color.White;
             panel4.Controls.Add(btnregistrar);
             panel4.Controls.Add(btnCancelar);
-            panel4.Location = new Point(0, 175);
+            panel4.Location = new Point(0, 216);
             panel4.Name = "panel4";
             panel4.Size = new Size(707, 50);
             panel4.TabIndex = 4;
@@ -268,5 +290,7 @@
         private ComboBox cbPassageiros;
         private ComboBox cbViagens;
         private Panel panel5;
+        private Label lbDtVencimentoRegistrarEntrada;
+        private DateTimePicker dtpVencimento;
     }
 }

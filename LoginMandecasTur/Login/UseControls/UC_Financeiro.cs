@@ -21,6 +21,8 @@ namespace Login.UseControls
             InitializeComponent();
             ConfigurarEstiloGrid();
 
+            AtualizarGrid();
+            AtualizarCards();
 
         }
 
@@ -183,13 +185,13 @@ namespace Login.UseControls
                                     r.id_reserva, 
                                     c.nome AS nome_cliente, 
                                     v.destino AS nome_viagem,
-                                    COALESCE(v.valor_unitario, 0) AS valor_viagem,
+                                    COALESCE(r.valor_unitario, 0) AS valor_viagem,
                                     (SELECT COALESCE(SUM(f.valor_parcela), 0) FROM financeiro f WHERE f.id_reserva = r.id_reserva) AS total_pago,
-                                    r.data_inicio_pag,                                   
+                                    r.data_vencimento,
                                     CASE 
-                                    WHEN r.status_pagamento = 'Pago' THEN 'Pago'
-                                    WHEN r.data_inicio_pag < CURDATE() THEN 'Vencido'
-                                    ELSE 'Pendente'
+                                        WHEN r.status_pagamento = 'Pago' THEN 'Em Dia'
+                                        WHEN r.data_vencimento < CURDATE() AND r.data_vencimento != 'Pago' THEN 'Vencido'
+                                        ELSE 'Pendente'
                                     END AS status_pagamento
                                    FROM reserva r
                                    LEFT JOIN cliente c ON r.id_cliente = c.id_cliente
@@ -238,39 +240,19 @@ namespace Login.UseControls
 
                 // 2. Contas Pendentes (Valor das viagens - Valor pago)
                 // Usamos uma subconsulta para pegar a diferença
-                string sqlPendentes = @"
-                SELECT
-                SUM(v.valor_unitario) 
-                - COALESCE(
-                (SELECT SUM(f.valor_parcela)
-                FROM financeiro f
-                JOIN reserva r2 ON f.id_reserva = r2.id_reserva
-                WHERE r2.status_pagamento <> 'Pago'), 0)
-                FROM reserva r
-                JOIN viagem v ON r.id_viagem = v.id_viagem
-                WHERE r.status_pagamento <> 'Pago'";
+                string sqlPendentes = @"SELECT 
+                        (SELECT SUM(COALESCE(valor_unitario, 0)) FROM reserva) - 
+                        (SELECT SUM(COALESCE(valor_parcela, 0)) FROM financeiro)";
                 MySqlCommand cmd2 = new MySqlCommand(sqlPendentes, con);
                 object resultadoPendentes = cmd2.ExecuteScalar();
                 decimal pendentes = resultadoPendentes != DBNull.Value ? Convert.ToDecimal(resultadoPendentes) : 0;
                 lblPendentes.Text = pendentes.ToString("C2");
 
-                // 3. Vencidos (Exemplo: Reservas com status 'Pendente' e data anterior a hoje)
-
-                string sqlVencidos = @"
-                 SELECT COALESCE(
-                 SUM(
-                 v.valor_unitario -
-                 COALESCE(
-                 (SELECT SUM(f.valor_parcela)
-                 FROM financeiro f
-                 WHERE f.id_reserva = r.id_reserva),
-                 0)
-                 ), 0)
-                 FROM reserva r
-                 JOIN viagem v ON r.id_viagem = v.id_viagem
-                 WHERE r.data_inicio_pag < CURDATE();
-                 ";
-
+                // 3. Vencidos (Soma o valor total das reservas que estão com data atrasada e não foram pagas)
+                string sqlVencidos = @"SELECT SUM(COALESCE(valor_unitario, 0)) 
+                       FROM reserva 
+                       WHERE status_pagamento != 'Pago' 
+                       AND data_vencimento < CURDATE()";
                 MySqlCommand cmd3 = new MySqlCommand(sqlVencidos, con);
                 object resultadoVencidos = cmd3.ExecuteScalar();
                 decimal vencidos = resultadoVencidos != DBNull.Value ? Convert.ToDecimal(resultadoVencidos) : 0;
@@ -297,51 +279,34 @@ namespace Login.UseControls
             {
                 con.Open();
 
-                string sqlBusca = @"
-                    SELECT 
-                    r.id_reserva, 
-                    c.nome AS nome_cliente, 
-                    v.destino AS nome_viagem,
-                    COALESCE(v.valor_unitario, 0) AS valor_viagem,
-                    (SELECT COALESCE(SUM(f.valor_parcela), 0)
-                    FROM financeiro f
-                    WHERE f.id_reserva = r.id_reserva) AS total_pago,
-                    r.data_inicio_pag,
-                    CASE 
-                    WHEN r.status_pagamento = 'Pago' THEN 'Pago'
-                    WHEN r.data_inicio_pag < CURDATE() THEN 'Vencido'
-                    ELSE 'Pendente'
-                    END AS status_pagamento
-                    FROM reserva r
-                    LEFT JOIN cliente c ON r.id_cliente = c.id_cliente
-                    LEFT JOIN viagem v ON r.id_viagem = v.id_viagem
-                    WHERE 1=1";// Esse '1=1' é um truque para facilitar a adição de filtros
+                string sqlBusca = @"SELECT 
+                                r.id_reserva, 
+                                c.nome AS nome_cliente, 
+                                v.destino AS nome_viagem, 
+                                r.valor_entrada, 
+                                r.data_vencimento, 
+                                r.status_pagamento 
+                              FROM reserva r
+                              INNER JOIN cliente c ON r.id_cliente = c.id_cliente
+                              INNER JOIN viagem v ON r.id_viagem = v.id_viagem
+                              WHERE 1=1"; // Esse '1=1' é um truque para facilitar a adição de filtros
 
                 // Filtro 1: Status (ComboBox)
-
                 if (cboStatus.SelectedIndex != -1 && cboStatus.Text != "Todos")
                 {
                     sqlBusca += " AND r.status_pagamento = @status";
                 }
 
-
                 // Filtro 2: Nome do Cliente ou Viagem (TextBox)
-
                 if (!string.IsNullOrWhiteSpace(txtBuscaFinanceiro.Text))
                 {
                     sqlBusca += " AND (c.nome LIKE @busca OR v.destino LIKE @busca)";
                 }
 
-
                 MySqlCommand cmd = new MySqlCommand(sqlBusca, con);
 
                 // Passando os parâmetros com segurança
-
-                if (cboStatus.SelectedIndex != -1 && cboStatus.Text != "Todos")
-                {
-                    cmd.Parameters.AddWithValue("@status", cboStatus.Text);
-                }
-
+                cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                 cmd.Parameters.AddWithValue("@busca", "%" + txtBuscaFinanceiro.Text + "%");
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);

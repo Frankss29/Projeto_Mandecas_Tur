@@ -216,9 +216,12 @@ namespace Login.UseControls
                         );
 
                         pnlPrincipal.Controls.Clear();
-                        UC_IncluirPassageiros IncluirPassageiros = new UC_IncluirPassageiros(idIncluirPassageiro);
+                        UC_IncluirPassageiros IncluirPassageiros = new UC_IncluirPassageiros();
                         IncluirPassageiros.Dock = DockStyle.Fill;
                         pnlPrincipal.Controls.Add(IncluirPassageiros);
+
+                        // 4. CHAMA O MÉTODO QUE CARREGA TUDO (O segredo está aqui!)
+                        IncluirPassageiros.CarregarInformacoes(idIncluirPassageiro);
                     }
                 }
             }

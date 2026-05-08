@@ -16,7 +16,8 @@ namespace Login.UseControls
         public UC_RegistrarEntrada()
         {
             InitializeComponent();
-            
+            CarregarViagens();
+
         }
 
         private void CarregarViagens()
@@ -124,8 +125,6 @@ namespace Login.UseControls
                 return;
             }
 
-
-
             // Só faz a conta se a viagem e o cliente estiverem selecionados
             if (cbViagens.SelectedValue != null && cbPassageiros.SelectedValue != null)
             {
@@ -178,11 +177,6 @@ namespace Login.UseControls
         }
 
 
-
-
-
-
-
         private void btnregistrar_Click(object sender, EventArgs e)
         {
             // Validação básica: não deixa registrar sem valor ou sem cliente
@@ -208,6 +202,11 @@ namespace Login.UseControls
                        FROM reserva 
                        WHERE id_cliente = @idCliente AND id_viagem = @idViagem";
 
+                string sqlUpdateReserva = @"UPDATE reserva 
+                        SET data_vencimento = @novaData,
+                        status_pagamento = 'Em Dia'
+                        WHERE id_cliente = @idCliente AND id_viagem = @idViagem";
+
                 MySqlCommand cmd = new MySqlCommand(sql, con);
 
                 cmd.Parameters.AddWithValue("@valor", decimal.Parse(txtValorParcela.Text));
@@ -215,13 +214,23 @@ namespace Login.UseControls
                 cmd.Parameters.AddWithValue("@idCliente", cbPassageiros.SelectedValue);
                 cmd.Parameters.AddWithValue("@idViagem", cbViagens.SelectedValue);
 
+
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Pagamento registrado com sucesso!");
+                // Executa o Update da Reserva(Vencimento)
+                MySqlCommand cmdRes = new MySqlCommand(sqlUpdateReserva, con);
+                cmdRes.Parameters.AddWithValue("@idCliente", cbPassageiros.SelectedValue);
+                cmdRes.Parameters.AddWithValue("@idViagem", cbViagens.SelectedValue);
+                cmdRes.Parameters.AddWithValue("@novaData", dtpVencimento.Value);
+                cmdRes.ExecuteNonQuery();
+
+                MessageBox.Show("Pagamento registrado e vencimento atualizado");
 
                 // Limpa o campo de valor para o próximo lançamento
+
+                // Limpeza dos campos
                 txtValorParcela.Clear();
-                txtFormaPgto.Clear();
+                if (txtFormaPgto != null) txtFormaPgto.Clear(); // Evita erro se o campo não existir
                 cbViagens.SelectedIndex = -1;
                 cbPassageiros.SelectedIndex = -1;
 
@@ -254,7 +263,7 @@ namespace Login.UseControls
 
         private void UC_RegistrarEntrada_Load(object sender, EventArgs e)
         {
-            CarregarViagens();
+            dtpVencimento.Value = DateTime.Now.AddMonths(1);
         }
     }
 }
