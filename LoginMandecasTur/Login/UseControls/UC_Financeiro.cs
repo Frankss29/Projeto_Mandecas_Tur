@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -336,11 +337,16 @@ namespace Login.UseControls
 
         private void UC_Financeiro_Load(object sender, EventArgs e)
         {
+
+            CarregarClientes();
+            CarregarViagens();
+
             AtualizarGrid();
             AtualizarCards();
             lblVencidos.ForeColor = Color.Black;
 
 
+ 
         }
 
         private void lblLimparFiltro_Click(object sender, EventArgs e)
@@ -364,9 +370,185 @@ namespace Login.UseControls
 
         }
 
+
+        private void botaoPadraoMandecas3_Click(object sender, EventArgs e)
+        {
+
+            if (rbListaPassageiros.Checked)
+            {
+                GerarListaPassageiros();
+            }
+            else if (rbReciboCliente.Checked)
+            {
+                GerarRecibo();
+            }
+            else if (rbCustoViagem.Checked)
+            {
+                GerarCustos();
+            }
+            else
+            {
+                MessageBox.Show("Selecione uma opção!");
+            }
+
+            if (rbListaPassageiros.Checked)
+    {
+                GerarListaPassageiros();
+            }
+
+        }
+
+
+
+
+        private void Lis_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgv_Financeiro_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           AtualizarGrid();
+        }
+        private void GerarCustos()
+        {
+
+        }
+        private void GerarRecibo()
+        {
+
+        }
+        private void GerarListaPassageiros()
+        {
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection("server=localhost;database=mandecas;uid=root;pwd=;"))
+                {
+                    conn.Open();
+
+                    string sql = @"
+                SELECT 
+                    c.nome AS Cliente,
+                    c.telefone AS Telefone,
+                    v.destino AS Destino,
+                    v.data_viagem AS Data
+                FROM reserva r
+                INNER JOIN cliente c ON r.id_cliente = c.id_cliente
+                INNER JOIN viagem v ON r.id_viagem = v.id_viagem
+                WHERE
+                    (@id_cliente IS NULL OR r.id_cliente = @id_cliente)
+                AND (@id_viagem IS NULL OR r.id_viagem = @id_viagem)";
+
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    // ✅ CLIENTE
+                    if (cboClienteRelatorio.SelectedIndex != -1)
+                        cmd.Parameters.AddWithValue("@id_cliente", cboClienteRelatorio.SelectedValue);
+                    else
+                        cmd.Parameters.AddWithValue("@id_cliente", DBNull.Value);
+
+                    // ✅ VIAGEM
+                    if (cboViagemRelatorio.SelectedIndex != -1)
+                        cmd.Parameters.AddWithValue("@id_viagem", cboViagemRelatorio.SelectedValue);
+                    else
+                        cmd.Parameters.AddWithValue("@id_viagem", DBNull.Value);
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dgv_Financeiro.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+            private void CarregarViagens()
+        {
+
+            using (MySqlConnection conn = new MySqlConnection("server=localhost;database=mandecas;uid=root;pwd=;"))
+            {
+                conn.Open();
+
+                string sql = "SELECT id_viagem, destino FROM viagem";
+
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                cboViagemRelatorio.DataSource = dt;
+                cboViagemRelatorio.DisplayMember = "destino";
+                cboViagemRelatorio.ValueMember = "id_viagem";
+                cboViagemRelatorio.SelectedIndex = -1;
+            }     }
+            
+
+
+
+            private void CarregarClientes()
+        {
+            using (MySqlConnection conn = new MySqlConnection("server=localhost;database=mandecas;uid=root;pwd=;"))
+            {
+                conn.Open();
+
+                string sql = "SELECT id_cliente, nome FROM cliente";
+
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                cboClienteRelatorio.DataSource = dt;
+                cboClienteRelatorio.DisplayMember = "nome";
+                cboClienteRelatorio.ValueMember = "id_cliente";
+                cboClienteRelatorio.SelectedIndex = -1;
+            }
+        }
+
+
+
         private void cboStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
     }
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
