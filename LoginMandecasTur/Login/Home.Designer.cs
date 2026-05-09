@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             pnlMenu = new Panel();
             pnlNav = new Panel();
@@ -45,18 +46,22 @@
             imgNomeLogoHome = new PictureBox();
             imgLogoHome = new PictureBox();
             pnlUserName = new Panel();
-            pictureBox1 = new PictureBox();
+            imgConfigurar = new PictureBox();
             lbUserName = new Label();
             imgIconUserHome = new PictureBox();
             lbUsuario = new Label();
+            cmsConfigurarMenu = new ContextMenuStrip(components);
+            sairToolStripMenuItem = new ToolStripMenuItem();
+            darkModeToolStripMenuItem = new ToolStripMenuItem();
             pnlMenu.SuspendLayout();
             pnlNavBar.SuspendLayout();
             pnlFecharMinimizarTela.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgNomeLogoHome).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoHome).BeginInit();
             pnlUserName.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgConfigurar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgIconUserHome).BeginInit();
+            cmsConfigurarMenu.SuspendLayout();
             SuspendLayout();
             // 
             // pnlMenu
@@ -240,7 +245,7 @@
             // 
             pnlUserName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pnlUserName.BackColor = Color.White;
-            pnlUserName.Controls.Add(pictureBox1);
+            pnlUserName.Controls.Add(imgConfigurar);
             pnlUserName.Controls.Add(lbUserName);
             pnlUserName.Controls.Add(imgIconUserHome);
             pnlUserName.Controls.Add(lbUsuario);
@@ -250,15 +255,16 @@
             pnlUserName.TabIndex = 0;
             pnlUserName.Paint += pnlUserName_Paint;
             // 
-            // pictureBox1
+            // imgConfigurar
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(119, 8);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(22, 22);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
+            imgConfigurar.Image = (Image)resources.GetObject("imgConfigurar.Image");
+            imgConfigurar.Location = new Point(119, 8);
+            imgConfigurar.Name = "imgConfigurar";
+            imgConfigurar.Size = new Size(22, 22);
+            imgConfigurar.SizeMode = PictureBoxSizeMode.Zoom;
+            imgConfigurar.TabIndex = 4;
+            imgConfigurar.TabStop = false;
+            imgConfigurar.Click += imgConfigurar_Click;
             // 
             // lbUserName
             // 
@@ -289,6 +295,24 @@
             lbUsuario.TabIndex = 2;
             lbUsuario.Text = "Usuário";
             // 
+            // cmsConfigurarMenu
+            // 
+            cmsConfigurarMenu.Items.AddRange(new ToolStripItem[] { sairToolStripMenuItem, darkModeToolStripMenuItem });
+            cmsConfigurarMenu.Name = "cmsConfigurarMenu";
+            cmsConfigurarMenu.Size = new Size(130, 48);
+            // 
+            // sairToolStripMenuItem
+            // 
+            sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            sairToolStripMenuItem.Size = new Size(129, 22);
+            sairToolStripMenuItem.Text = "Sair";
+            // 
+            // darkModeToolStripMenuItem
+            // 
+            darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
+            darkModeToolStripMenuItem.Size = new Size(129, 22);
+            darkModeToolStripMenuItem.Text = "DarkMode";
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -311,8 +335,9 @@
             ((System.ComponentModel.ISupportInitialize)imgLogoHome).EndInit();
             pnlUserName.ResumeLayout(false);
             pnlUserName.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgConfigurar).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgIconUserHome).EndInit();
+            cmsConfigurarMenu.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -337,6 +362,9 @@
         private Label lbRecolher;
         private Button btnFuncionario;
         private Panel pnlNav;
-        private PictureBox pictureBox1;
+        private PictureBox imgConfigurar;
+        private ContextMenuStrip cmsConfigurarMenu;
+        private ToolStripMenuItem sairToolStripMenuItem;
+        private ToolStripMenuItem darkModeToolStripMenuItem;
     }
 }

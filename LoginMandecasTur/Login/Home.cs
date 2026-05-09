@@ -193,6 +193,9 @@ namespace Login
 
         }
 
-        
+        private void imgConfigurar_Click(object sender, EventArgs e)
+        {
+            cmsConfigurarMenu.Show(imgConfigurar, 0, imgConfigurar.Height);
+        }
     }
 }
