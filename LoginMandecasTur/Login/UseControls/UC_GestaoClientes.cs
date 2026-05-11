@@ -31,10 +31,130 @@ namespace Login.UseControls
             dvgClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Seleciona a linha toda
             dvgClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            
+            dvgClientes.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 255, 127);
+            dvgClientes.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            dvgClientes.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 255, 127);
+
+            // 4. Muda a fonte do conteúdo da Grid também
+            dvgClientes.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            dvgClientes.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+
             // Altura das linhas para dar "respiro" ao design
             dvgClientes.RowTemplate.Height = 35;
 
         }
+
+        private void MudarCoresRecursivo(Control container, bool dark)
+        {
+            foreach (Control c in container.Controls)
+            {
+                // Se NÃO for o título (que precisa ser bold), aplica a fonte normal
+                if (c.Name != "lbCadastrarCliente")
+                {
+                    c.Font = new Font("Segoe UI", 10);
+                }
+
+                if (dark)
+                {
+                    if (c is TextBox || c is DateTimePicker)
+                    {
+                        c.BackColor = Color.FromArgb(45, 45, 45);
+                        c.ForeColor = Color.White;
+                    }
+                    if (c is Label) c.ForeColor = Color.Gainsboro;
+                }
+                else
+                {
+                    if (c is TextBox || c is DateTimePicker)
+                    {
+                        c.BackColor = Color.White;
+                        c.ForeColor = Color.Black;
+                    }
+                    // Cor das labels no modo claro
+                    if (c is Label && c.Name != "lbCadastrarCliente")
+                        c.ForeColor = Color.FromArgb(64, 64, 64);
+                }
+
+                if (c.HasChildren) MudarCoresRecursivo(c, dark);
+            }
+        }
+
+        public void AtualizarTema(bool isDark)
+        {
+            if (isDark)
+            {
+                // 1. O Fundo da UC deve ser transparente para mostrar a imagem da Home
+                this.BackColor = Color.Transparent;
+                MudarCoresRecursivo(this, isDark);
+
+                // 2. Painel de Cadastro (Efeito Transparente)
+                pnlTitulo.BackColor = Color.FromArgb(25, 45, 35);
+                pnlCadastroCliente.BackColor = Color.FromArgb(150, 20, 35, 30);
+                lbCadastrarCliente.ForeColor = Color.Gainsboro;
+
+                foreach (Control c in pnlCadastroCliente.Controls)
+                {
+                    if (c is Label) c.ForeColor = Color.Gainsboro;
+                    if (c is TextBox txt)
+                    {
+                        txt.BackColor = Color.FromArgb(45, 45, 45); // Textbox escura
+                        txt.ForeColor = Color.White;
+                        txt.BorderStyle = BorderStyle.FixedSingle;
+                    }
+                }
+
+                //DataGridView 
+                dvgClientes.BackgroundColor = Color.FromArgb(20, 35, 30);
+                dvgClientes.DefaultCellStyle.BackColor = Color.FromArgb(25, 45, 35);
+                dvgClientes.DefaultCellStyle.ForeColor = Color.Gainsboro;
+
+                dvgClientes.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(30, 50, 40);
+                dvgClientes.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(15, 30, 25);
+                dvgClientes.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dvgClientes.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(15, 30, 25); // Evita o azul no clique do topo
+                
+                //Seleção Fluorescente: Um verde mais vivo (tipo o do botão buscar)
+                dvgClientes.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 255, 127); // Verde SpringGreen
+                dvgClientes.DefaultCellStyle.SelectionForeColor = Color.Black; // Texto preto para dar leitura no verde claro
+
+                dvgClientes.EnableHeadersVisualStyles = false; // Necessário para a cor do cabeçalho pegar
+            }
+            else // MODO CLARO (Igual à imagem gc5.png)
+            {
+                this.BackColor = Color.FromArgb(239, 239, 239); // O cinza clarinho de fundo da gc5
+                MudarCoresRecursivo(this, false);
+
+                // --- PAINEL DE CADASTRO ---
+                pnlTitulo.BackColor = Color.FromArgb(232, 232, 232); // Cinza do cabeçalho de cadastro
+                pnlCadastroCliente.BackColor = Color.White;
+
+                // Força o Negrito no título que a recursividade tirou
+                lbCadastrarCliente.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+                lbCadastrarCliente.ForeColor = Color.Black;
+
+                // --- DATAGRIDVIEW (Limpeza total do Dark Mode) ---
+                dvgClientes.BackgroundColor = Color.White;
+                dvgClientes.DefaultCellStyle.BackColor = Color.White;
+                dvgClientes.DefaultCellStyle.ForeColor = Color.Black;
+
+                // Remove o fundo verde das linhas alternadas que apareceu na gc6
+                dvgClientes.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+
+                // Seleção Fluorescente (Igual à gc5)
+                dvgClientes.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 255, 127);
+                dvgClientes.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+                // Cabeçalho - Reset para o cinza original
+                dvgClientes.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(232, 232, 232);
+                dvgClientes.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+                dvgClientes.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 255, 127);
+
+            }
+        }
+
+        
 
         public void AtualizarGrid()
         {
@@ -64,7 +184,7 @@ namespace Login.UseControls
                 // 1. Nome Completo
                 if (dvgClientes.Columns.Contains("nome"))
                 {
-                    dvgClientes.Columns["nome"].HeaderText = "Nome Completo";
+                    dvgClientes.Columns["nome"].HeaderText = "Nome";
                     dvgClientes.Columns["nome"].DisplayIndex = 1;
                 }
 
@@ -184,6 +304,7 @@ namespace Login.UseControls
 
                         UC_EditarCliente editarCliente = new UC_EditarCliente(idCliente);
                         editarCliente.Dock = DockStyle.Fill;
+                        editarCliente.AtualizarTema(Home.IsDarkMode);
                         pnlPrincipal.Controls.Add(editarCliente);
                     }
                 }

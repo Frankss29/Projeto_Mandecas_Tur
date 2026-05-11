@@ -155,10 +155,11 @@
             // panelContainer
             // 
             panelContainer.AutoScroll = true;
+            panelContainer.BackColor = Color.Transparent;
             panelContainer.Dock = DockStyle.Fill;
             panelContainer.Location = new Point(0, 134);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(1218, 671);
+            panelContainer.Size = new Size(1218, 654);
             panelContainer.TabIndex = 4;
             panelContainer.Paint += panelContainer_Paint;
             // 
@@ -312,13 +313,14 @@
             darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
             darkModeToolStripMenuItem.Size = new Size(129, 22);
             darkModeToolStripMenuItem.Text = "DarkMode";
+            darkModeToolStripMenuItem.Click += darkModeToolStripMenuItem_Click;
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1218, 805);
+            ClientSize = new Size(1218, 788);
             Controls.Add(panelContainer);
             Controls.Add(pnlMenu);
             Controls.Add(pnlNavBar);

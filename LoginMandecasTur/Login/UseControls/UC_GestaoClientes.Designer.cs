@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_GestaoClientes));
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             txtBuscaGCliente = new TextBox();
             btnBuscarGClientes = new BotaoPadraoMandecas();
             dvgClientes = new DataGridView();
@@ -47,7 +47,6 @@
             lbTelefone = new Label();
             txtTelefoneGClientes = new TextBox();
             pnlSeparador2 = new Panel();
-            lbGratuidade = new Label();
             pnlBotoes = new Panel();
             btnCancelarGClientes = new BotaoPadraoMandecas();
             btnSalvarGClientes = new BotaoPadraoMandecas();
@@ -97,14 +96,14 @@
             dvgClientes.BorderStyle = BorderStyle.None;
             dvgClientes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dvgClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dvgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dvgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dvgClientes.ColumnHeadersHeight = 40;
             dvgClientes.Columns.AddRange(new DataGridViewColumn[] { btnEditar, btnExcluir });
             dvgClientes.EnableHeadersVisualStyles = false;
@@ -120,10 +119,10 @@
             // btnEditar
             // 
             btnEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.NullValue = resources.GetObject("dataGridViewCellStyle8.NullValue");
-            dataGridViewCellStyle8.Padding = new Padding(8);
-            btnEditar.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = resources.GetObject("dataGridViewCellStyle5.NullValue");
+            dataGridViewCellStyle5.Padding = new Padding(8);
+            btnEditar.DefaultCellStyle = dataGridViewCellStyle5;
             btnEditar.HeaderText = "";
             btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
             btnEditar.ImageLayout = DataGridViewImageCellLayout.Zoom;
@@ -133,10 +132,10 @@
             // btnExcluir
             // 
             btnExcluir.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.NullValue = resources.GetObject("dataGridViewCellStyle9.NullValue");
-            dataGridViewCellStyle9.Padding = new Padding(8);
-            btnExcluir.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.NullValue = resources.GetObject("dataGridViewCellStyle6.NullValue");
+            dataGridViewCellStyle6.Padding = new Padding(8);
+            btnExcluir.DefaultCellStyle = dataGridViewCellStyle6;
             btnExcluir.HeaderText = "";
             btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
             btnExcluir.ImageLayout = DataGridViewImageCellLayout.Zoom;
@@ -147,9 +146,10 @@
             // 
             lbNomeGClientes.Anchor = AnchorStyles.Left;
             lbNomeGClientes.AutoSize = true;
-            lbNomeGClientes.Location = new Point(23, 69);
+            lbNomeGClientes.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbNomeGClientes.Location = new Point(9, 68);
             lbNomeGClientes.Name = "lbNomeGClientes";
-            lbNomeGClientes.Size = new Size(99, 15);
+            lbNomeGClientes.Size = new Size(108, 17);
             lbNomeGClientes.TabIndex = 1;
             lbNomeGClientes.Text = "Nome Completo:";
             // 
@@ -157,16 +157,17 @@
             // 
             lbCPFGClientes.Anchor = AnchorStyles.Right;
             lbCPFGClientes.AutoSize = true;
+            lbCPFGClientes.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbCPFGClientes.Location = new Point(494, 68);
             lbCPFGClientes.Name = "lbCPFGClientes";
-            lbCPFGClientes.Size = new Size(31, 15);
+            lbCPFGClientes.Size = new Size(32, 17);
             lbCPFGClientes.TabIndex = 2;
             lbCPFGClientes.Text = "CPF:";
             // 
             // txtNomeGClientes
             // 
             txtNomeGClientes.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtNomeGClientes.Location = new Point(123, 64);
+            txtNomeGClientes.Location = new Point(123, 65);
             txtNomeGClientes.Name = "txtNomeGClientes";
             txtNomeGClientes.Size = new Size(356, 23);
             txtNomeGClientes.TabIndex = 0;
@@ -175,7 +176,7 @@
             // txtCPFGClientes
             // 
             txtCPFGClientes.Anchor = AnchorStyles.Right;
-            txtCPFGClientes.Location = new Point(524, 64);
+            txtCPFGClientes.Location = new Point(524, 65);
             txtCPFGClientes.Name = "txtCPFGClientes";
             txtCPFGClientes.Size = new Size(176, 23);
             txtCPFGClientes.TabIndex = 1;
@@ -185,9 +186,10 @@
             // 
             lbDtNascimento.Anchor = AnchorStyles.Left;
             lbDtNascimento.AutoSize = true;
-            lbDtNascimento.Location = new Point(26, 113);
+            lbDtNascimento.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbDtNascimento.Location = new Point(9, 109);
             lbDtNascimento.Name = "lbDtNascimento";
-            lbDtNascimento.Size = new Size(117, 15);
+            lbDtNascimento.Size = new Size(130, 17);
             lbDtNascimento.TabIndex = 5;
             lbDtNascimento.Text = "Data de Nascimento:";
             // 
@@ -195,16 +197,17 @@
             // 
             lbEmail.Anchor = AnchorStyles.Left;
             lbEmail.AutoSize = true;
-            lbEmail.Location = new Point(486, 113);
+            lbEmail.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbEmail.Location = new Point(486, 109);
             lbEmail.Name = "lbEmail";
-            lbEmail.Size = new Size(39, 15);
+            lbEmail.Size = new Size(42, 17);
             lbEmail.TabIndex = 6;
             lbEmail.Text = "Email:";
             // 
             // txtEmailGClientes
             // 
             txtEmailGClientes.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtEmailGClientes.Location = new Point(524, 108);
+            txtEmailGClientes.Location = new Point(524, 106);
             txtEmailGClientes.Name = "txtEmailGClientes";
             txtEmailGClientes.Size = new Size(176, 23);
             txtEmailGClientes.TabIndex = 4;
@@ -214,18 +217,19 @@
             // 
             lbTelefone.Anchor = AnchorStyles.Left;
             lbTelefone.AutoSize = true;
-            lbTelefone.Location = new Point(303, 114);
+            lbTelefone.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbTelefone.Location = new Point(294, 109);
             lbTelefone.Name = "lbTelefone";
-            lbTelefone.Size = new Size(55, 15);
+            lbTelefone.Size = new Size(60, 17);
             lbTelefone.TabIndex = 9;
             lbTelefone.Text = "Telefone:";
             // 
             // txtTelefoneGClientes
             // 
             txtTelefoneGClientes.Anchor = AnchorStyles.Left;
-            txtTelefoneGClientes.Location = new Point(360, 108);
+            txtTelefoneGClientes.Location = new Point(360, 106);
             txtTelefoneGClientes.Name = "txtTelefoneGClientes";
-            txtTelefoneGClientes.Size = new Size(110, 23);
+            txtTelefoneGClientes.Size = new Size(119, 23);
             txtTelefoneGClientes.TabIndex = 3;
             txtTelefoneGClientes.KeyDown += txtBuscaGCliente_KeyDown;
             // 
@@ -237,17 +241,6 @@
             pnlSeparador2.Name = "pnlSeparador2";
             pnlSeparador2.Size = new Size(724, 1);
             pnlSeparador2.TabIndex = 11;
-            // 
-            // lbGratuidade
-            // 
-            lbGratuidade.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            lbGratuidade.AutoSize = true;
-            lbGratuidade.Font = new Font("Segoe UI", 8.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            lbGratuidade.Location = new Point(25, 153);
-            lbGratuidade.Name = "lbGratuidade";
-            lbGratuidade.Size = new Size(181, 13);
-            lbGratuidade.TabIndex = 12;
-            lbGratuidade.Text = "*Gratuidade para menores de 5 anos";
             // 
             // pnlBotoes
             // 
@@ -314,10 +307,10 @@
             // 
             lbCadastrarCliente.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lbCadastrarCliente.AutoSize = true;
-            lbCadastrarCliente.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbCadastrarCliente.Location = new Point(18, 19);
+            lbCadastrarCliente.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbCadastrarCliente.Location = new Point(9, 19);
             lbCadastrarCliente.Name = "lbCadastrarCliente";
-            lbCadastrarCliente.Size = new Size(113, 17);
+            lbCadastrarCliente.Size = new Size(128, 20);
             lbCadastrarCliente.TabIndex = 0;
             lbCadastrarCliente.Text = "Cadastrar Cliente";
             // 
@@ -330,7 +323,6 @@
             pnlCadastroCliente.Controls.Add(pnlTitulo);
             pnlCadastroCliente.Controls.Add(pnlSeparador);
             pnlCadastroCliente.Controls.Add(pnlBotoes);
-            pnlCadastroCliente.Controls.Add(lbGratuidade);
             pnlCadastroCliente.Controls.Add(pnlSeparador2);
             pnlCadastroCliente.Controls.Add(txtTelefoneGClientes);
             pnlCadastroCliente.Controls.Add(lbTelefone);
@@ -350,7 +342,7 @@
             // dtpDataNascGclientes
             // 
             dtpDataNascGclientes.Format = DateTimePickerFormat.Short;
-            dtpDataNascGclientes.Location = new Point(149, 107);
+            dtpDataNascGclientes.Location = new Point(136, 106);
             dtpDataNascGclientes.Name = "dtpDataNascGclientes";
             dtpDataNascGclientes.Size = new Size(139, 23);
             dtpDataNascGclientes.TabIndex = 2;
@@ -407,7 +399,6 @@
         private Label lbTelefone;
         private TextBox txtTelefoneGClientes;
         private Panel pnlSeparador2;
-        private Label lbGratuidade;
         private Panel pnlBotoes;
         private BotaoPadraoMandecas btnCancelarGClientes;
         private BotaoPadraoMandecas btnSalvarGClientes;

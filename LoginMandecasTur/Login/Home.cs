@@ -38,6 +38,104 @@ namespace Login
             addUserControl(uc);
 
         }
+
+        // Variável global para o sistema saber qual tema usar
+        public static bool IsDarkMode = false;
+
+        public void AplicarTemaHome()
+        {
+            if (IsDarkMode)
+            {
+                //MODO ESCURO
+                this.BackgroundImage = Properties.Resources.img_fundo_escuro; // Imagem salva no Resources
+                this.BackgroundImageLayout = ImageLayout.Stretch; // Garante que a imagem cubra a tela toda
+
+                // A Barra de Navegação (Verde Petróleo bem escuro em vez de cinza)
+                pnlNavBar.BackColor = Color.FromArgb(10, 25, 20); // Um tom de verde quase preto
+
+                imgLogoHome.Image = Properties.Resources.logo_vazado_branco; // Versão clara do logo
+
+                // O Texto dos Menus
+                darkModeToolStripMenuItem.ForeColor = Color.Gainsboro;
+
+                // O painel que segura os botões (um verde petróleo profundo)
+                pnlMenu.BackColor = Color.FromArgb(15, 40, 30);
+
+                // Percorre todos os controles dentro do seu painel de abas
+                foreach (Control c in pnlMenu.Controls)
+                {
+                    if (c is Button btn) // Se o controle for um botão...
+                    {
+                        btn.FlatStyle = FlatStyle.Flat; // Garante o visual moderno
+
+                        if (IsDarkMode)
+                        {
+                            btn.ForeColor = Color.Gainsboro;
+                            btn.BackColor = Color.Transparent;
+                            // Configura o "cinza chato" para um verde elegante ao passar o mouse
+                            btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(40, 80, 60);
+                            btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(20, 40, 30);
+                            btn.FlatAppearance.BorderSize = 0; // Tira a bordinha se preferir
+                        }
+                        else
+                        {
+                            btn.ForeColor = Color.Black;
+                            btn.BackColor = Color.White; // Ou SystemColors.Control
+                            btn.FlatAppearance.MouseOverBackColor = Color.LightGray;
+                            btn.FlatAppearance.BorderSize = 1;
+                        }
+                    }
+                }
+
+                foreach (Control c in this.Controls)
+                {
+                    // 4. Muda a fonte de TODOS os controles para Segoe UI
+                    c.Font = new Font("Segoe UI", 9, FontStyle.Regular);
+
+                    if (IsDarkMode)
+                    {
+                        if (c is TextBox || c is DateTimePicker)
+                        {
+                            c.BackColor = Color.FromArgb(45, 45, 45); // Fundo grafite
+                            c.ForeColor = Color.White; // Texto branco
+                        }
+                        if (c is Label) c.ForeColor = Color.Gainsboro;
+                    }
+                    else
+                    {
+                        // Cores do modo claro aqui...
+                        if (c is TextBox || c is DateTimePicker)
+                        {
+                            c.BackColor = Color.White;
+                            c.ForeColor = Color.Black;
+                        }
+                    }
+                }
+
+                darkModeToolStripMenuItem.Text = "Modo Claro";
+            }
+            else
+            {
+
+                // MODO CLARO
+                this.BackgroundImage = null; // ISSO remove a imagem de fundo
+                this.BackColor = SystemColors.Control; // Volta para a cor padrão cinza claro do Windows
+                pnlNavBar.BackColor = Color.FromArgb(0, 255, 127); // Verde limão original
+                imgLogoHome.Image = Properties.Resources.logo_vazado_branco;
+
+                darkModeToolStripMenuItem.ForeColor = Color.Black;
+
+                pnlMenu.BackColor = Color.White;
+
+                btnGestaoClientes.ForeColor = Color.Black;
+                btnGestaoViagens.ForeColor = Color.Black;
+                btnReservas.ForeColor = Color.Black;
+                btnFinanceiro.ForeColor = Color.Black;
+                btnFuncionario.ForeColor = Color.Black;
+
+                darkModeToolStripMenuItem.Text = "Modo Escuro";
+            }
+        }
         private void Home_Load(object sender, EventArgs e)
         {
             // Primeiro define o limite
@@ -196,6 +294,24 @@ namespace Login
         private void imgConfigurar_Click(object sender, EventArgs e)
         {
             cmsConfigurarMenu.Show(imgConfigurar, 0, imgConfigurar.Height);
+        }
+
+        private void darkModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IsDarkMode = !IsDarkMode; // Inverte o tema
+            AplicarTemaHome();        // Executa a troca de cores/imagens na Home
+
+            // Verifica qual UC está aparecendo agora e avisa ela
+            if (panelContainer.Controls.Count > 0)
+            {
+                var ucAberta = panelContainer.Controls[0];
+
+                if (ucAberta is UC_GestaoClientes ucCli) ucCli.AtualizarTema(IsDarkMode);
+                else if (ucAberta is UC_EditarCliente ucFin) ucFin.AtualizarTema(IsDarkMode);
+
+                //else if (ucAberta is UC_Financeiro ucFin) ucFin.AtualizarTema(IsDarkMode);
+               // else if (ucAberta is UC_Viagens ucVia) ucVia.AtualizarTema(IsDarkMode);
+            }
         }
     }
 }
