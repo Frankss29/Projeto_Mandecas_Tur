@@ -74,7 +74,7 @@
             pnlCadastro.Name = "pnlCadastro";
             pnlCadastro.Size = new Size(746, 278);
             pnlCadastro.TabIndex = 1;
-            pnlCadastro.Paint += pnlCadastro_Paint;
+            
             // 
             // btnSalvarEditarAcesso
             // 
@@ -235,4 +235,8 @@
         private ComboBox cbmperfil;
         private BotaoPadraoMandecas btnSalvarEditarAcesso;
     }
+
+
 }
+
+
