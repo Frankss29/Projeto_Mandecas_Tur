@@ -369,7 +369,10 @@ namespace Login.UseControls
                 using (MySqlConnection conn = new Conexao().Conectar())
                 {
                     conn.Open();
-                    string sql = @"SELECT c.nome, c.cpf, c.telefone, r.status_pagamento 
+                    // Atualizado: Puxando a poltrona e local de embarque
+                    string sql = @"SELECT c.nome, c.cpf, c.telefone, r.status_pagamento, 
+                                          COALESCE(r.poltrona, '-') AS poltrona, 
+                                          COALESCE(r.local_embarque, 'Padrão') AS local_embarque 
                                    FROM reserva r 
                                    INNER JOIN cliente c ON r.id_cliente = c.id_cliente 
                                    WHERE r.id_viagem = @id_viagem";
@@ -393,8 +396,8 @@ namespace Login.UseControls
                             if (File.Exists(caminhoLogo))
                                 row.ConstantItem(60)
                                    .Height(60)
-                                   .CornerRadius(30) // Aplica o formato de círculo perfeito
-                                   .Image(caminhoLogo, ImageScaling.Resize); // Redimensiona para encaixar no círculo
+                                   .CornerRadius(30)
+                                   .Image(caminhoLogo, ImageScaling.Resize);
 
                             row.RelativeItem().PaddingLeft(15).AlignMiddle()
                                .Text($"Lista de Passageiros - {cboViagemRelatorio.Text}")
@@ -404,14 +407,22 @@ namespace Login.UseControls
                         page.Content().PaddingVertical(1, Unit.Centimetre).Table(table =>
                         {
                             table.ColumnsDefinition(columns => {
-                                columns.RelativeColumn(3); columns.RelativeColumn(2);
-                                columns.RelativeColumn(2); columns.RelativeColumn(2);
+                                columns.RelativeColumn(3); // Nome
+                                columns.RelativeColumn(2); // CPF
+                                columns.RelativeColumn(2); // Telefone
+                                columns.RelativeColumn(1); // Poltrona
+                                columns.RelativeColumn(2); // Embarque
+                                columns.RelativeColumn(2); // Status
                             });
 
                             table.Header(header =>
                             {
-                                header.Cell().Text("Nome Completo").SemiBold(); header.Cell().Text("Documento").SemiBold();
-                                header.Cell().Text("Telefone").SemiBold(); header.Cell().Text("Status").SemiBold();
+                                header.Cell().Text("Nome Completo").SemiBold();
+                                header.Cell().Text("Documento").SemiBold();
+                                header.Cell().Text("Telefone").SemiBold();
+                                header.Cell().Text("Poltrona").SemiBold();
+                                header.Cell().Text("Embarque").SemiBold();
+                                header.Cell().Text("Status").SemiBold();
                             });
 
                             int rowIndex = 0;
@@ -422,6 +433,8 @@ namespace Login.UseControls
                                 table.Cell().Background(corFundo).BorderBottom(1).BorderColor(Colors.Grey.Lighten3).Padding(4).Text(row["nome"].ToString());
                                 table.Cell().Background(corFundo).BorderBottom(1).BorderColor(Colors.Grey.Lighten3).Padding(4).Text(row["cpf"].ToString());
                                 table.Cell().Background(corFundo).BorderBottom(1).BorderColor(Colors.Grey.Lighten3).Padding(4).Text(row["telefone"].ToString());
+                                table.Cell().Background(corFundo).BorderBottom(1).BorderColor(Colors.Grey.Lighten3).Padding(4).Text(row["poltrona"].ToString());
+                                table.Cell().Background(corFundo).BorderBottom(1).BorderColor(Colors.Grey.Lighten3).Padding(4).Text(row["local_embarque"].ToString());
                                 table.Cell().Background(corFundo).BorderBottom(1).BorderColor(Colors.Grey.Lighten3).Padding(4).Text(row["status_pagamento"].ToString());
                                 rowIndex++;
                             }
@@ -453,7 +466,10 @@ namespace Login.UseControls
                 using (MySqlConnection conn = new Conexao().Conectar())
                 {
                     conn.Open();
-                    string sql = @"SELECT c.nome, r.data_vencimento AS data_inicio, f.valor_parcela, f.num_parcela, f.data_pagamento, f.forma_pagamento 
+                    // Atualizado: Puxando o valor_unitario como valor total da reserva
+                    string sql = @"SELECT c.nome, r.data_vencimento AS data_inicio, 
+                                          r.valor_unitario AS valor_total, 
+                                          f.valor_parcela, f.num_parcela, f.data_pagamento, f.forma_pagamento 
                                    FROM financeiro f 
                                    INNER JOIN reserva r ON f.id_reserva = r.id_reserva 
                                    INNER JOIN cliente c ON r.id_cliente = c.id_cliente 
@@ -472,6 +488,7 @@ namespace Login.UseControls
                 string nome = d["nome"].ToString();
                 string numParcela = d["num_parcela"] != DBNull.Value ? d["num_parcela"].ToString() : "-";
                 decimal valorParcela = d["valor_parcela"] != DBNull.Value ? Convert.ToDecimal(d["valor_parcela"]) : 0;
+                decimal valorTotal = d["valor_total"] != DBNull.Value ? Convert.ToDecimal(d["valor_total"]) : 0;
 
                 string dataInicio = d["data_inicio"] != DBNull.Value ? Convert.ToDateTime(d["data_inicio"]).ToString("dd/MM/yyyy") : "Não informada";
                 string dataPagamento = d["data_pagamento"] != DBNull.Value ? Convert.ToDateTime(d["data_pagamento"]).ToString("dd/MM/yyyy") : "Não informada";
@@ -485,12 +502,11 @@ namespace Login.UseControls
                         page.Margin(1, Unit.Centimetre);
                         page.Content().Column(col =>
                         {
-                            // Logo centralizada e arredondada no topo do recibo
                             if (File.Exists(caminhoLogo))
                                 col.Item().AlignCenter()
                                    .Width(70)
                                    .Height(70)
-                                   .CornerRadius(35) // Metade do tamanho para virar círculo
+                                   .CornerRadius(35)
                                    .Image(caminhoLogo, ImageScaling.Resize);
 
                             col.Item().AlignCenter().PaddingTop(5).Text("MANDECASTUR VIAGENS").FontSize(16).Black().FontColor("#2ecc71");
@@ -501,6 +517,9 @@ namespace Login.UseControls
                             col.Item().Text(txt => { txt.Span("Recebemos de: ").SemiBold(); txt.Span(nome); });
                             col.Item().Text(txt => { txt.Span("A quantia de: ").SemiBold(); txt.Span(valorParcela.ToString("C2")).FontColor(Colors.Green.Darken2).SemiBold(); });
                             col.Item().Text(txt => { txt.Span("Referente à viagem: ").SemiBold(); txt.Span(cboViagemRelatorio.Text); });
+
+                            // Adicionado: Valor total do pacote
+                            col.Item().Text(txt => { txt.Span("Valor Total do Pacote: ").SemiBold(); txt.Span(valorTotal.ToString("C2")); });
 
                             col.Item().PaddingTop(10).Text($"Data de início: {dataInicio}");
                             col.Item().Text($"Data do pagamento atual: {dataPagamento}");
@@ -536,7 +555,12 @@ namespace Login.UseControls
                 using (MySqlConnection conn = new Conexao().Conectar())
                 {
                     conn.Open();
-                    string sql = @"SELECT destino, custo_transporte, custo_hospedagem, gastos_extras, observacoes_gastos 
+                    // Atualizado: Puxando também a soma das parcelas (receita) da viagem
+                    string sql = @"SELECT destino, custo_transporte, custo_hospedagem, gastos_extras, observacoes_gastos, 
+                                          (SELECT COALESCE(SUM(f.valor_parcela), 0) 
+                                           FROM financeiro f 
+                                           INNER JOIN reserva r ON f.id_reserva = r.id_reserva 
+                                           WHERE r.id_viagem = @id) AS receita_total
                                    FROM viagem WHERE id_viagem = @id";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@id", cboViagemRelatorio.SelectedValue);
@@ -550,7 +574,10 @@ namespace Login.UseControls
                 decimal transporte = d["custo_transporte"] != DBNull.Value ? Convert.ToDecimal(d["custo_transporte"]) : 0;
                 decimal hospedagem = d["custo_hospedagem"] != DBNull.Value ? Convert.ToDecimal(d["custo_hospedagem"]) : 0;
                 decimal extras = d["gastos_extras"] != DBNull.Value ? Convert.ToDecimal(d["gastos_extras"]) : 0;
-                decimal total = transporte + hospedagem + extras;
+                decimal receitaTotal = d["receita_total"] != DBNull.Value ? Convert.ToDecimal(d["receita_total"]) : 0;
+
+                decimal custoTotal = transporte + hospedagem + extras;
+                decimal lucroLiquido = receitaTotal - custoTotal;
 
                 Document.Create(container =>
                 {
@@ -559,17 +586,16 @@ namespace Login.UseControls
                         page.Size(PageSizes.A4);
                         page.Margin(2, Unit.Centimetre);
 
-                        // Cabeçalho com Logo Arredondada
                         page.Header().Row(row =>
                         {
                             if (File.Exists(caminhoLogo))
                                 row.ConstantItem(60)
                                    .Height(60)
-                                   .CornerRadius(30) // Aplica o formato de círculo perfeito
-                                   .Image(caminhoLogo, ImageScaling.Resize); // Redimensiona para encaixar no círculo
+                                   .CornerRadius(30)
+                                   .Image(caminhoLogo, ImageScaling.Resize);
 
                             row.RelativeItem().PaddingLeft(15).AlignMiddle()
-                               .Text($"Demonstrativo de Custos: {d["destino"]}")
+                               .Text($"Demonstrativo Financeiro: {d["destino"]}")
                                .FontSize(18).SemiBold().FontColor("#2ecc71");
                         });
 
@@ -581,13 +607,21 @@ namespace Login.UseControls
 
                             col.Item().PaddingVertical(10).LineHorizontal(1).LineColor(Colors.Grey.Lighten2);
 
-                            col.Item().Background(Colors.Grey.Lighten4).Padding(10).Text(txt =>
+                            // Atualizado: Bloco de resumo financeiro mostrando Receita, Custo e Lucro
+                            col.Item().Background(Colors.Grey.Lighten4).Padding(10).Column(resumo =>
                             {
-                                txt.Span("CUSTO TOTAL DA VIAGEM: ").SemiBold();
-                                txt.Span(total.ToString("C2")).SemiBold().FontSize(14).FontColor(Colors.Red.Medium);
+                                resumo.Item().Text(txt => { txt.Span("1. TOTAL ARRECADADO (RECEITA): ").SemiBold(); txt.Span(receitaTotal.ToString("C2")).FontColor(Colors.Green.Darken2).SemiBold(); });
+                                resumo.Item().Text(txt => { txt.Span("2. CUSTO TOTAL DA VIAGEM: ").SemiBold(); txt.Span(custoTotal.ToString("C2")).FontColor(Colors.Red.Medium).SemiBold(); });
+                                resumo.Item().PaddingTop(5).Text(txt =>
+                                {
+                                    txt.Span("LUCRO LÍQUIDO (1 - 2): ").SemiBold().FontSize(14);
+                                    txt.Span(lucroLiquido.ToString("C2"))
+                                       .SemiBold().FontSize(14)
+                                       .FontColor(lucroLiquido >= 0 ? Colors.Blue.Darken2 : Colors.Red.Darken2);
+                                });
                             });
 
-                            col.Item().PaddingTop(20).Text("Observações:").SemiBold();
+                            col.Item().PaddingTop(20).Text("Observações de Custos:").SemiBold();
                             col.Item().Text(d["observacoes_gastos"] != DBNull.Value ? d["observacoes_gastos"].ToString() : "Nenhuma observação registrada.");
                         });
                     });

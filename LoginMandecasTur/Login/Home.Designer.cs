@@ -285,6 +285,7 @@
             imgIconUserHome.SizeMode = PictureBoxSizeMode.Zoom;
             imgIconUserHome.TabIndex = 3;
             imgIconUserHome.TabStop = false;
+            imgIconUserHome.Click += imgIconUserHome_Click;
             // 
             // lbUsuario
             // 
